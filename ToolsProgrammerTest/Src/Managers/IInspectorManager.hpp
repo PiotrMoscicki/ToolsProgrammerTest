@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtCore/qobject.h>
+#include <QtGui/qvector3d.h>
 
 #include "Managers/Dialogs/IPointDialog.hpp"
 
@@ -22,7 +23,7 @@ namespace TPT
 		virtual void Set3DInspector() = 0;
 
 
-		virtual void GetSelectedpoint() = 0;
+		virtual QVector3D* GetSelectedPoint() = 0;
 
 
 		// Displays PointDialog in creation mode.
@@ -30,7 +31,7 @@ namespace TPT
 		// Displays PointDialog in destruction mode.
 		virtual void Destroypoint() = 0;
 		// Sets currently selected point to given.
-		virtual void SelectPoint() = 0;
+		virtual void SelectPoint(QVector3D* point) = 0;
 		// modifies point and adds cmd to undo/redo stack.
 		virtual void ModifyPoint() = 0;
 

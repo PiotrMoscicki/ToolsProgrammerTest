@@ -24,6 +24,9 @@
     <Filter Include="Source Files\Dialogs">
       <UniqueIdentifier>{dec3ab61-1a0a-46d3-9b08-99cd14a6221d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Structures">
+      <UniqueIdentifier>{ccf5860a-d12e-43f0-80be-78062b2e6cd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application.cpp">
@@ -56,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="Src\Dialogs\IDialog.hpp">
       <Filter>Source Files\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Scene.hpp">
+      <Filter>Source Files\Structures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

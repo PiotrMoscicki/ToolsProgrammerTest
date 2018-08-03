@@ -3,6 +3,7 @@
 #include <QtCore/qstring.h>
 
 #include "Managers/IInspectorManager.hpp"
+#include "Structures/Scene.hpp"
 
 namespace TPT
 {
@@ -13,6 +14,6 @@ namespace TPT
 
 		virtual void LoadHeightMap(const QString& path) = 0;
 
-		virtual void GetScene();
+		virtual Scene* GetScene();
 	};
 }
