@@ -15,6 +15,9 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{f217cfbc-212c-42ff-80c5-72e8570db2ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application.cpp">
@@ -34,5 +37,10 @@
     <QtMoc Include="Src\SceneModifier.hpp">
       <Filter>Source Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Managers\IProjectManager.hpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
