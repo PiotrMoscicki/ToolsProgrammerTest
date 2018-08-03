@@ -10,6 +10,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Application.cpp" />
+    <ClCompile Include="Src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Src\Application.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B12702AD-ABFB-343A-A199-8E24837244A3}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
@@ -53,7 +60,7 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_3DCORE_LIB;QT_3DANIMATION_LIB;QT_3DEXTRAS_LIB;QT_3DINPUT_LIB;QT_3DLOGIC_LIB;QT_3DRENDER_LIB;QT_3DQUICK_LIB;QT_3DQUICKANIMATION_LIB;QT_3DQUICKEXTRAS_LIB;QT_3DQUICKINPUT_LIB;QT_3DQUICKRENDER_LIB;QT_3DQUICKSCENE2D_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\Documents\Programming\11bit\ToolsProgrammerTest\ToolsProgrammerTest\Src;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -69,8 +76,8 @@
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_3DCORE_LIB;QT_3DANIMATION_LIB;QT_3DEXTRAS_LIB;QT_3DINPUT_LIB;QT_3DLOGIC_LIB;QT_3DRENDER_LIB;QT_3DQUICK_LIB;QT_3DQUICKANIMATION_LIB;QT_3DQUICKEXTRAS_LIB;QT_3DQUICKINPUT_LIB;QT_3DQUICKRENDER_LIB;QT_3DQUICKSCENE2D_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>G:\Documents\Programming\11bit\ToolsProgrammerTest\ToolsProgrammerTest\Src;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_3DCORE_LIB;QT_3DANIMATION_LIB;QT_3DEXTRAS_LIB;QT_3DINPUT_LIB;QT_3DLOGIC_LIB;QT_3DRENDER_LIB;QT_3DQUICK_LIB;QT_3DQUICKANIMATION_LIB;QT_3DQUICKEXTRAS_LIB;QT_3DQUICKINPUT_LIB;QT_3DQUICKRENDER_LIB;QT_3DQUICKSCENE2D_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB</Define>
     </QtMoc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
@@ -85,7 +92,7 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_3DCORE_LIB;QT_3DANIMATION_LIB;QT_3DEXTRAS_LIB;QT_3DINPUT_LIB;QT_3DLOGIC_LIB;QT_3DRENDER_LIB;QT_3DQUICK_LIB;QT_3DQUICKANIMATION_LIB;QT_3DQUICKEXTRAS_LIB;QT_3DQUICKINPUT_LIB;QT_3DQUICKRENDER_LIB;QT_3DQUICKSCENE2D_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\Documents\Programming\11bit\ToolsProgrammerTest\ToolsProgrammerTest\Src;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -100,8 +107,8 @@
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
-      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
-      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_3DCORE_LIB;QT_3DANIMATION_LIB;QT_3DEXTRAS_LIB;QT_3DINPUT_LIB;QT_3DLOGIC_LIB;QT_3DRENDER_LIB;QT_3DQUICK_LIB;QT_3DQUICKANIMATION_LIB;QT_3DQUICKEXTRAS_LIB;QT_3DQUICKINPUT_LIB;QT_3DQUICKRENDER_LIB;QT_3DQUICKSCENE2D_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>G:\Documents\Programming\11bit\ToolsProgrammerTest\ToolsProgrammerTest\Src;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</IncludePath>
+      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_3DCORE_LIB;QT_3DANIMATION_LIB;QT_3DEXTRAS_LIB;QT_3DINPUT_LIB;QT_3DLOGIC_LIB;QT_3DRENDER_LIB;QT_3DQUICK_LIB;QT_3DQUICKANIMATION_LIB;QT_3DQUICKEXTRAS_LIB;QT_3DQUICKINPUT_LIB;QT_3DQUICKRENDER_LIB;QT_3DQUICKSCENE2D_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_MULTIMEDIA_LIB;QT_WIDGETS_LIB</Define>
     </QtMoc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
@@ -112,13 +119,6 @@
       <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
     </QtRcc>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="Application.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
