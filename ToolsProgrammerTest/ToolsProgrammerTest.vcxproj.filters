@@ -18,6 +18,12 @@
     <Filter Include="Source Files\Managers">
       <UniqueIdentifier>{f217cfbc-212c-42ff-80c5-72e8570db2ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Managers\Dialogs">
+      <UniqueIdentifier>{aa805cf8-2db8-4f9e-b723-e9e2aaa69219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dialogs">
+      <UniqueIdentifier>{dec3ab61-1a0a-46d3-9b08-99cd14a6221d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application.cpp">
@@ -37,10 +43,19 @@
     <QtMoc Include="Src\SceneModifier.hpp">
       <Filter>Source Files</Filter>
     </QtMoc>
+    <QtMoc Include="Src\Managers\IInspectorManager.hpp">
+      <Filter>Source Files\Managers</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Managers\IProjectManager.hpp">
       <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Managers\Dialogs\IPointDialog.hpp">
+      <Filter>Source Files\Managers\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Dialogs\IDialog.hpp">
+      <Filter>Source Files\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
