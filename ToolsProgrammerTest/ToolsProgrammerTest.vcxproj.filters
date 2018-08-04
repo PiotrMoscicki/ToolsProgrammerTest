@@ -27,6 +27,9 @@
     <Filter Include="Source Files\Structures">
       <UniqueIdentifier>{ccf5860a-d12e-43f0-80be-78062b2e6cd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Inspectors">
+      <UniqueIdentifier>{0d3a6b67-9478-4497-a1a2-88ec98b263f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application.cpp">
@@ -52,11 +55,11 @@
     <QtMoc Include="Src\Managers\IInspectorManager.hpp">
       <Filter>Source Files\Managers</Filter>
     </QtMoc>
+    <QtMoc Include="Src\Managers\IProjectManager.hpp">
+      <Filter>Source Files\Managers</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Managers\IProjectManager.hpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Managers\Dialogs\IPointDialog.hpp">
       <Filter>Source Files\Managers\Dialogs</Filter>
     </ClInclude>
@@ -74,6 +77,18 @@
     </ClInclude>
     <ClInclude Include="Src\Managers\SceneManager.hpp">
       <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Managers\InspectorManager.hpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Point.hpp">
+      <Filter>Source Files\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Inspectors\ISceneInspector.hpp">
+      <Filter>Source Files\Inspectors</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Inspectors\IInspector.hpp">
+      <Filter>Source Files\Inspectors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

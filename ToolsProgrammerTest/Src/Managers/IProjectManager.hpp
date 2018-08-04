@@ -7,12 +7,19 @@
 
 namespace TPT
 {
-	class IProjectManager
+	class IProjectManager : public QObject
 	{
+		Q_OBJECT
+
 	public:
 		virtual void SetInspectorManager(std::unique_ptr<IInspectorManager> inspectorManager) = 0;
 		virtual void SetSceneManager(std::unique_ptr<ISceneManager> sceneManager) = 0;
 
 		virtual void LoadHeightMap(const QString& path) = 0;
+
+		virtual ISceneManager* GetSceneManager() = 0;
+
+	signals:
+		void HeightMapLoadedSignal();
 	};
 }

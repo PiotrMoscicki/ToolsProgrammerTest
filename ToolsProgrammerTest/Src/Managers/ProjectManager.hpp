@@ -15,6 +15,8 @@ namespace TPT
 
 		void LoadHeightMap(const QString& path) override;
 
+		virtual ISceneManager* GetSceneManager() override { return SceneManager.get(); }
+
 	private:
 		std::unique_ptr<IInspectorManager> InspectorManager;
 		std::unique_ptr<ISceneManager> SceneManager;

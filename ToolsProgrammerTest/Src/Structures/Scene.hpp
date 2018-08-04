@@ -1,12 +1,13 @@
 #pragma once
 
 #include <vector> 
-#include <QtGui/qvector3d.h>
+
+#include "Structures/Point.hpp"
 
 namespace TPT
 {
 	struct Scene
 	{
-		std::vector<QVector3D*> Points;
+		std::vector<Point*> Points;
 	};
 }
