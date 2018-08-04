@@ -30,14 +30,8 @@
     <Filter Include="Source Files\Inspectors">
       <UniqueIdentifier>{0d3a6b67-9478-4497-a1a2-88ec98b263f0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Windows">
-      <UniqueIdentifier>{cfe9738e-bf3c-4899-861f-2fac0853225f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -56,20 +50,8 @@
     <ClCompile Include="Src\Structures\Point.cpp">
       <Filter>Source Files\Structures</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Windows\DockWindow.cpp">
-      <Filter>Source Files\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Windows\MainWindow.cpp">
-      <Filter>Source Files\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Windows\Window.cpp">
-      <Filter>Source Files\Windows</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Src\Application.hpp">
-      <Filter>Source Files</Filter>
-    </QtMoc>
     <QtMoc Include="Src\SceneModifier.hpp">
       <Filter>Source Files</Filter>
     </QtMoc>
@@ -78,9 +60,6 @@
     </QtMoc>
     <QtMoc Include="Src\Managers\IProjectManager.hpp">
       <Filter>Source Files\Managers</Filter>
-    </QtMoc>
-    <QtMoc Include="Src\Windows\MainWindow.hpp">
-      <Filter>Source Files\Windows</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -119,15 +98,6 @@
     </ClInclude>
     <ClInclude Include="Src\Inspectors\SceneInspector.hpp">
       <Filter>Source Files\Inspectors</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Windows\DockWindow.hpp">
-      <Filter>Source Files\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Windows\Window.hpp">
-      <Filter>Source Files\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Windows\Widget.hpp">
-      <Filter>Source Files\Windows</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
