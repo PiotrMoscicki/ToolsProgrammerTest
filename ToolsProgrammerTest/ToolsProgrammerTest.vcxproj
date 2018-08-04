@@ -31,7 +31,7 @@
   <ItemGroup>
     <ClInclude Include="Src\Dialogs\IDialog.hpp" />
     <ClInclude Include="Src\Inspectors\IInspector.hpp" />
-    <ClInclude Include="Src\Inspectors\ISceneInspector.hpp" />
+    <ClInclude Include="Src\Inspectors\SceneInspector.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\IPointDialog.hpp" />
     <ClInclude Include="Src\Managers\InspectorManager.hpp" />
     <ClInclude Include="Src\Managers\ISceneManager.hpp" />
