@@ -4,6 +4,9 @@
 
 using namespace TPT;
 
+size_t IdGenerator = 0;
+std::vector<size_t> IdList;
+
 Point::Point() 
 	: Id(IdGenerator) 
 { 

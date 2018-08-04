@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtCore/qstring.h>
+#include <QtGui/qimage.h>
 
 #include "Structures/Scene.hpp"
 

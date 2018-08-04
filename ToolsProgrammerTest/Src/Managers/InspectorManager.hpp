@@ -14,7 +14,7 @@ namespace TPT
 			{ PointDialog = std::move(pointDialog); }
 
 		void AddInspector(std::unique_ptr<IInspector> inspector) override 
-			{ inspector->SetManager(this); Inspectors.push_back(inspector); }
+			{ inspector->SetManager(this); Inspectors.push_back(std::move(inspector)); }
 
 
 		virtual const QImage* GetHeightMap() override;

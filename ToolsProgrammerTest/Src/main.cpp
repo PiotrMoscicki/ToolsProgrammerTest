@@ -34,8 +34,13 @@
 #include <Qt3DExtras/qt3dwindow.h>
 #include <Qt3DExtras/qfirstpersoncameracontroller.h>
 
+#include "Application/Application.hpp"
+
 int main(int argc, char **argv)
 {
+	TPT::Application a(argc, argv);
+	return a.exec();
+
 	QApplication app(argc, argv);
 	Qt3DExtras::Qt3DWindow *view = new Qt3DExtras::Qt3DWindow();
 	view->defaultFrameGraph()->setClearColor(QColor(QRgb(0x4d4d4f)));

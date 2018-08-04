@@ -14,9 +14,5 @@ namespace TPT
 		QVector3D Position = QVector3D{ 0, 0, 0 };
 
 		const size_t Id;
-
-	private:
-		static size_t IdGenerator;
-		static std::vector<size_t> IdList;
 	};
 }

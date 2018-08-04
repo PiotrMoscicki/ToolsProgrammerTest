@@ -30,6 +30,9 @@
     <Filter Include="Source Files\Inspectors">
       <UniqueIdentifier>{0d3a6b67-9478-4497-a1a2-88ec98b263f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Application">
+      <UniqueIdentifier>{de95f727-cc45-43a5-9bd6-9e4c7cab09ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\main.cpp">
@@ -50,6 +53,9 @@
     <ClCompile Include="Src\Structures\Point.cpp">
       <Filter>Source Files\Structures</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Application\Application.cpp">
+      <Filter>Source Files\Inspectors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Src\SceneModifier.hpp">
@@ -60,6 +66,9 @@
     </QtMoc>
     <QtMoc Include="Src\Managers\IProjectManager.hpp">
       <Filter>Source Files\Managers</Filter>
+    </QtMoc>
+    <QtMoc Include="Src\Application\Application.hpp">
+      <Filter>Source Files\Application</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
