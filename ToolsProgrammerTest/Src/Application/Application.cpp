@@ -1,6 +1,7 @@
 #include "Application.hpp"
 
 #include <QtWidgets/QStyleFactory>
+#include <QtWidgets/qdockwidget.h>
 
 using namespace TPT;
 
@@ -13,9 +14,6 @@ Application::Application(int argc, char *argv[])
 	: QApplication(argc, argv), MainWindow(std::move(std::make_unique<QMainWindow>()))
 {
 	gApp = this;
-
-	MainWindow->setWindowTitle("ToolsProgrammerTest Editor");
-	MainWindow->resize(1280, 720);;
 
 	setStyle(QStyleFactory::create("Fusion"));
 
@@ -47,5 +45,20 @@ Application::Application(int argc, char *argv[])
 						 QLineEdit:disabled { color: #c0c0c0; background-color: #323232; } \
 						 QLineEdit { color: #c0c0c0; background-color: #404040; }");
 
+	MainWindow->setWindowTitle("ToolsProgrammerTest Editor");
+	MainWindow->resize(1280, 720);
 	MainWindow->show();
+
+	auto widget = new QDockWidget("3D Inspector", MainWindow.get());
+	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
+
+	widget = new QDockWidget("Texture Inspector", MainWindow.get());
+	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
+	
+	widget = new QDockWidget("Point Inspector", MainWindow.get());
+	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
+	
+	widget = new QDockWidget("Scene Inspector", MainWindow.get());
+	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
+
 }
