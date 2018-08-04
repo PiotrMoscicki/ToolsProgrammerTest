@@ -17,13 +17,15 @@ namespace TPT
 			{ inspector->SetManager(this); Inspectors.push_back(inspector); }
 
 
-		QVector3D* GetSelectedPoint() override { return SelectedPoint; }
+		virtual const QImage* GetHeightMap() override;
+		virtual const std::vector<Point*>& GetPoints() override;
+		virtual const Point* GetSelectedPoint() override { return SelectedPoint; }
 
 
-		QVector3D* SpawnPoint() override;
-		void Destroypoint() override;
-		void SelectPoint(QVector3D* point) override;
-		void ModifyPoint() override;
+		void SpawnPoint() override;
+		void DestroyPoint(size_t id) override;
+		void SelectPoint(size_t id) override;
+		void ModifyPoint(size_t id, IPointModificationCommand* cmd) override;
 
 	public slots:
 		void HeightMapLoaded() override;
@@ -34,6 +36,6 @@ namespace TPT
 
 		IProjectManager* ProjectManager = nullptr;
 
-		QVector3D* SelectedPoint = nullptr;
+		const Point* SelectedPoint = nullptr;
 	};
 }

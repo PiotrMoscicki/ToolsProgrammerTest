@@ -7,8 +7,9 @@ namespace TPT
 	class Point
 	{
 	public:
-		Point() : Id(IdGenerator) { ++IdGenerator; }
-		Point(size_t id) : Id(id) {}
+		Point();
+		Point(size_t id);
+		~Point();
 
 		QVector3D Position = QVector3D{ 0, 0, 0 };
 
@@ -16,5 +17,6 @@ namespace TPT
 
 	private:
 		static size_t IdGenerator;
+		static std::vector<size_t> IdList;
 	};
 }
