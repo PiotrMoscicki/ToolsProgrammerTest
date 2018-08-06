@@ -20,13 +20,11 @@ namespace TPT
 		void PointSelected(const Point* point);
 		void PointModified(const Point* point);
 
-		void Update();
-		void Reload();
-
 	private:
 		IInspectorManager* Manager = nullptr;
 
 		QLabel* NameLabel;		QLineEdit* NameField;
+		QLabel* IdLabel;		QLineEdit* IdField;
 		QLabel* PositionLabel;	QLineEdit* PositionFields[3];
 
 	private slots:

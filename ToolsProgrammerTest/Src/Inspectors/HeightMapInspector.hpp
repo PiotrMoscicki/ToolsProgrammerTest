@@ -20,9 +20,6 @@ namespace TPT
 	public slots:
 		void HeightMapLoaded(const QPixmap* heightMap);
 
-		void Update();
-		void Reload();
-
 	private:
 		IInspectorManager* Manager = nullptr;
 

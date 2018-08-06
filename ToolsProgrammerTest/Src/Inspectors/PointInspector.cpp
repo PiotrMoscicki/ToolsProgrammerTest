@@ -34,16 +34,25 @@ PointInspector::PointInspector(QWidget* parent)
 	gridLayout->addWidget(NameField, 0, 1, 1, 3);
 	connect(NameField, &QLineEdit::editingFinished, this, &PointInspector::FieldModified);
 
+	// id
+	IdLabel = new QLabel(this);
+	IdLabel->setText("Id");
+	gridLayout->addWidget(IdLabel, 1, 0);
+
+	IdField = new QLineEdit(this);
+	IdField->setDisabled(true);
+	gridLayout->addWidget(IdField, 1, 1, 1, 3);
+
 	// position
 	PositionLabel = new QLabel(this);
 	PositionLabel->setText("Position");
-	gridLayout->addWidget(PositionLabel, 1, 0);
+	gridLayout->addWidget(PositionLabel, 2, 0);
 
 	for (int i = 0; i < 3; ++i)
 	{
 		PositionFields[i] = new QLineEdit(this);
 		PositionFields[i]->setDisabled(true);
-		gridLayout->addWidget(PositionFields[i], 1, i + 1);
+		gridLayout->addWidget(PositionFields[i], 2, i + 1);
 		connect(PositionFields[i], &QLineEdit::editingFinished, this, &PointInspector::FieldModified);
 	}
 
@@ -56,9 +65,6 @@ void PointInspector::SetManager(IInspectorManager* manager)
 
 	connect(Manager, &IInspectorManager::PointSelectedSignal, this, &PointInspector::PointSelected);
 	connect(Manager, &IInspectorManager::PointModifiedSignal, this, &PointInspector::PointModified);
-
-	connect(Manager, &IInspectorManager::Update, this, &PointInspector::Update);
-	connect(Manager, &IInspectorManager::Reload, this, &PointInspector::Reload);
 }
 
 
@@ -70,16 +76,17 @@ void PointInspector::PointSelected(const Point* point)
 	if (!point)
 	{
 		NameField->setDisabled(true);
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 2; ++i)
 			PositionFields[i]->setDisabled(true);
 	}
 	else
 	{
 		NameField->setDisabled(false);
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 2; ++i)
 			PositionFields[i]->setDisabled(false);
 
 		NameField->setText(point->Name);
+		IdField->setText(QString::number(point->Id));
 		PositionFields[0]->setText(QString::number(point->PosX));
 		PositionFields[1]->setText(QString::number(point->PosY));
 		PositionFields[2]->setText(QString::number(point->PosZ));
@@ -90,28 +97,7 @@ void PointInspector::PointSelected(const Point* point)
 void PointInspector::PointModified(const Point* point)
 {
 	NameField->setText(point->Name);
-	PositionFields[0]->setText(QString::number(point->PosX));
-	PositionFields[1]->setText(QString::number(point->PosY));
-	PositionFields[2]->setText(QString::number(point->PosZ));
-}
-
-// ************************************************************************************************
-void PointInspector::Update()
-{
-	auto point = Manager->GetSelectedPoint();
-
-	NameField->setText(point->Name);
-	PositionFields[0]->setText(QString::number(point->PosX));
-	PositionFields[1]->setText(QString::number(point->PosY));
-	PositionFields[2]->setText(QString::number(point->PosZ));
-}
-
-// ************************************************************************************************
-void PointInspector::Reload()
-{
-	auto point = Manager->GetSelectedPoint();
-
-	NameField->setText(point->Name);
+	IdField->setText(QString::number(point->Id));
 	PositionFields[0]->setText(QString::number(point->PosX));
 	PositionFields[1]->setText(QString::number(point->PosY));
 	PositionFields[2]->setText(QString::number(point->PosZ));

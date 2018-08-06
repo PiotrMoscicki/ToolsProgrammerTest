@@ -14,9 +14,10 @@ SceneInspector::SceneInspector(QWidget* parent)
 	// content
 	Tree = new QTreeWidget(this);
 	Tree->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
-	Tree->setHeaderLabels(QStringList() << "Name" << "ID");
+	Tree->setHeaderLabels(QStringList() << "Name" << "ID" << "X" << "Y" << "Z");
 	Tree->setAcceptDrops(false);
 	Tree->setDragEnabled(false);
+	Tree->setEditTriggers(QAbstractItemView::DoubleClicked);
 	connect(Tree, &QTreeWidget::itemSelectionChanged, this, &SceneInspector::SelectionChanged);
 	layout()->addWidget(Tree);
 
@@ -45,9 +46,6 @@ void SceneInspector::SetManager(IInspectorManager* manager)
 	connect(Manager, &IInspectorManager::PointDestroyedSignal, this, &SceneInspector::PointDestroyed);
 	connect(Manager, &IInspectorManager::PointSelectedSignal, this, &SceneInspector::PointSelected);
 	connect(Manager, &IInspectorManager::PointModifiedSignal, this, &SceneInspector::PointModified);
-
-	connect(Manager, &IInspectorManager::Update, this, &SceneInspector::Update);
-	connect(Manager, &IInspectorManager::Reload, this, &SceneInspector::Reload);
 }
 
 
@@ -56,12 +54,14 @@ void SceneInspector::SetManager(IInspectorManager* manager)
 // ************************************************************************************************
 void SceneInspector::PointSpawned(const Point* point)
 {
-	QTreeWidgetItem* entityTree = new QTreeWidgetItem(Tree);
+	QTreeWidgetItem* item = new QTreeWidgetItem(Tree);
 
-	entityTree->setText(0, point->Name);
-	entityTree->setText(1, QString::number(point->Id));
-	ItemToPoint.insert(std::pair<QTreeWidgetItem*, const Point*>(entityTree, point));
-	PointToItem.insert(std::pair<const Point*, QTreeWidgetItem*>(point, entityTree));
+	item->setFlags(item->flags() | Qt::ItemIsEditable);
+	item->setText(0, point->Name);
+	item->setText(1, QString::number(point->Id));
+
+	ItemToPoint.insert(std::pair<QTreeWidgetItem*, const Point*>(item, point));
+	PointToItem.insert(std::pair<const Point*, QTreeWidgetItem*>(point, item));
 }
 
 // ************************************************************************************************

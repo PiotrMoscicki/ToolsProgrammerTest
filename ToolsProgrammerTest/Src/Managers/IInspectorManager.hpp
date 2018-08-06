@@ -54,8 +54,5 @@ namespace TPT
 		void PointModifiedSignal(const Point* point);
 
 		void HeightMapLoadedSignel(const QPixmap* heightMap);
-
-		void Update();
-		void Reload();
 	};
 }

@@ -41,6 +41,7 @@ namespace TPT
 
 	private slots:
 		void SelectionChanged();
+		void FieldModified();
 
 		void SpawnContextMenu(QPoint pos);
 			void SpawnPoint();

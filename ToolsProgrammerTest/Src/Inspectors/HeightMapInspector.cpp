@@ -30,9 +30,6 @@ HeightMapInspector::HeightMapInspector(QWidget* parent)
 void HeightMapInspector::SetManager(IInspectorManager* manager)
 {
 	connect(Manager, &IInspectorManager::HeightMapLoadedSignal, this, &HeightMapInspector::HeightMapLoaded);
-
-	connect(Manager, &IInspectorManager::Update, this, &HeightMapInspector::Update);
-	connect(Manager, &IInspectorManager::Reload, this, &HeightMapInspector::Reload);
 }
 
 
@@ -42,18 +39,6 @@ void HeightMapInspector::SetManager(IInspectorManager* manager)
 void HeightMapInspector::HeightMapLoaded(const QPixmap* heightMap)
 {
 	Image->setPixmap(*heightMap);
-}
-
-// ************************************************************************************************
-void HeightMapInspector::Update()
-{
-	Image->setPixmap(*Manager->GetHeightMap());
-}
-
-// ************************************************************************************************
-void HeightMapInspector::Reload()
-{
-	Image->setPixmap(*Manager->GetHeightMap());
 }
 
 
