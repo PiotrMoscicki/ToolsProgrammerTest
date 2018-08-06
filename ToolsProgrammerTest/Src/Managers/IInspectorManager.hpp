@@ -42,9 +42,12 @@ namespace TPT
 	signals:
 		void HeightMapLoadedSignal();
 
-		void PointSpawnedSignal(size_t id);
-		void PointDestroyedSignal(size_t id);
-		void PointSelectedSignal(size_t id);
-		void PointModifiedSignal(size_t id);
+		void PointSpawnedSignal(const Point* point);
+		void PointDestroyedSignal(const Point* point);
+		void PointSelectedSignal(const Point* point);
+		void PointModifiedSignal(const Point* point);
+
+		void Update();
+		void Reload();
 	};
 }

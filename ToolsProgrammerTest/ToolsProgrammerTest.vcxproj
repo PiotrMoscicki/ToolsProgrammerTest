@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application\Application.cpp" />
+    <ClCompile Include="Src\Inspectors\SceneInspector.cpp" />
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\Managers\InspectorManager.cpp" />
     <ClCompile Include="Src\Managers\ProjectManager.cpp" />

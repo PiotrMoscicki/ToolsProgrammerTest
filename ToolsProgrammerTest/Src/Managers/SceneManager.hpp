@@ -13,8 +13,8 @@ namespace TPT
 		void SetScene(std::unique_ptr<Scene> scene) override { Scene = std::move(scene); }
 		Scene* GetScene() override { return Scene.get(); }
 
-		const Point* SpawnPoint() override { Scene->Points.push_back(new Point()); }
-		const Point* SpawnPoint(size_t id) override { Scene->Points.push_back(new Point(id)); }
+		const Point* SpawnPoint() override;
+		const Point* SpawnPoint(size_t id) override;
 		void DestroyPoint(size_t id) override;
 
 	private:

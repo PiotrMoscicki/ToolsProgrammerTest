@@ -54,6 +54,9 @@
       <Filter>Source Files\Structures</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Application.cpp">
+      <Filter>Source Files\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Inspectors\SceneInspector.cpp">
       <Filter>Source Files\Inspectors</Filter>
     </ClCompile>
   </ItemGroup>
