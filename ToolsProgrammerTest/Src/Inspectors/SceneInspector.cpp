@@ -129,9 +129,11 @@ void TPT::SceneInspector::SpawnContextMenu(QPoint pos)
 // ************************************************************************************************
 void TPT::SceneInspector::SpawnPoint()
 {
+	Manager->SpawnPoint();
 }
 
 // ************************************************************************************************
 void TPT::SceneInspector::DestroyPoint()
 {
+	Manager->DestroyPoint();
 }

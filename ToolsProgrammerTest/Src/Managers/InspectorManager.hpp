@@ -23,9 +23,9 @@ namespace TPT
 
 
 		void SpawnPoint() override;
-		void DestroyPoint(size_t id) override;
+		void DestroyPoint() override;
 		void SelectPoint(size_t id) override;
-		void ModifyPoint(size_t id, IPointModificationCommand* cmd) override;
+		void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) override;
 
 	public slots:
 		void HeightMapLoaded() override;
@@ -36,6 +36,6 @@ namespace TPT
 
 		IProjectManager* ProjectManager = nullptr;
 
-		const Point* SelectedPoint = nullptr;
+		Point* SelectedPoint = nullptr;
 	};
 }

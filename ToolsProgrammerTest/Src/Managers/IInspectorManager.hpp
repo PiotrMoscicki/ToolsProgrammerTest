@@ -30,11 +30,11 @@ namespace TPT
 		// Displays PointDialog in creation mode.
 		virtual void SpawnPoint() = 0;
 		// Displays PointDialog in destruction mode.
-		virtual void DestroyPoint(size_t id) = 0;
+		virtual void DestroyPoint() = 0;
 		// Sets currently selected point to given.
 		virtual void SelectPoint(size_t id) = 0;
 		// modifies point and adds cmd to undo/redo stack.
-		virtual void ModifyPoint(size_t id, IPointModificationCommand* cmd) = 0;
+		virtual void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) = 0;
 
 	public slots:
 		virtual void HeightMapLoaded() = 0;
