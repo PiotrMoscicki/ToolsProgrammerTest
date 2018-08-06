@@ -12,6 +12,14 @@ namespace TPT
 		Point(size_t id);
 		~Point();
 
+		Point operator=(const Point& p)
+		{
+			Name = p.Name;
+			Position = p.Position;
+
+			return *this;
+		}
+
 		QString Name = "";
 		QVector3D Position = QVector3D{ 0, 0, 0 };
 

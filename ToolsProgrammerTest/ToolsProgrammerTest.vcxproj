@@ -12,12 +12,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application\Application.cpp" />
+    <ClCompile Include="Src\Inspectors\PointInspector.cpp" />
     <ClCompile Include="Src\Inspectors\SceneInspector.cpp" />
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\Managers\InspectorManager.cpp" />
     <ClCompile Include="Src\Managers\ProjectManager.cpp" />
     <ClCompile Include="Src\Managers\SceneManager.cpp" />
     <ClCompile Include="Src\SceneModifier.cpp" />
+    <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp" />
     <ClCompile Include="Src\Structures\Point.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -33,14 +35,16 @@
     </QtMoc>
     <ClInclude Include="Src\Dialogs\IDialog.hpp" />
     <ClInclude Include="Src\Inspectors\IInspector.hpp" />
+    <ClInclude Include="Src\Inspectors\PointInspector.hpp" />
     <ClInclude Include="Src\Inspectors\SceneInspector.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\IPointDialog.hpp" />
     <ClInclude Include="Src\Managers\InspectorManager.hpp" />
     <ClInclude Include="Src\Managers\ISceneManager.hpp" />
     <ClInclude Include="Src\Managers\ProjectManager.hpp" />
     <ClInclude Include="Src\Managers\SceneManager.hpp" />
-    <ClInclude Include="Src\Structures\ICommand.hpp" />
-    <ClInclude Include="Src\Structures\IPointModificationCommand.hpp" />
+    <ClInclude Include="Src\Structures\Commands\ICommand.hpp" />
+    <ClInclude Include="Src\Structures\Commands\IPointModificationCommand.hpp" />
+    <ClInclude Include="Src\Structures\Commands\PointModificationCommand.hpp" />
     <ClInclude Include="Src\Structures\Point.hpp" />
     <ClInclude Include="Src\Structures\Scene.hpp" />
     <QtMoc Include="Src\Managers\IInspectorManager.hpp">

@@ -28,7 +28,9 @@ void Inspectormanager::DestroyPoint()
 {
 	emit PointDestroyedSignal(ProjectManager->GetSceneManager()->GetScene()->GetPointById(SelectedPoint->Id));
 	ProjectManager->GetSceneManager()->DestroyPoint(SelectedPoint->Id);
+
 	SelectedPoint = nullptr;
+	emit PointSelectedSignal(SelectedPoint);
 }
 
 // ************************************************************************************************
@@ -42,11 +44,17 @@ void Inspectormanager::SelectPoint(size_t id)
 			SelectedPoint = point;
 			break;
 		}
+
+	emit PointSelectedSignal(SelectedPoint);
 }
 
 // ************************************************************************************************
 void Inspectormanager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd)
 {
-	cmd->SetPoint(SelectedPoint);
+	auto point = ProjectManager->GetSceneManager()->GetScene()->GetPointById(cmd->GetPointId());
+
+	cmd->SetSceneManager(ProjectManager->GetSceneManager());
 	cmd->Execute();
+
+	emit PointModifiedSignal(point);
 }

@@ -33,6 +33,9 @@
     <Filter Include="Source Files\Application">
       <UniqueIdentifier>{de95f727-cc45-43a5-9bd6-9e4c7cab09ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Structures\Commands">
+      <UniqueIdentifier>{9a2304ee-4416-4ba9-8625-c3ca96eaa991}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\main.cpp">
@@ -58,6 +61,12 @@
     </ClCompile>
     <ClCompile Include="Src\Inspectors\SceneInspector.cpp">
       <Filter>Source Files\Inspectors</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Inspectors\PointInspector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,14 +111,20 @@
     <ClInclude Include="Src\Inspectors\IInspector.hpp">
       <Filter>Source Files\Inspectors</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Structures\ICommand.hpp">
-      <Filter>Source Files\Structures</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Structures\IPointModificationCommand.hpp">
-      <Filter>Source Files\Structures</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Inspectors\SceneInspector.hpp">
       <Filter>Source Files\Inspectors</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Inspectors\PointInspector.hpp">
+      <Filter>Source Files\Inspectors</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Commands\ICommand.hpp">
+      <Filter>Source Files\Structures\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Commands\IPointModificationCommand.hpp">
+      <Filter>Source Files\Structures\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Commands\PointModificationCommand.hpp">
+      <Filter>Source Files\Structures\Commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

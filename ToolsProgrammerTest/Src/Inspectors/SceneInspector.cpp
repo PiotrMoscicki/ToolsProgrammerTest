@@ -1,7 +1,6 @@
 #include "SceneInspector.hpp"
 
 #include <QtWidgets/qgridlayout.h>
-#include <sstream>
 
 using namespace TPT;
 
@@ -12,7 +11,7 @@ SceneInspector::SceneInspector(QWidget* parent)
 	//layout
 	setLayout(new QGridLayout(this));
 
-	// tree
+	// content
 	Tree = new QTreeWidget(this);
 	Tree->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
 	Tree->setHeaderLabels(QStringList() << "Name" << "ID");
@@ -48,6 +47,7 @@ void SceneInspector::SetManager(IInspectorManager* manager)
 	connect(Manager, &IInspectorManager::PointModifiedSignal, this, &SceneInspector::PointModified);
 
 	connect(Manager, &IInspectorManager::Update, this, &SceneInspector::Update);
+	connect(Manager, &IInspectorManager::Reload, this, &SceneInspector::Reload);
 }
 
 
@@ -76,6 +76,9 @@ void SceneInspector::PointDestroyed(const Point* point)
 // ************************************************************************************************
 void SceneInspector::PointSelected(const Point* point)
 {
+	if (!point)
+		return;
+
 	PointToItem[point]->setSelected(true);
 }
 
@@ -114,26 +117,26 @@ void SceneInspector::Reload()
 
 //		private slots
 // ************************************************************************************************
-void TPT::SceneInspector::SelectionChanged()
+void SceneInspector::SelectionChanged()
 {
 	if (Tree->selectedItems()[0] != nullptr)
 		Manager->SelectPoint(ItemToPoint[Tree->selectedItems()[0]]->Id);
 }
 
 // ************************************************************************************************
-void TPT::SceneInspector::SpawnContextMenu(QPoint pos)
+void SceneInspector::SpawnContextMenu(QPoint pos)
 {
 	ContextMenu->popup(this->mapToGlobal(pos));
 }
 
 // ************************************************************************************************
-void TPT::SceneInspector::SpawnPoint()
+void SceneInspector::SpawnPoint()
 {
 	Manager->SpawnPoint();
 }
 
 // ************************************************************************************************
-void TPT::SceneInspector::DestroyPoint()
+void SceneInspector::DestroyPoint()
 {
 	Manager->DestroyPoint();
 }
