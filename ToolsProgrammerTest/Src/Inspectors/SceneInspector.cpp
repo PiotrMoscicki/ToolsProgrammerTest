@@ -67,10 +67,16 @@ void SceneInspector::PointSpawned(const Point* point)
 // ************************************************************************************************
 void SceneInspector::PointDestroyed(const Point* point)
 {
+	SilenceSelectionChanged = true;
+
+	PointToItem[point]->setSelected(false);
+
 	delete PointToItem[point];
 
 	ItemToPoint.erase(PointToItem[point]);
 	PointToItem.erase(point);
+
+	SilenceSelectionChanged = false;
 }
 
 // ************************************************************************************************
@@ -119,8 +125,13 @@ void SceneInspector::Reload()
 // ************************************************************************************************
 void SceneInspector::SelectionChanged()
 {
-	if (Tree->selectedItems()[0] != nullptr)
+	if (SilenceSelectionChanged)
+		return;
+
+	if (Tree->selectedItems().count() > 0)
 		Manager->SelectPoint(ItemToPoint[Tree->selectedItems()[0]]->Id);
+	else
+		Manager->DeselectPoint();
 }
 
 // ************************************************************************************************

@@ -16,7 +16,7 @@ namespace TPT
 		Q_OBJECT
 
 	public:
-		virtual void SetProjectManager(IProjectManager* projectManager);
+		virtual void SetProjectManager(IProjectManager* projectManager) = 0;
 		virtual void SetPointDialog(std::unique_ptr<IPointDialog> pointDialog) = 0;
 
 		virtual void AddInspector(std::unique_ptr<IInspector> inspector) = 0;
@@ -33,6 +33,8 @@ namespace TPT
 		virtual void DestroyPoint() = 0;
 		// Sets currently selected point to given.
 		virtual void SelectPoint(size_t id) = 0;
+		// Deselects currently selected point.
+		virtual void DeselectPoint() = 0;
 		// modifies point and adds cmd to undo/redo stack.
 		virtual void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) = 0;
 

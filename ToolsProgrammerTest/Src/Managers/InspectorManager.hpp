@@ -6,7 +6,7 @@
 
 namespace TPT
 {
-	class Inspectormanager : public IInspectorManager
+	class InspectorManager : public IInspectorManager
 	{
 	public:
 		void SetProjectManager(IProjectManager* projectManager) override { ProjectManager = projectManager; }
@@ -25,10 +25,11 @@ namespace TPT
 		void SpawnPoint() override;
 		void DestroyPoint() override;
 		void SelectPoint(size_t id) override;
+		void DeselectPoint() override;
 		void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) override;
 
 	public slots:
-		void HeightMapLoaded() override;
+		void HeightMapLoaded() override {}
 
 	private:
 		std::unique_ptr<IPointDialog> PointDialog;

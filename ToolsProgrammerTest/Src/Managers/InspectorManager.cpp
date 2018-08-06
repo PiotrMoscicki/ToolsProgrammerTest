@@ -5,36 +5,38 @@
 using namespace TPT;
 
 // ************************************************************************************************
-const QImage* Inspectormanager::GetHeightMap()
+const QImage* InspectorManager::GetHeightMap()
 {
 	return ProjectManager->GetSceneManager()->GetHeightMap();
 }
 
 // ************************************************************************************************
-const std::vector<Point*>& Inspectormanager::GetPoints()
+const std::vector<Point*>& InspectorManager::GetPoints()
 {
 	return ProjectManager->GetSceneManager()->GetScene()->Points;
 }
 
 // ************************************************************************************************
-void Inspectormanager::SpawnPoint()
+void InspectorManager::SpawnPoint()
 {
 	auto point = ProjectManager->GetSceneManager()->SpawnPoint();
 	emit PointSpawnedSignal(point);
 }
 
 // ************************************************************************************************
-void Inspectormanager::DestroyPoint()
+void InspectorManager::DestroyPoint()
 {
+	if (!SelectedPoint)
+		return;
+
 	emit PointDestroyedSignal(ProjectManager->GetSceneManager()->GetScene()->GetPointById(SelectedPoint->Id));
 	ProjectManager->GetSceneManager()->DestroyPoint(SelectedPoint->Id);
 
-	SelectedPoint = nullptr;
-	emit PointSelectedSignal(SelectedPoint);
+	DeselectPoint();
 }
 
 // ************************************************************************************************
-void Inspectormanager::SelectPoint(size_t id)
+void InspectorManager::SelectPoint(size_t id)
 {
 	auto points = ProjectManager->GetSceneManager()->GetScene()->Points;
 
@@ -49,12 +51,20 @@ void Inspectormanager::SelectPoint(size_t id)
 }
 
 // ************************************************************************************************
-void Inspectormanager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd)
+void TPT::InspectorManager::DeselectPoint()
+{
+	SelectedPoint = nullptr;
+	emit PointSelectedSignal(SelectedPoint);
+}
+
+// ************************************************************************************************
+void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd)
 {
 	auto point = ProjectManager->GetSceneManager()->GetScene()->GetPointById(cmd->GetPointId());
 
 	cmd->SetSceneManager(ProjectManager->GetSceneManager());
 	cmd->Execute();
+	cmd.release();
 
 	emit PointModifiedSignal(point);
 }

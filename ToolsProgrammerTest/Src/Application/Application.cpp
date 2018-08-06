@@ -3,6 +3,13 @@
 #include <QtWidgets/QStyleFactory>
 #include <QtWidgets/qdockwidget.h>
 
+#include "Managers/InspectorManager.hpp"
+#include "Managers/ProjectManager.hpp"
+#include "Managers/SceneManager.hpp"
+
+#include "Inspectors/SceneInspector.hpp"
+#include "Inspectors/PointInspector.hpp"
+
 using namespace TPT;
 
 namespace TPT
@@ -46,6 +53,7 @@ Application::Application(int argc, char *argv[])
 						 QLineEdit { color: #c0c0c0; background-color: #404040; }");
 
 	MainWindow->setWindowTitle("ToolsProgrammerTest Editor");
+	MainWindow->setDockNestingEnabled(true);
 	MainWindow->resize(1280, 720);
 	MainWindow->show();
 
@@ -56,9 +64,27 @@ Application::Application(int argc, char *argv[])
 	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
 	
 	widget = new QDockWidget("Point Inspector", MainWindow.get());
+	auto pointInspector = std::make_unique<PointInspector>(nullptr);
+	widget->setWidget(pointInspector.get());
 	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
 	
 	widget = new QDockWidget("Scene Inspector", MainWindow.get());
+	auto sceneInspector = std::make_unique<SceneInspector>(nullptr);
+	widget->setWidget(sceneInspector.get());
 	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
 
+
+
+	ProjectManager = new ::ProjectManager();
+
+	auto inspectorMgr = std::make_unique<InspectorManager>();
+	inspectorMgr->SetProjectManager(ProjectManager);
+	inspectorMgr->AddInspector(std::move(pointInspector));
+	inspectorMgr->AddInspector(std::move(sceneInspector));
+	ProjectManager->SetInspectorManager(std::move(inspectorMgr));
+
+	auto sceneMgr = std::make_unique<SceneManager>();
+	auto scene = std::make_unique<Scene>();
+	sceneMgr->SetScene(std::move(scene));
+	ProjectManager->SetSceneManager(std::move(sceneMgr));
 }

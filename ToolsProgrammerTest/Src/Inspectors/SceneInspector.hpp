@@ -33,6 +33,8 @@ namespace TPT
 
 		QTreeWidget* Tree;
 
+		bool SilenceSelectionChanged = false;
+
 		QMenu* ContextMenu;
 			QAction* SpawnPointAction;
 			QAction* DestroyPointAction;

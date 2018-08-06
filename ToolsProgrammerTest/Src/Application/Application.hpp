@@ -4,6 +4,8 @@
 #include <QtCore/qtimer.h>
 #include <QtWidgets/qmainwindow.h>
 
+#include "Managers/IProjectManager.hpp"
+
 namespace TPT
 {
 	class Application : public QApplication
@@ -15,6 +17,7 @@ namespace TPT
 
 	private:
 		std::unique_ptr<QMainWindow> MainWindow;
+		IProjectManager* ProjectManager;
 	};
 
 	extern Application* gApp;

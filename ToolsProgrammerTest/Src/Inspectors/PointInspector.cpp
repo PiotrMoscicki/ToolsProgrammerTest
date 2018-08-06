@@ -12,28 +12,37 @@ PointInspector::PointInspector(QWidget* parent)
 {
 	// layout
 	auto gridLayout = new QGridLayout(this);
+
 	gridLayout->setColumnStretch(0, 1);
 	gridLayout->setColumnStretch(1, 1);
 	gridLayout->setColumnStretch(2, 1);
 	gridLayout->setColumnStretch(3, 1);
+
+	for (size_t i = 0; i < 100; ++i)
+		gridLayout->setRowStretch((int)i, 1);
+
 	setLayout(gridLayout);
 
 	//		content
 	// name
 	NameLabel = new QLabel(this);
+	NameLabel->setText("Name");
 	gridLayout->addWidget(NameLabel, 0, 0);
 
 	NameField = new QLineEdit(this);
+	NameField->setDisabled(true);
 	gridLayout->addWidget(NameField, 0, 1, 1, 3);
 	connect(NameField, &QLineEdit::editingFinished, this, &PointInspector::FieldModified);
 
 	// position
 	PositionLabel = new QLabel(this);
+	PositionLabel->setText("Position");
 	gridLayout->addWidget(PositionLabel, 1, 0);
 
 	for (int i = 0; i < 3; ++i)
 	{
 		PositionFields[i] = new QLineEdit(this);
+		PositionFields[i]->setDisabled(true);
 		gridLayout->addWidget(PositionFields[i], 1, i + 1);
 		connect(PositionFields[i], &QLineEdit::editingFinished, this, &PointInspector::FieldModified);
 	}
@@ -59,12 +68,22 @@ void PointInspector::SetManager(IInspectorManager* manager)
 void PointInspector::PointSelected(const Point* point)
 {
 	if (!point)
-		return;
+	{
+		NameField->setDisabled(true);
+		for (int i = 0; i < 3; ++i)
+			PositionFields[i]->setDisabled(true);
+	}
+	else
+	{
+		NameField->setDisabled(false);
+		for (int i = 0; i < 3; ++i)
+			PositionFields[i]->setDisabled(false);
 
-	NameField->setText(point->Name);
-	PositionFields[0]->setText(QString::number(point->Position.x()));
-	PositionFields[1]->setText(QString::number(point->Position.y()));
-	PositionFields[2]->setText(QString::number(point->Position.z()));
+		NameField->setText(point->Name);
+		PositionFields[0]->setText(QString::number(point->Position.x()));
+		PositionFields[1]->setText(QString::number(point->Position.y()));
+		PositionFields[2]->setText(QString::number(point->Position.z()));
+	}
 }
 
 // ************************************************************************************************
@@ -113,4 +132,5 @@ void PointInspector::FieldModified()
 	redoValue.Position.setZ(PositionFields[2]->text().toFloat());
 
 	auto cmd = std::make_unique<PointModificationCommand>(undoValue, redoValue, undoValue.Id, Manager);
+	Manager->ModifyPoint(std::move(cmd));
 }
