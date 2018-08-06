@@ -1,12 +1,12 @@
 #include "ProjectManager.hpp"
 
-#include "QtGui/qimage.h"
+#include "QtGui/qpixmap.h"
 
 using namespace TPT;
 
 // ************************************************************************************************
 void ProjectManager::LoadHeightMap(const QString& path)
 {
-	SceneManager->SetGeightMap(std::move(std::make_unique<QImage>(path)));
+	SceneManager->SetGeightMap(std::move(std::make_unique<QPixmap>(path)));
 	emit HeightMapLoadedSignal();
 }

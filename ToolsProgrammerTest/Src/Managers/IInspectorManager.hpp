@@ -22,7 +22,7 @@ namespace TPT
 		virtual void AddInspector(std::unique_ptr<IInspector> inspector) = 0;
 
 
-		virtual const QImage* GetHeightMap() = 0;
+		virtual const QPixmap* GetHeightMap() = 0;
 		virtual const std::vector<Point*>& GetPoints() = 0;
 		virtual const Point* GetSelectedPoint() = 0;
 
@@ -38,16 +38,22 @@ namespace TPT
 		// modifies point and adds cmd to undo/redo stack.
 		virtual void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) = 0;
 
+
+		// Displays HeightMapDialog and replaces old height map in scene object.
+		virtual void LoadHeightMap() = 0;
+
 	public slots:
 		virtual void HeightMapLoaded() = 0;
 
 	signals:
-		void HeightMapLoadedSignal();
+		void HeightMapLoadedSignal(const QPixmap* heightMap);
 
 		void PointSpawnedSignal(const Point* point);
 		void PointDestroyedSignal(const Point* point);
 		void PointSelectedSignal(const Point* point);
 		void PointModifiedSignal(const Point* point);
+
+		void HeightMapLoadedSignel(const QPixmap* heightMap);
 
 		void Update();
 		void Reload();

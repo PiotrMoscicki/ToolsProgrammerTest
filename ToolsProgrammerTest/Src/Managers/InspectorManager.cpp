@@ -5,7 +5,7 @@
 using namespace TPT;
 
 // ************************************************************************************************
-const QImage* InspectorManager::GetHeightMap()
+const QPixmap* InspectorManager::GetHeightMap()
 {
 	return ProjectManager->GetSceneManager()->GetHeightMap();
 }

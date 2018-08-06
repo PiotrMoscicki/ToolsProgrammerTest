@@ -17,7 +17,7 @@ namespace TPT
 			{ inspector->SetManager(this); Inspectors.push_back(std::move(inspector)); }
 
 
-		virtual const QImage* GetHeightMap() override;
+		virtual const QPixmap* GetHeightMap() override;
 		virtual const std::vector<Point*>& GetPoints() override;
 		virtual const Point* GetSelectedPoint() override { return SelectedPoint; }
 
@@ -27,6 +27,8 @@ namespace TPT
 		void SelectPoint(size_t id) override;
 		void DeselectPoint() override;
 		void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) override;
+
+		void LoadHeightMap() override {}
 
 	public slots:
 		void HeightMapLoaded() override {}

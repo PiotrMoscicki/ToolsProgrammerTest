@@ -28,13 +28,13 @@ Application::Application(int argc, char *argv[])
 	darkPalette.setColor(QPalette::Window, QColor(45, 45, 45));
 	darkPalette.setColor(QPalette::WindowText, Qt::lightGray);
 	darkPalette.setColor(QPalette::Base, QColor(30, 30, 30));
-	darkPalette.setColor(QPalette::AlternateBase, QColor(255, 0, 0)); // no idea what's this
+	darkPalette.setColor(QPalette::AlternateBase, QColor(255, 0, 0));
 	darkPalette.setColor(QPalette::ToolTipBase, QColor(40, 40, 40));
 	darkPalette.setColor(QPalette::ToolTipText, Qt::lightGray);
 	darkPalette.setColor(QPalette::Text, Qt::lightGray);
 	darkPalette.setColor(QPalette::Button, QColor(55, 55, 55));
 	darkPalette.setColor(QPalette::ButtonText, Qt::lightGray);
-	darkPalette.setColor(QPalette::BrightText, QColor(255, 0, 0)); // no idea what's this
+	darkPalette.setColor(QPalette::BrightText, QColor(255, 0, 0));
 
 	darkPalette.setColor(QPalette::Highlight, QColor(225, 159, 4));
 	darkPalette.setColor(QPalette::HighlightedText, Qt::black);

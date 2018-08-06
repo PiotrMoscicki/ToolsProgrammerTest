@@ -80,9 +80,9 @@ void PointInspector::PointSelected(const Point* point)
 			PositionFields[i]->setDisabled(false);
 
 		NameField->setText(point->Name);
-		PositionFields[0]->setText(QString::number(point->Position.x()));
-		PositionFields[1]->setText(QString::number(point->Position.y()));
-		PositionFields[2]->setText(QString::number(point->Position.z()));
+		PositionFields[0]->setText(QString::number(point->PosX));
+		PositionFields[1]->setText(QString::number(point->PosY));
+		PositionFields[2]->setText(QString::number(point->PosZ));
 	}
 }
 
@@ -90,9 +90,9 @@ void PointInspector::PointSelected(const Point* point)
 void PointInspector::PointModified(const Point* point)
 {
 	NameField->setText(point->Name);
-	PositionFields[0]->setText(QString::number(point->Position.x()));
-	PositionFields[1]->setText(QString::number(point->Position.y()));
-	PositionFields[2]->setText(QString::number(point->Position.z()));
+	PositionFields[0]->setText(QString::number(point->PosX));
+	PositionFields[1]->setText(QString::number(point->PosY));
+	PositionFields[2]->setText(QString::number(point->PosZ));
 }
 
 // ************************************************************************************************
@@ -101,9 +101,9 @@ void PointInspector::Update()
 	auto point = Manager->GetSelectedPoint();
 
 	NameField->setText(point->Name);
-	PositionFields[0]->setText(QString::number(point->Position.x()));
-	PositionFields[1]->setText(QString::number(point->Position.y()));
-	PositionFields[2]->setText(QString::number(point->Position.z()));
+	PositionFields[0]->setText(QString::number(point->PosX));
+	PositionFields[1]->setText(QString::number(point->PosY));
+	PositionFields[2]->setText(QString::number(point->PosZ));
 }
 
 // ************************************************************************************************
@@ -112,9 +112,9 @@ void PointInspector::Reload()
 	auto point = Manager->GetSelectedPoint();
 
 	NameField->setText(point->Name);
-	PositionFields[0]->setText(QString::number(point->Position.x()));
-	PositionFields[1]->setText(QString::number(point->Position.y()));
-	PositionFields[2]->setText(QString::number(point->Position.z()));
+	PositionFields[0]->setText(QString::number(point->PosX));
+	PositionFields[1]->setText(QString::number(point->PosY));
+	PositionFields[2]->setText(QString::number(point->PosZ));
 }
 
 
@@ -127,9 +127,9 @@ void PointInspector::FieldModified()
 	auto redoValue = Point();
 
 	redoValue.Name = NameField->text();
-	redoValue.Position.setX(PositionFields[0]->text().toFloat());
-	redoValue.Position.setY(PositionFields[1]->text().toFloat());
-	redoValue.Position.setZ(PositionFields[2]->text().toFloat());
+	redoValue.PosX = PositionFields[0]->text().toFloat();
+	redoValue.PosY = PositionFields[1]->text().toFloat();
+	redoValue.PosZ = PositionFields[2]->text().toFloat();
 
 	auto cmd = std::make_unique<PointModificationCommand>(undoValue, redoValue, undoValue.Id, Manager);
 	Manager->ModifyPoint(std::move(cmd));

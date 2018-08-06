@@ -15,13 +15,17 @@ namespace TPT
 		Point operator=(const Point& p)
 		{
 			Name = p.Name;
-			Position = p.Position;
+			PosX = p.PosX;
+			PosY = p.PosY;
+			PosZ = p.PosZ;
 
 			return *this;
 		}
 
 		QString Name = "";
-		QVector3D Position = QVector3D{ 0, 0, 0 };
+		size_t PosX = 0;
+		size_t PosY = 0;
+		size_t PosZ = 0;
 
 		const size_t Id;
 	};
