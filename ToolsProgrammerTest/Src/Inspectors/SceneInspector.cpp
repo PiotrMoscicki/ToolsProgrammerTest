@@ -109,3 +109,29 @@ void SceneInspector::Reload()
 		PointToItem.insert(std::pair<const Point*, QTreeWidgetItem*>(point, entityTree));
 	}
 }
+
+
+
+//		private slots
+// ************************************************************************************************
+void TPT::SceneInspector::SelectionChanged()
+{
+	if (Tree->selectedItems()[0] != nullptr)
+		Manager->SelectPoint(ItemToPoint[Tree->selectedItems()[0]]->Id);
+}
+
+// ************************************************************************************************
+void TPT::SceneInspector::SpawnContextMenu(QPoint pos)
+{
+	ContextMenu->popup(this->mapToGlobal(pos));
+}
+
+// ************************************************************************************************
+void TPT::SceneInspector::SpawnPoint()
+{
+}
+
+// ************************************************************************************************
+void TPT::SceneInspector::DestroyPoint()
+{
+}

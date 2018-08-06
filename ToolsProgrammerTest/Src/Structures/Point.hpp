@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtGui/qvector3d.h>
+#include <QtCore/qstring.h>
 
 namespace TPT
 {

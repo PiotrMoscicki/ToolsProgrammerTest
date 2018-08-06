@@ -20,14 +20,14 @@ const std::vector<Point*>& Inspectormanager::GetPoints()
 void Inspectormanager::SpawnPoint()
 {
 	auto point = ProjectManager->GetSceneManager()->SpawnPoint();
-	emit PointSpawnedSignal(point->Id);
+	emit PointSpawnedSignal(point);
 }
 
 // ************************************************************************************************
 void Inspectormanager::DestroyPoint(size_t id)
 {
+	emit PointDestroyedSignal(ProjectManager->GetSceneManager()->GetScene()->GetPointById(id));
 	ProjectManager->GetSceneManager()->DestroyPoint(id);
-	emit PointDestroyedSignal(id);
 }
 
 // ************************************************************************************************

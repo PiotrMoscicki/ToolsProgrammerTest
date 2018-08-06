@@ -6,7 +6,7 @@ using namespace TPT;
 const Point* TPT::SceneManager::SpawnPoint()
 {
 	auto newPoint = new Point();
-	Scene->Points.insert(std::pair<size_t, Point*>(newPoint->Id, newPoint));
+	Scene->Points.push_back(newPoint);
 
 	return newPoint;
 }
@@ -15,7 +15,7 @@ const Point* TPT::SceneManager::SpawnPoint()
 const Point* TPT::SceneManager::SpawnPoint(size_t id)
 {
 	auto newPoint = new Point(id);
-	Scene->Points.insert(std::pair<size_t, Point*>(newPoint->Id, newPoint));
+	Scene->Points.push_back(newPoint);
 
 	return newPoint;
 }
