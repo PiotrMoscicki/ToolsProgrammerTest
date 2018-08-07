@@ -10,6 +10,8 @@
 #include "Inspectors/SceneInspector.hpp"
 #include "Inspectors/PointInspector.hpp"
 
+#include "Managers/Dialogs/PointDialog.hpp"
+
 using namespace TPT;
 
 namespace TPT
@@ -79,6 +81,7 @@ Application::Application(int argc, char *argv[])
 
 	auto inspectorMgr = std::make_unique<InspectorManager>();
 	inspectorMgr->SetProjectManager(ProjectManager);
+	inspectorMgr->SetPointDialog(std::move(std::make_unique<PointDialog>()));
 	inspectorMgr->AddInspector(std::move(pointInspector));
 	inspectorMgr->AddInspector(std::move(sceneInspector));
 	ProjectManager->SetInspectorManager(std::move(inspectorMgr));

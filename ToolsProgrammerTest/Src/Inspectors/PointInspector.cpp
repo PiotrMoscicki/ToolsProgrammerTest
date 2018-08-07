@@ -82,14 +82,15 @@ void PointInspector::PointSelected(const Point* point)
 		PositionFields[2]->setText("");
 
 		NameField->setDisabled(true);
-		for (int i = 0; i < 2; ++i)
-			PositionFields[i]->setDisabled(true);
+
+		PositionFields[0]->setDisabled(true);
+		PositionFields[2]->setDisabled(true);
 	}
 	else
 	{
 		NameField->setDisabled(false);
-		for (int i = 0; i < 2; ++i)
-			PositionFields[i]->setDisabled(false);
+		PositionFields[0]->setDisabled(false);
+		PositionFields[2]->setDisabled(false);
 
 		NameField->setText(point->Name);
 		IdField->setText(QString::number(point->Id));

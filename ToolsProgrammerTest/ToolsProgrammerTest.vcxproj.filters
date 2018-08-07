@@ -62,14 +62,17 @@
     <ClCompile Include="Src\Inspectors\SceneInspector.cpp">
       <Filter>Source Files\Inspectors</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Inspectors\HeightMapInspector.cpp">
       <Filter>Source Files\Inspectors</Filter>
     </ClCompile>
     <ClCompile Include="Src\Inspectors\PointInspector.cpp">
       <Filter>Source Files\Inspectors</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Managers\Dialogs\PointDialog.cpp">
+      <Filter>Source Files\Managers\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp">
+      <Filter>Source Files\Structures\Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +136,9 @@
       <Filter>Source Files\Inspectors</Filter>
     </ClInclude>
     <ClInclude Include="Src\Managers\Dialogs\IHeightMapDialog.hpp">
+      <Filter>Source Files\Managers\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Managers\Dialogs\PointDialog.hpp">
       <Filter>Source Files\Managers\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>

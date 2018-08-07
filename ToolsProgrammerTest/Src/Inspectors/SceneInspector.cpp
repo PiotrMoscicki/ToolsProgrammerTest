@@ -64,7 +64,7 @@ void SceneInspector::PointSpawned(const Point* point)
 	item->setFlags(item->flags() | Qt::ItemIsEditable);
 	item->setText(0, point->Name);
 	item->setText(1, QString::number(point->PosX));
-	item->setText(2, QString::number(point->PosY));
+	item->setText(2, QString::number(point->PosZ));
 
 	ItemToPoint.insert(std::pair<QTreeWidgetItem*, const Point*>(item, point));
 	PointToItem.insert(std::pair<const Point*, QTreeWidgetItem*>(point, item));
@@ -103,7 +103,7 @@ void SceneInspector::PointModified(const Point* point)
 
 	item->setText(0, point->Name);
 	item->setText(1, QString::number(point->PosX));
-	item->setText(2, QString::number(point->PosY));
+	item->setText(2, QString::number(point->PosZ));
 }
 
 

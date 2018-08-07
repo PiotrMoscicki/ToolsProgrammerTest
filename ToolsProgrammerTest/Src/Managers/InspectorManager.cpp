@@ -19,8 +19,14 @@ const std::vector<Point*>& InspectorManager::GetPoints()
 // ************************************************************************************************
 void InspectorManager::SpawnPoint()
 {
-	auto point = ProjectManager->GetSceneManager()->SpawnPoint();
-	emit PointSpawnedSignal(point);
+
+	auto points = PointDialog->SpawnPoints(ProjectManager->GetSceneManager());
+
+	if (!PointDialog->Canceled())
+		for (auto point : points)
+			emit PointSpawnedSignal(point);
+
+	PointDialog->Reset();
 }
 
 // ************************************************************************************************

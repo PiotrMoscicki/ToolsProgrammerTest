@@ -3,7 +3,7 @@
 using namespace TPT;
 
 // ************************************************************************************************
-const Point* TPT::SceneManager::SpawnPoint()
+Point* TPT::SceneManager::SpawnPoint()
 {
 	auto newPoint = new Point();
 	Scene->Points.push_back(newPoint);
@@ -12,7 +12,7 @@ const Point* TPT::SceneManager::SpawnPoint()
 }
 
 // ************************************************************************************************
-const Point* TPT::SceneManager::SpawnPoint(size_t id)
+Point* TPT::SceneManager::SpawnPoint(size_t id)
 {
 	auto newPoint = new Point(id);
 	Scene->Points.push_back(newPoint);

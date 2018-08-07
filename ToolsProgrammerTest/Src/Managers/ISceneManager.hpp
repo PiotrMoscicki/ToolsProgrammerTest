@@ -16,8 +16,8 @@ namespace TPT
 		virtual void SetScene(std::unique_ptr<Scene> scene) = 0;
 		virtual Scene* GetScene() = 0;
 
-		virtual const Point* SpawnPoint() = 0;
-		virtual const Point* SpawnPoint(size_t id) = 0;
+		virtual Point* SpawnPoint() = 0;
+		virtual Point* SpawnPoint(size_t id) = 0;
 		virtual void DestroyPoint(size_t id) = 0;
 	};
 }
