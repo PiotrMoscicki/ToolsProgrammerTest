@@ -38,20 +38,23 @@
 
 using namespace TPT;
 
+// ************************************************************************************************
 Scene3DInspector::Scene3DInspector(QWidget* parent)
 	: QWidget(parent)
 {
 	setLayout(new QGridLayout(this));
 
+	// view
 	Qt3DExtras::Qt3DWindow *view = new Qt3DExtras::Qt3DWindow();
 	view->defaultFrameGraph()->setClearColor(QColor(QRgb(0x4d4d4f)));
 	QWidget *container = QWidget::createWindowContainer(view);
 
+	// input
 	Qt3DInput::QInputAspect *input = new Qt3DInput::QInputAspect;
 	view->registerAspect(input);
 
-	// Root entity
-	Qt3DCore::QEntity *rootEntity = new Qt3DCore::QEntity();
+	// root
+	Root = new Qt3DCore::QEntity();
 
 	// Camera
 	Qt3DRender::QCamera *cameraEntity = view->camera();
@@ -61,7 +64,7 @@ Scene3DInspector::Scene3DInspector(QWidget* parent)
 	cameraEntity->setUpVector(QVector3D(0, 1, 0));
 	cameraEntity->setViewCenter(QVector3D(0, 0, 0));
 
-	Qt3DCore::QEntity *lightEntity = new Qt3DCore::QEntity(rootEntity);
+	Qt3DCore::QEntity *lightEntity = new Qt3DCore::QEntity(Root);
 	Qt3DRender::QPointLight *light = new Qt3DRender::QPointLight(lightEntity);
 	light->setColor("white");
 	light->setIntensity(1);
@@ -71,41 +74,68 @@ Scene3DInspector::Scene3DInspector(QWidget* parent)
 	lightEntity->addComponent(lightTransform);
 
 	// For camera controls
-	Qt3DExtras::QFirstPersonCameraController *camController = new Qt3DExtras::QFirstPersonCameraController(rootEntity);
+	Qt3DExtras::QFirstPersonCameraController *camController = new Qt3DExtras::QFirstPersonCameraController(Root);
 	camController->setCamera(cameraEntity);
 
-	// Torus shape data
-	auto m_torus = new Qt3DExtras::QTorusMesh();
-	m_torus->setRadius(1.0f);
-	m_torus->setMinorRadius(0.4f);
-	m_torus->setRings(100);
-	m_torus->setSlices(20);
+	// mesh
+	CubeMesh = new Qt3DExtras::QCuboidMesh();
 
-	// TorusMesh Transform
-	Qt3DCore::QTransform *torusTransform = new Qt3DCore::QTransform();
-	torusTransform->setScale(2.0f);
-	torusTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 1.0f, 0.0f), 25.0f));
-	torusTransform->setTranslation(QVector3D(5.0f, 4.0f, 0.0f));
-
-	Qt3DExtras::QPhongMaterial *torusMaterial = new Qt3DExtras::QPhongMaterial();
-	torusMaterial->setDiffuse(QColor(QRgb(0xbeb32b)));
-
-	// Torus
-	auto m_torusEntity = new Qt3DCore::QEntity(rootEntity);
-	m_torusEntity->addComponent(m_torus);
-	m_torusEntity->addComponent(torusMaterial);
-	m_torusEntity->addComponent(torusTransform);
+	// material
+	CubeMaterial = new Qt3DExtras::QPhongMaterial();
+	CubeMaterial->setDiffuse(QColor(QRgb(0x665423)));
 
 	// Set root object of the scene
-	view->setRootEntity(rootEntity);
+	view->setRootEntity(Root);
 
 	layout()->addWidget(container);
 }
 
+// ************************************************************************************************
 void Scene3DInspector::SetManager(IInspectorManager* manager)
+{
+	Manager = manager;
+
+	connect(Manager, &IInspectorManager::PointSpawnedSignal, this, &Scene3DInspector::PointSpawned);
+	connect(Manager, &IInspectorManager::PointDestroyedSignal, this, &Scene3DInspector::PointDestroyed);
+	connect(Manager, &IInspectorManager::PointSelectedSignal, this, &Scene3DInspector::PointSelected);
+	connect(Manager, &IInspectorManager::PointModifiedSignal, this, &Scene3DInspector::PointModified);
+
+	connect(Manager, &IInspectorManager::HeightMapLoadedSignal, this, &Scene3DInspector::HeightMapLoaded);
+}
+
+
+
+//		public slots
+// ************************************************************************************************
+void TPT::Scene3DInspector::PointSpawned(const Point* point)
+{
+	// transform
+	auto transform = new Qt3DCore::QTransform();
+	transform->setTranslation(QVector3D(point->PosX, point->PosY, point->PosZ));
+
+	// Cuboid
+	auto entity = new Qt3DCore::QEntity(Root);
+	entity->addComponent(CubeMesh);
+	entity->addComponent(CubeMaterial);
+	entity->addComponent(transform);
+}
+
+// ************************************************************************************************
+void TPT::Scene3DInspector::PointDestroyed(const Point* point)
 {
 }
 
+// ************************************************************************************************
 void Scene3DInspector::PointSelected(const Point* point)
+{
+}
+
+// ************************************************************************************************
+void TPT::Scene3DInspector::PointModified(const Point* point)
+{
+}
+
+// ************************************************************************************************
+void TPT::Scene3DInspector::HeightMapLoaded(const QPixmap* heightMap)
 {
 }

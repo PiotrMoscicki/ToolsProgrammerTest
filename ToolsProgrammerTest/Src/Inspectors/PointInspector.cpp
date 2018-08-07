@@ -117,6 +117,9 @@ void TPT::PointInspector::HeightMapLoaded(const QPixmap* heightMap)
 {
 	auto point = Manager->GetSelectedPoint();
 
+	if (!point)
+		return;
+
 	NameField->setText(point->Name);
 	IdField->setText(QString::number(point->Id));
 	PositionFields[0]->setText(QString::number(point->PosX));
