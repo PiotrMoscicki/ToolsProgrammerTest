@@ -74,6 +74,9 @@
     <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp">
       <Filter>Source Files\Structures\Commands</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Managers\Dialogs\HeightMapDialog.cpp">
+      <Filter>Source Files\Managers\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Src\SceneModifier.hpp">
@@ -139,6 +142,9 @@
       <Filter>Source Files\Managers\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="Src\Managers\Dialogs\PointDialog.hpp">
+      <Filter>Source Files\Managers\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Managers\Dialogs\HeightMapDialog.hpp">
       <Filter>Source Files\Managers\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>

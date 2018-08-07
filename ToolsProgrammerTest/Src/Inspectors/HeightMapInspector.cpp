@@ -10,6 +10,7 @@ HeightMapInspector::HeightMapInspector(QWidget* parent)
 {
 	// layout
 	setLayout(new QGridLayout(this));
+	setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored));
 
 	// content
 	Image = new QLabel(this);
@@ -21,7 +22,7 @@ HeightMapInspector::HeightMapInspector(QWidget* parent)
 
 	ContextMenu = new QMenu(this);
 
-		LoadHeightMapAction = new QAction("Spawn Point", this);
+		LoadHeightMapAction = new QAction("Load Height Map", this);
 		ContextMenu->addAction(LoadHeightMapAction);
 		connect(LoadHeightMapAction, &QAction::triggered, this, &HeightMapInspector::LoadHeightMap);
 }
@@ -29,6 +30,8 @@ HeightMapInspector::HeightMapInspector(QWidget* parent)
 // ************************************************************************************************
 void HeightMapInspector::SetManager(IInspectorManager* manager)
 {
+	Manager = manager;
+
 	connect(Manager, &IInspectorManager::HeightMapLoadedSignal, this, &HeightMapInspector::HeightMapLoaded);
 }
 
@@ -38,7 +41,11 @@ void HeightMapInspector::SetManager(IInspectorManager* manager)
 // ************************************************************************************************
 void HeightMapInspector::HeightMapLoaded(const QPixmap* heightMap)
 {
-	Image->setPixmap(*heightMap);
+	HeightMap = heightMap;
+	if (!heightMap)
+		return;
+
+	Image->setPixmap(heightMap->scaled(Image->width(), Image->height(), Qt::KeepAspectRatio));
 }
 
 
@@ -48,6 +55,15 @@ void HeightMapInspector::HeightMapLoaded(const QPixmap* heightMap)
 void HeightMapInspector::SpawnContextMenu(QPoint pos)
 {
 	ContextMenu->popup(this->mapToGlobal(pos));
+}
+
+// ************************************************************************************************
+void HeightMapInspector::resizeEvent(QResizeEvent* e)
+{
+	if (HeightMap)
+		Image->setPixmap(HeightMap->scaled(Image->width(), Image->height(), Qt::KeepAspectRatio));
+
+	QWidget::resizeEvent(e);
 }
 
 // ************************************************************************************************

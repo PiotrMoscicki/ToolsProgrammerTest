@@ -9,6 +9,6 @@ namespace TPT
 		virtual void Reset() = 0;
 
 		// If dialog was canceled by user this function returns true.
-		virtual bool Canceled() = 0;;
+		virtual bool Canceled() = 0;
 	};
 }

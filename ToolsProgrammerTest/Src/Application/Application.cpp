@@ -9,8 +9,10 @@
 
 #include "Inspectors/SceneInspector.hpp"
 #include "Inspectors/PointInspector.hpp"
+#include "Inspectors/HeightMapInspector.hpp"
 
 #include "Managers/Dialogs/PointDialog.hpp"
+#include "Managers/Dialogs/HeightMapDialog.hpp"
 
 using namespace TPT;
 
@@ -61,14 +63,18 @@ Application::Application(int argc, char *argv[])
 
 	auto widget = new QDockWidget("3D Inspector", MainWindow.get());
 	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
+	widget->hide();
 
-	widget = new QDockWidget("Texture Inspector", MainWindow.get());
+	widget = new QDockWidget("Height Map Inspector", MainWindow.get());
+	auto heightMapInspector = std::make_unique<HeightMapInspector>(nullptr);
+	widget->setWidget(heightMapInspector.get());
 	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
 	
 	widget = new QDockWidget("Point Inspector", MainWindow.get());
 	auto pointInspector = std::make_unique<PointInspector>(nullptr);
 	widget->setWidget(pointInspector.get());
 	MainWindow->addDockWidget(Qt::TopDockWidgetArea, widget);
+	widget->hide();
 	
 	widget = new QDockWidget("Scene Inspector", MainWindow.get());
 	auto sceneInspector = std::make_unique<SceneInspector>(nullptr);
@@ -82,8 +88,10 @@ Application::Application(int argc, char *argv[])
 	auto inspectorMgr = std::make_unique<InspectorManager>();
 	inspectorMgr->SetProjectManager(ProjectManager);
 	inspectorMgr->SetPointDialog(std::move(std::make_unique<PointDialog>()));
+	inspectorMgr->SetHeightMapDialog(std::move(std::make_unique<HeightMapDialog>()));
 	inspectorMgr->AddInspector(std::move(pointInspector));
 	inspectorMgr->AddInspector(std::move(sceneInspector));
+	inspectorMgr->AddInspector(std::move(heightMapInspector));
 	ProjectManager->SetInspectorManager(std::move(inspectorMgr));
 
 	auto sceneMgr = std::make_unique<SceneManager>();

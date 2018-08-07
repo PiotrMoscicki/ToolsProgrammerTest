@@ -16,6 +16,7 @@
     <ClCompile Include="Src\Inspectors\SceneInspector.cpp" />
     <ClCompile Include="Src\Inspectors\HeightMapInspector.cpp" />
     <ClCompile Include="Src\main.cpp" />
+    <ClCompile Include="Src\Managers\Dialogs\HeightMapDialog.cpp" />
     <ClCompile Include="Src\Managers\Dialogs\PointDialog.cpp" />
     <ClCompile Include="Src\Managers\InspectorManager.cpp" />
     <ClCompile Include="Src\Managers\ProjectManager.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="Src\Inspectors\PointInspector.hpp" />
     <ClInclude Include="Src\Inspectors\SceneInspector.hpp" />
     <ClInclude Include="Src\Inspectors\HeightMapInspector.hpp" />
+    <ClInclude Include="Src\Managers\Dialogs\HeightMapDialog.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\IHeightMapDialog.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\IPointDialog.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\PointDialog.hpp" />

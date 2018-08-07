@@ -16,7 +16,7 @@ SceneInspector::SceneInspector(QWidget* parent)
 	// content
 	Tree = new QTreeWidget(this);
 	Tree->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
-	Tree->setHeaderLabels(QStringList() << "Name" << "X" << "Y");
+	Tree->setHeaderLabels(QStringList() << "Name" << "X" << "Z");
 	Tree->setAcceptDrops(false);
 	Tree->setDragEnabled(false);
 	Tree->setEditTriggers(QAbstractItemView::DoubleClicked);

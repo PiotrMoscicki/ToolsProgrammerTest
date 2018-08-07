@@ -22,11 +22,14 @@ namespace TPT
 
 	private:
 		IInspectorManager* Manager = nullptr;
+		const QPixmap* HeightMap = nullptr;
 
 		QLabel* Image;
 
 		QMenu* ContextMenu;
 			QAction* LoadHeightMapAction;
+
+		void resizeEvent(QResizeEvent* e) override;
 
 	private slots:
 		void SpawnContextMenu(QPoint pos);
