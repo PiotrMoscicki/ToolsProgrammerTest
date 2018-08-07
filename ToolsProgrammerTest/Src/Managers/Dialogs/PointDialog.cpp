@@ -1,5 +1,6 @@
 #include "PointDialog.hpp"
 
+#include <QtWidgets/qmessagebox.h>
 #include <QtWidgets/qgridlayout.h>
 
 using namespace TPT;
@@ -105,11 +106,23 @@ std::vector<const Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 
 	case 1:
 	{
-		size_t pointsResolutionX = 10;
-		size_t pointsResolutionY = 10;
+		size_t pointsResolutionX = PointsResolutionFields[0]->text().toInt();
+		size_t pointsResolutionY = PointsResolutionFields[1]->text().toInt();
 
-		size_t mapResolutionX = 20;
-		size_t mapResolutionY = 20;
+		if (pointsResolutionX == 0 || pointsResolutionY == 0)
+			break;
+
+		if (pointsResolutionX * pointsResolutionY > 4096)
+		{
+			auto box = new QMessageBox();
+			box->setText("You don't want to do that...");
+			box->exec();
+			delete box;
+			break;
+		}
+
+		size_t mapResolutionX = MapResolutionFields[0]->text().toInt();
+		size_t mapResolutionY = MapResolutionFields[1]->text().toInt();
 
 		float deltaX = (float)mapResolutionX / pointsResolutionX;
 		float deltaY = (float)mapResolutionY / pointsResolutionY;
