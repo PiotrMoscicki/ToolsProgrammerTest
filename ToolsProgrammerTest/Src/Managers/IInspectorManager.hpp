@@ -3,6 +3,7 @@
 #include <QtCore/qobject.h>
 
 #include "Managers/Dialogs/IPointDialog.hpp"
+#include "Managers/Dialogs/IHeightMapDialog.hpp"
 #include "Inspectors/IInspector.hpp"
 #include "Structures/Scene.hpp"
 #include "Structures/Commands/IPointModificationCommand.hpp"
@@ -18,6 +19,7 @@ namespace TPT
 	public:
 		virtual void SetProjectManager(IProjectManager* projectManager) = 0;
 		virtual void SetPointDialog(std::unique_ptr<IPointDialog> pointDialog) = 0;
+		virtual void SetHeightMapDialog(std::unique_ptr<IHeightMapDialog> heightMapDialog) = 0;
 
 		virtual void AddInspector(std::unique_ptr<IInspector> inspector) = 0;
 
@@ -38,21 +40,15 @@ namespace TPT
 		// modifies point and adds cmd to undo/redo stack.
 		virtual void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) = 0;
 
-
 		// Displays HeightMapDialog and replaces old height map in scene object.
 		virtual void LoadHeightMap() = 0;
 
-	public slots:
-		virtual void HeightMapLoaded() = 0;
-
 	signals:
-		void HeightMapLoadedSignal(const QPixmap* heightMap);
-
 		void PointSpawnedSignal(const Point* point);
 		void PointDestroyedSignal(const Point* point);
 		void PointSelectedSignal(const Point* point);
 		void PointModifiedSignal(const Point* point);
 
-		void HeightMapLoadedSignel(const QPixmap* heightMap);
+		void HeightMapLoadedSignal(const QPixmap* heightMap);
 	};
 }

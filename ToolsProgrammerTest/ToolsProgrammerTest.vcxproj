@@ -39,6 +39,7 @@
     <ClInclude Include="Src\Inspectors\PointInspector.hpp" />
     <ClInclude Include="Src\Inspectors\SceneInspector.hpp" />
     <ClInclude Include="Src\Inspectors\HeightMapInspector.hpp" />
+    <ClInclude Include="Src\Managers\Dialogs\IHeightMapDialog.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\IPointDialog.hpp" />
     <ClInclude Include="Src\Managers\InspectorManager.hpp" />
     <ClInclude Include="Src\Managers\ISceneManager.hpp" />

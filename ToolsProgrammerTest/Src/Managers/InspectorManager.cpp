@@ -51,7 +51,7 @@ void InspectorManager::SelectPoint(size_t id)
 }
 
 // ************************************************************************************************
-void TPT::InspectorManager::DeselectPoint()
+void InspectorManager::DeselectPoint()
 {
 	SelectedPoint = nullptr;
 	emit PointSelectedSignal(SelectedPoint);
@@ -67,4 +67,14 @@ void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cm
 	cmd.release();
 
 	emit PointModifiedSignal(point);
+}
+
+// ************************************************************************************************
+void InspectorManager::LoadHeightMap()
+{
+	auto heightMap = HeightMapDialog->LoadHeightMap(ProjectManager->GetSceneManager());
+	if (!HeightMapDialog->Canceled())
+		emit HeightMapLoadedSignal(heightMap);
+
+	HeightMapDialog->Reset();
 }

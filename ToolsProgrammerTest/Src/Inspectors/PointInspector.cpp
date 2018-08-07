@@ -75,6 +75,12 @@ void PointInspector::PointSelected(const Point* point)
 {
 	if (!point)
 	{
+		NameField->setText("");
+		IdField->setText("");
+		PositionFields[0]->setText("");
+		PositionFields[1]->setText("");
+		PositionFields[2]->setText("");
+
 		NameField->setDisabled(true);
 		for (int i = 0; i < 2; ++i)
 			PositionFields[i]->setDisabled(true);

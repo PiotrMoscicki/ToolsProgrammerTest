@@ -23,9 +23,6 @@ namespace TPT
 		void PointSelected(const Point* point);
 		void PointModified(const Point* point);
 
-		void Update();
-		void Reload();
-
 	private:
 		IInspectorManager* Manager = nullptr;
 		std::map<QTreeWidgetItem*, const Point*> ItemToPoint;
@@ -34,6 +31,7 @@ namespace TPT
 		QTreeWidget* Tree;
 
 		bool SilenceSelectionChanged = false;
+		bool SilenceItemChanged = false;
 
 		QMenu* ContextMenu;
 			QAction* SpawnPointAction;

@@ -2,6 +2,8 @@
 
 #include <QtWidgets/qgridlayout.h>
 
+#include "Structures/Commands/PointModificationCommand.hpp"
+
 using namespace TPT;
 
 // ************************************************************************************************
@@ -14,11 +16,12 @@ SceneInspector::SceneInspector(QWidget* parent)
 	// content
 	Tree = new QTreeWidget(this);
 	Tree->setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
-	Tree->setHeaderLabels(QStringList() << "Name" << "ID" << "X" << "Y" << "Z");
+	Tree->setHeaderLabels(QStringList() << "Name" << "X" << "Y");
 	Tree->setAcceptDrops(false);
 	Tree->setDragEnabled(false);
 	Tree->setEditTriggers(QAbstractItemView::DoubleClicked);
 	connect(Tree, &QTreeWidget::itemSelectionChanged, this, &SceneInspector::SelectionChanged);
+	connect(Tree, &QTreeWidget::itemChanged, this, &SceneInspector::FieldModified);
 	layout()->addWidget(Tree);
 
 	// context menu
@@ -54,14 +57,19 @@ void SceneInspector::SetManager(IInspectorManager* manager)
 // ************************************************************************************************
 void SceneInspector::PointSpawned(const Point* point)
 {
+	SilenceItemChanged = true;
+
 	QTreeWidgetItem* item = new QTreeWidgetItem(Tree);
 
 	item->setFlags(item->flags() | Qt::ItemIsEditable);
 	item->setText(0, point->Name);
-	item->setText(1, QString::number(point->Id));
+	item->setText(1, QString::number(point->PosX));
+	item->setText(2, QString::number(point->PosY));
 
 	ItemToPoint.insert(std::pair<QTreeWidgetItem*, const Point*>(item, point));
 	PointToItem.insert(std::pair<const Point*, QTreeWidgetItem*>(point, item));
+
+	SilenceItemChanged = false;
 }
 
 // ************************************************************************************************
@@ -91,32 +99,11 @@ void SceneInspector::PointSelected(const Point* point)
 // ************************************************************************************************
 void SceneInspector::PointModified(const Point* point)
 {
-	PointToItem[point]->setText(0, point->Name);
-}
+	auto item = PointToItem[point];
 
-// ************************************************************************************************
-void SceneInspector::Update()
-{
-	for (auto pair : ItemToPoint)
-		pair.first->setText(0, pair.second->Name);
-}
-
-// ************************************************************************************************
-void SceneInspector::Reload()
-{
-	Tree->reset();
-
-	auto points = Manager->GetPoints();
-
-	for (auto point : points)
-	{
-		QTreeWidgetItem* entityTree = new QTreeWidgetItem(Tree);
-
-		entityTree->setText(0, point->Name);
-		entityTree->setText(1, QString::number(point->Id));
-		ItemToPoint.insert(std::pair<QTreeWidgetItem*, const Point*>(entityTree, point));
-		PointToItem.insert(std::pair<const Point*, QTreeWidgetItem*>(point, entityTree));
-	}
+	item->setText(0, point->Name);
+	item->setText(1, QString::number(point->PosX));
+	item->setText(2, QString::number(point->PosY));
 }
 
 
@@ -132,6 +119,26 @@ void SceneInspector::SelectionChanged()
 		Manager->SelectPoint(ItemToPoint[Tree->selectedItems()[0]]->Id);
 	else
 		Manager->DeselectPoint();
+}
+
+// ************************************************************************************************
+void SceneInspector::FieldModified()
+{
+	if (SilenceItemChanged)
+		return;
+
+	auto item = PointToItem[Manager->GetSelectedPoint()];
+
+	auto undoValue = *Manager->GetSelectedPoint();
+	auto redoValue = Point();
+
+	redoValue.Name = item->text(0);
+	redoValue.PosX = item->text(1).toInt();
+	redoValue.PosY = item->text(2).toInt();
+	redoValue.PosZ = undoValue.PosZ;
+
+	auto cmd = std::make_unique<PointModificationCommand>(undoValue, redoValue, undoValue.Id, Manager);
+	Manager->ModifyPoint(std::move(cmd));
 }
 
 // ************************************************************************************************

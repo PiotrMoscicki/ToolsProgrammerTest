@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Dialogs/IDialog.hpp"
-#include "Structures/Scene.hpp"
+#include "Managers/ISceneManager.hpp"
 
 namespace TPT
 {
@@ -9,8 +9,8 @@ namespace TPT
 	{
 	public:
 		// Spawns new point to given scene and terurns its pointer
-		virtual const Point* SpawnPoint(Scene* scene) = 0;
+		virtual const Point* SpawnPoint(ISceneManager* scene) = 0;
 		// Destroys selected pointer from given scene
-		virtual void DestroyPoint(Scene* scene, size_t id) = 0;
+		virtual void DestroyPoint(ISceneManager* scene, size_t id) = 0;
 	};
 }

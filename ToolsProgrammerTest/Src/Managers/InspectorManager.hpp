@@ -12,6 +12,8 @@ namespace TPT
 		void SetProjectManager(IProjectManager* projectManager) override { ProjectManager = projectManager; }
 		void SetPointDialog(std::unique_ptr<IPointDialog> pointDialog) override 
 			{ PointDialog = std::move(pointDialog); }
+		void SetHeightMapDialog(std::unique_ptr<IHeightMapDialog> heightMapDialog) override
+			{ HeightMapDialog = std::move(heightMapDialog); }
 
 		void AddInspector(std::unique_ptr<IInspector> inspector) override 
 			{ inspector->SetManager(this); Inspectors.push_back(std::move(inspector)); }
@@ -28,13 +30,11 @@ namespace TPT
 		void DeselectPoint() override;
 		void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) override;
 
-		void LoadHeightMap() override {}
-
-	public slots:
-		void HeightMapLoaded() override {}
+		void LoadHeightMap() override;
 
 	private:
 		std::unique_ptr<IPointDialog> PointDialog;
+		std::unique_ptr<IHeightMapDialog> HeightMapDialog;
 		std::vector<std::unique_ptr<IInspector>> Inspectors;
 
 		IProjectManager* ProjectManager = nullptr;
