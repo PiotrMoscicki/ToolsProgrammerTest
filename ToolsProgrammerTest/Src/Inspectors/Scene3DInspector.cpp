@@ -1,0 +1,111 @@
+#include "Scene3DInspector.hpp"
+
+#include <Qt3DRender/qcamera.h>
+#include <Qt3DCore/qentity.h>
+#include <Qt3DRender/qcameralens.h>
+#include <Qt3DInput/QInputAspect>
+
+#include <Qt3DExtras/qtorusmesh.h>
+#include <Qt3DRender/qmesh.h>
+#include <Qt3DRender/qtechnique.h>
+#include <Qt3DRender/qmaterial.h>
+#include <Qt3DRender/qeffect.h>
+#include <Qt3DRender/qtexture.h>
+#include <Qt3DRender/qrenderpass.h>
+#include <Qt3DRender/qsceneloader.h>
+#include <Qt3DRender/qpointlight.h>
+
+#include <Qt3DCore/qtransform.h>
+#include <Qt3DCore/qaspectengine.h>
+
+#include <Qt3DRender/qrenderaspect.h>
+#include <Qt3DExtras/qforwardrenderer.h>
+
+#include <Qt3DExtras/qt3dwindow.h>
+#include <Qt3DExtras/qfirstpersoncameracontroller.h>
+
+#include <Qt3DExtras/QTorusMesh>
+#include <Qt3DExtras/QConeMesh>
+#include <Qt3DExtras/QCylinderMesh>
+#include <Qt3DExtras/QCuboidMesh>
+#include <Qt3DExtras/QPlaneMesh>
+#include <Qt3DExtras/QSphereMesh>
+#include <Qt3DExtras/QPhongMaterial>
+
+#include <QtCore/QDebug>
+
+#include <QtWidgets/qgridlayout.h>
+
+using namespace TPT;
+
+Scene3DInspector::Scene3DInspector(QWidget* parent)
+	: QWidget(parent)
+{
+	setLayout(new QGridLayout(this));
+
+	Qt3DExtras::Qt3DWindow *view = new Qt3DExtras::Qt3DWindow();
+	view->defaultFrameGraph()->setClearColor(QColor(QRgb(0x4d4d4f)));
+	QWidget *container = QWidget::createWindowContainer(view);
+
+	Qt3DInput::QInputAspect *input = new Qt3DInput::QInputAspect;
+	view->registerAspect(input);
+
+	// Root entity
+	Qt3DCore::QEntity *rootEntity = new Qt3DCore::QEntity();
+
+	// Camera
+	Qt3DRender::QCamera *cameraEntity = view->camera();
+
+	cameraEntity->lens()->setPerspectiveProjection(45.0f, 16.0f / 9.0f, 0.1f, 1000.0f);
+	cameraEntity->setPosition(QVector3D(0, 0, 20.0f));
+	cameraEntity->setUpVector(QVector3D(0, 1, 0));
+	cameraEntity->setViewCenter(QVector3D(0, 0, 0));
+
+	Qt3DCore::QEntity *lightEntity = new Qt3DCore::QEntity(rootEntity);
+	Qt3DRender::QPointLight *light = new Qt3DRender::QPointLight(lightEntity);
+	light->setColor("white");
+	light->setIntensity(1);
+	lightEntity->addComponent(light);
+	Qt3DCore::QTransform *lightTransform = new Qt3DCore::QTransform(lightEntity);
+	lightTransform->setTranslation(cameraEntity->position());
+	lightEntity->addComponent(lightTransform);
+
+	// For camera controls
+	Qt3DExtras::QFirstPersonCameraController *camController = new Qt3DExtras::QFirstPersonCameraController(rootEntity);
+	camController->setCamera(cameraEntity);
+
+	// Torus shape data
+	auto m_torus = new Qt3DExtras::QTorusMesh();
+	m_torus->setRadius(1.0f);
+	m_torus->setMinorRadius(0.4f);
+	m_torus->setRings(100);
+	m_torus->setSlices(20);
+
+	// TorusMesh Transform
+	Qt3DCore::QTransform *torusTransform = new Qt3DCore::QTransform();
+	torusTransform->setScale(2.0f);
+	torusTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 1.0f, 0.0f), 25.0f));
+	torusTransform->setTranslation(QVector3D(5.0f, 4.0f, 0.0f));
+
+	Qt3DExtras::QPhongMaterial *torusMaterial = new Qt3DExtras::QPhongMaterial();
+	torusMaterial->setDiffuse(QColor(QRgb(0xbeb32b)));
+
+	// Torus
+	auto m_torusEntity = new Qt3DCore::QEntity(rootEntity);
+	m_torusEntity->addComponent(m_torus);
+	m_torusEntity->addComponent(torusMaterial);
+	m_torusEntity->addComponent(torusTransform);
+
+	// Set root object of the scene
+	view->setRootEntity(rootEntity);
+
+	layout()->addWidget(container);
+}
+
+void Scene3DInspector::SetManager(IInspectorManager* manager)
+{
+}
+
+void Scene3DInspector::PointSelected(const Point* point)
+{
+}

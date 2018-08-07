@@ -3,6 +3,7 @@
 #include <QtWidgets/qwidget.h>
 #include <QtWidgets/qlabel.h>
 #include <QtWidgets/qlineedit.h>
+#include <QtGui/qpixmap.h>
 
 #include "Inspectors/IInspector.hpp"
 #include "Managers/IInspectorManager.hpp"
@@ -19,6 +20,8 @@ namespace TPT
 	public slots:
 		void PointSelected(const Point* point);
 		void PointModified(const Point* point);
+
+		void HeightMapLoaded(const QPixmap* heightMap);
 
 	private:
 		IInspectorManager* Manager = nullptr;

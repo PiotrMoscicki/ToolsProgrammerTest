@@ -65,6 +65,8 @@ void PointInspector::SetManager(IInspectorManager* manager)
 
 	connect(Manager, &IInspectorManager::PointSelectedSignal, this, &PointInspector::PointSelected);
 	connect(Manager, &IInspectorManager::PointModifiedSignal, this, &PointInspector::PointModified);
+
+	connect(Manager, &IInspectorManager::HeightMapLoadedSignal, this, &PointInspector::HeightMapLoaded);
 }
 
 
@@ -103,6 +105,18 @@ void PointInspector::PointSelected(const Point* point)
 // ************************************************************************************************
 void PointInspector::PointModified(const Point* point)
 {
+	NameField->setText(point->Name);
+	IdField->setText(QString::number(point->Id));
+	PositionFields[0]->setText(QString::number(point->PosX));
+	PositionFields[1]->setText(QString::number(point->PosY));
+	PositionFields[2]->setText(QString::number(point->PosZ));
+}
+
+// ************************************************************************************************
+void TPT::PointInspector::HeightMapLoaded(const QPixmap* heightMap)
+{
+	auto point = Manager->GetSelectedPoint();
+
 	NameField->setText(point->Name);
 	IdField->setText(QString::number(point->Id));
 	PositionFields[0]->setText(QString::number(point->PosX));

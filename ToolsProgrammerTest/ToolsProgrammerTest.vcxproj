@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="Src\Application\Application.cpp" />
     <ClCompile Include="Src\Inspectors\PointInspector.cpp" />
+    <ClCompile Include="Src\Inspectors\Scene3DInspector.cpp" />
     <ClCompile Include="Src\Inspectors\SceneInspector.cpp" />
     <ClCompile Include="Src\Inspectors\HeightMapInspector.cpp" />
     <ClCompile Include="Src\main.cpp" />
@@ -21,15 +22,8 @@
     <ClCompile Include="Src\Managers\InspectorManager.cpp" />
     <ClCompile Include="Src\Managers\ProjectManager.cpp" />
     <ClCompile Include="Src\Managers\SceneManager.cpp" />
-    <ClCompile Include="Src\SceneModifier.cpp" />
     <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp" />
     <ClCompile Include="Src\Structures\Point.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="Src\SceneModifier.hpp">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Documents\Programming\11bit\ToolsProgrammerTest\ToolsProgrammerTest\Src;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Documents\Programming\11bit\ToolsProgrammerTest\ToolsProgrammerTest\Src;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets</IncludePath>
-    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Src\Application\Application.hpp">
@@ -39,6 +33,7 @@
     <ClInclude Include="Src\Dialogs\IDialog.hpp" />
     <ClInclude Include="Src\Inspectors\IInspector.hpp" />
     <ClInclude Include="Src\Inspectors\PointInspector.hpp" />
+    <ClInclude Include="Src\Inspectors\Scene3DInspector.hpp" />
     <ClInclude Include="Src\Inspectors\SceneInspector.hpp" />
     <ClInclude Include="Src\Inspectors\HeightMapInspector.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\HeightMapDialog.hpp" />

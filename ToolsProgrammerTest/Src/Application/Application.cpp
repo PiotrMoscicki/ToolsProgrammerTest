@@ -10,6 +10,7 @@
 #include "Inspectors/SceneInspector.hpp"
 #include "Inspectors/PointInspector.hpp"
 #include "Inspectors/HeightMapInspector.hpp"
+#include "Inspectors/Scene3DInspector.hpp"
 
 #include "Managers/Dialogs/PointDialog.hpp"
 #include "Managers/Dialogs/HeightMapDialog.hpp"
@@ -82,6 +83,8 @@ Application::Application(int argc, char *argv[])
 	widget->hide();
 
 	widget = new QDockWidget("3D Inspector", MainWindow.get());
+	auto scene3DInspector = std::make_unique<Scene3DInspector>(nullptr);
+	widget->setWidget(scene3DInspector.get());
 	MainWindow->addDockWidget(Qt::RightDockWidgetArea, widget);
 	widget->setMinimumSize(300, 300);
 
@@ -96,6 +99,7 @@ Application::Application(int argc, char *argv[])
 	inspectorMgr->AddInspector(std::move(pointInspector));
 	inspectorMgr->AddInspector(std::move(sceneInspector));
 	inspectorMgr->AddInspector(std::move(heightMapInspector));
+	inspectorMgr->AddInspector(std::move(scene3DInspector));
 	ProjectManager->SetInspectorManager(std::move(inspectorMgr));
 
 	auto sceneMgr = std::make_unique<SceneManager>();
