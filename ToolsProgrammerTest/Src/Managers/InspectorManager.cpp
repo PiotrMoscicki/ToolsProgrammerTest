@@ -7,26 +7,26 @@ using namespace TPT;
 // ************************************************************************************************
 const QPixmap* InspectorManager::GetHeightMap()
 {
-	return ProjectManager->GetSceneManager()->GetHeightMap();
+	return SceneManager->GetHeightMap();
 }
 
 // ************************************************************************************************
 const std::vector<Point*>& InspectorManager::GetPoints()
 {
-	return ProjectManager->GetSceneManager()->GetScene()->Points;
+	return SceneManager->GetScene()->Points;
 }
 
 // ************************************************************************************************
 void InspectorManager::SpawnPoint()
 {
-	auto points = PointDialog->SpawnPoints(ProjectManager->GetSceneManager());
+	auto points = PointDialog->SpawnPoints(SceneManager);
 
 	if (!PointDialog->Canceled())
 	{
-		if (ProjectManager->GetSceneManager()->GetHeightMap())
+		if (SceneManager->GetHeightMap())
 		{
-			auto heightMap = ProjectManager->GetSceneManager()->GetHeightMap()->toImage();
-			float denominator = 1.f / 255 * ProjectManager->GetSceneManager()->GetScene()->ResolutionY;
+			auto heightMap = SceneManager->GetHeightMap()->toImage();
+			float denominator = 1.f / 255 * SceneManager->GetScene()->ResolutionY;
 
 			for (auto point : points)
 			{
@@ -49,8 +49,8 @@ void InspectorManager::DestroyPoint()
 	if (!SelectedPoint)
 		return;
 
-	emit PointDestroyedSignal(ProjectManager->GetSceneManager()->GetScene()->GetPointById(SelectedPoint->Id));
-	ProjectManager->GetSceneManager()->DestroyPoint(SelectedPoint->Id);
+	emit PointDestroyedSignal(SceneManager->GetScene()->GetPointById(SelectedPoint->Id));
+	SceneManager->DestroyPoint(SelectedPoint->Id);
 
 	DeselectPoint();
 }
@@ -58,7 +58,7 @@ void InspectorManager::DestroyPoint()
 // ************************************************************************************************
 void InspectorManager::SelectPoint(size_t id)
 {
-	auto points = ProjectManager->GetSceneManager()->GetScene()->Points;
+	auto points = SceneManager->GetScene()->Points;
 
 	for (auto point : points)
 		if (point->Id == id)
@@ -80,13 +80,13 @@ void InspectorManager::DeselectPoint()
 // ************************************************************************************************
 void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd)
 {
-	auto point = ProjectManager->GetSceneManager()->GetScene()->GetPointById(cmd->GetPointId());
+	auto point = SceneManager->GetScene()->GetPointById(cmd->GetPointId());
 
-	cmd->SetSceneManager(ProjectManager->GetSceneManager());
+	cmd->SetSceneManager(SceneManager);
 	cmd->Execute();
 	cmd.release();
 
-	point->PosY = QColor(ProjectManager->GetSceneManager()->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+	point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 
 	emit PointModifiedSignal(point);
 }
@@ -94,14 +94,14 @@ void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cm
 // ************************************************************************************************
 void InspectorManager::LoadHeightMap()
 {
-	auto heightMap = HeightMapDialog->LoadHeightMap(ProjectManager->GetSceneManager());
+	auto heightMap = HeightMapDialog->LoadHeightMap(SceneManager);
 	if (!HeightMapDialog->Canceled())
 	{
 		emit HeightMapLoadedSignal(heightMap);
 
 		auto hm = heightMap->toImage();
 
-		for (auto point : ProjectManager->GetSceneManager()->GetScene()->Points)
+		for (auto point : SceneManager->GetScene()->Points)
 		{
 			point->PosY = QColor(hm.pixel(point->PosX, point->PosZ)).value();
 

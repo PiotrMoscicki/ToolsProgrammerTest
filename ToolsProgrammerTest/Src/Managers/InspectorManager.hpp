@@ -9,7 +9,7 @@ namespace TPT
 	class InspectorManager : public IInspectorManager
 	{
 	public:
-		void SetProjectManager(IProjectManager* projectManager) override { ProjectManager = projectManager; }
+		void SetSceneManager(ISceneManager* sceneManager) override { SceneManager = sceneManager; }
 		void SetPointDialog(std::unique_ptr<IPointDialog> pointDialog) override 
 			{ PointDialog = std::move(pointDialog); }
 		void SetHeightMapDialog(std::unique_ptr<IHeightMapDialog> heightMapDialog) override
@@ -37,7 +37,7 @@ namespace TPT
 		std::unique_ptr<IHeightMapDialog> HeightMapDialog;
 		std::vector<std::unique_ptr<IInspector>> Inspectors;
 
-		IProjectManager* ProjectManager = nullptr;
+		ISceneManager* SceneManager = nullptr;
 
 		Point* SelectedPoint = nullptr;
 	};

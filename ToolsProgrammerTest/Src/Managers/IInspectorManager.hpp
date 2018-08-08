@@ -17,7 +17,7 @@ namespace TPT
 		Q_OBJECT
 
 	public:
-		virtual void SetProjectManager(IProjectManager* projectManager) = 0;
+		virtual void SetSceneManager(ISceneManager* sceneManager) = 0;
 		virtual void SetPointDialog(std::unique_ptr<IPointDialog> pointDialog) = 0;
 		virtual void SetHeightMapDialog(std::unique_ptr<IHeightMapDialog> heightMapDialog) = 0;
 

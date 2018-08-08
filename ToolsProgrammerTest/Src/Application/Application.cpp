@@ -93,7 +93,13 @@ Application::Application(int argc, char *argv[])
 	ProjectManager = new ::ProjectManager();
 
 	auto inspectorMgr = std::make_unique<InspectorManager>();
-	inspectorMgr->SetProjectManager(ProjectManager);
+
+	auto sceneMgr = std::make_unique<SceneManager>();
+	auto scene = std::make_unique<Scene>();
+	sceneMgr->SetScene(std::move(scene));
+	inspectorMgr->SetSceneManager(sceneMgr.get());
+	ProjectManager->SetSceneManager(std::move(sceneMgr));
+
 	inspectorMgr->SetPointDialog(std::move(std::make_unique<PointDialog>()));
 	inspectorMgr->SetHeightMapDialog(std::move(std::make_unique<HeightMapDialog>()));
 	inspectorMgr->AddInspector(std::move(pointInspector));
@@ -101,9 +107,4 @@ Application::Application(int argc, char *argv[])
 	inspectorMgr->AddInspector(std::move(heightMapInspector));
 	inspectorMgr->AddInspector(std::move(scene3DInspector));
 	ProjectManager->SetInspectorManager(std::move(inspectorMgr));
-
-	auto sceneMgr = std::make_unique<SceneManager>();
-	auto scene = std::make_unique<Scene>();
-	sceneMgr->SetScene(std::move(scene));
-	ProjectManager->SetSceneManager(std::move(sceneMgr));
 }
