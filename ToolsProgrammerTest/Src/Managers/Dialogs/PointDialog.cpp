@@ -167,6 +167,8 @@ void PointDialog::Reset()
 	NameField->setText("");
 	PositionFields[0]->setText("");
 	PositionFields[1]->setText("");
+	PointsResolutionLabel[0]->setText("");
+	PointsResolutionLabel[1]->setText("");
 }
 
 // ************************************************************************************************
