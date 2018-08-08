@@ -26,9 +26,6 @@ namespace TPT
 
 	private:
 		IInspectorManager* Manager = nullptr;
-
-		Qt3DExtras::QCuboidMesh* CubeMesh;
-		Qt3DExtras::QPhongMaterial* CubeMaterial;
 		
 		Qt3DCore::QEntity* Root;
 		std::map<size_t, Qt3DCore::QEntity*> Points;

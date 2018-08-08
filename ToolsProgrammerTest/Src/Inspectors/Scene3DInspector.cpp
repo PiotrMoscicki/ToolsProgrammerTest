@@ -77,13 +77,6 @@ Scene3DInspector::Scene3DInspector(QWidget* parent)
 	Qt3DExtras::QFirstPersonCameraController *camController = new Qt3DExtras::QFirstPersonCameraController(Root);
 	camController->setCamera(cameraEntity);
 
-	// mesh
-	CubeMesh = new Qt3DExtras::QCuboidMesh();
-
-	// material
-	CubeMaterial = new Qt3DExtras::QPhongMaterial();
-	CubeMaterial->setDiffuse(QColor(QRgb(0x665423)));
-
 	// Set root object of the scene
 	view->setRootEntity(Root);
 
@@ -107,14 +100,21 @@ void Scene3DInspector::SetManager(IInspectorManager* manager)
 // ************************************************************************************************
 void Scene3DInspector::PointSpawned(const Point* point)
 {
+	// mesh
+	auto cubeMesh = new Qt3DExtras::QCuboidMesh();
+
+	// material
+	auto cubeMaterial = new Qt3DExtras::QPhongMaterial();
+	cubeMaterial->setDiffuse(QColor(QRgb(0x665423)));
+
 	// transform
 	auto transform = new Qt3DCore::QTransform();
 	transform->setTranslation(QVector3D(point->PosX, point->PosY, point->PosZ));
 
 	// Cuboid
 	auto entity = new Qt3DCore::QEntity(Root);
-	entity->addComponent(CubeMesh);
-	entity->addComponent(CubeMaterial);
+	entity->addComponent(cubeMesh);
+	entity->addComponent(cubeMaterial);
 	entity->addComponent(transform);
 
 	Points.insert(std::pair<size_t, Qt3DCore::QEntity*>(point->Id, entity));

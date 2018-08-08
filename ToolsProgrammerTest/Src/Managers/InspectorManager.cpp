@@ -26,10 +26,11 @@ void InspectorManager::SpawnPoint()
 		if (ProjectManager->GetSceneManager()->GetHeightMap())
 		{
 			auto heightMap = ProjectManager->GetSceneManager()->GetHeightMap()->toImage();
+			float denominator = 1.f / 255 * ProjectManager->GetSceneManager()->GetScene()->ResolutionY;
 
 			for (auto point : points)
 			{
-				point->PosY = QColor(heightMap.pixel(point->PosX, point->PosZ)).value();
+				point->PosY = QColor(heightMap.pixel(point->PosX, point->PosZ)).value() * denominator;
 
 				emit PointSpawnedSignal(point);
 			}

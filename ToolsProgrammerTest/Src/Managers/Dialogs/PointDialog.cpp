@@ -88,7 +88,7 @@ std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 	Reset();
 
 	MapResolutionFields[0]->setText(QString::number(scene->GetScene()->ResolutionX));
-	MapResolutionFields[1]->setText(QString::number(scene->GetScene()->ResolutionY));
+	MapResolutionFields[1]->setText(QString::number(scene->GetScene()->ResolutionZ));
 
 	exec();
 
@@ -132,8 +132,8 @@ std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 		float deltaX = (float)mapResolutionX / pointsResolutionX;
 		float deltaY = (float)mapResolutionY / pointsResolutionY;
 
-		for (float x = 0; x < mapResolutionX; x += deltaX)
-			for (float y = 0; y < mapResolutionY; y += deltaY)
+		for (float x = 0; x <= mapResolutionX; x += deltaX)
+			for (float y = 0; y <= mapResolutionY; y += deltaY)
 			{
 				auto point = scene->SpawnPoint();
 				point->PosX = x;
