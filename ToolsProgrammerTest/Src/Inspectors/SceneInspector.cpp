@@ -134,8 +134,8 @@ void SceneInspector::FieldModified()
 
 	redoValue.Name = item->text(0);
 	redoValue.PosX = item->text(1).toInt();
-	redoValue.PosY = item->text(2).toInt();
-	redoValue.PosZ = undoValue.PosZ;
+	redoValue.PosY = undoValue.PosY;
+	redoValue.PosZ = item->text(2).toInt();
 
 	auto cmd = std::make_unique<PointModificationCommand>(undoValue, redoValue, undoValue.Id, Manager);
 	Manager->ModifyPoint(std::move(cmd));

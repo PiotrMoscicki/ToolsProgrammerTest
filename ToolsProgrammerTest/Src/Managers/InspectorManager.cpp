@@ -86,7 +86,8 @@ void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cm
 	cmd->Execute();
 	cmd.release();
 
-	point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+	if (SceneManager->GetHeightMap())
+		point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 
 	emit PointModifiedSignal(point);
 }
