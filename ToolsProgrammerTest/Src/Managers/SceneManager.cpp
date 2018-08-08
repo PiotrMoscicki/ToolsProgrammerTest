@@ -2,7 +2,7 @@
 
 using namespace TPT;
 
-void SceneManager::SetGeightMap(std::unique_ptr<QPixmap> heightMap)
+void SceneManager::SetHeightMap(std::unique_ptr<QPixmap> heightMap)
 {
 	HeightMap = std::move(heightMap);
 }

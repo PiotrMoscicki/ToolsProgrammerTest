@@ -10,7 +10,7 @@ namespace TPT
 	class ISceneManager
 	{
 	public:
-		virtual void SetGeightMap(std::unique_ptr<QPixmap> heightMap) = 0;
+		virtual void SetHeightMap(std::unique_ptr<QPixmap> heightMap) = 0;
 		virtual QPixmap* GetHeightMap() = 0;
 
 		virtual void SetScene(std::unique_ptr<Scene> scene) = 0;
