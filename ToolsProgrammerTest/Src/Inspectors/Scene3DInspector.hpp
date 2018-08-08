@@ -5,6 +5,7 @@
 #include <Qt3DExtras/QPhongMaterial>
 #include <Qt3DExtras/QCuboidMesh>
 #include <Qt3DCore/qentity.h>
+#include <Qt3DCore/qtransform.h>
 
 #include "Inspectors/IInspector.hpp"
 #include "Managers/IInspectorManager.hpp"
@@ -29,5 +30,6 @@ namespace TPT
 		
 		Qt3DCore::QEntity* Root;
 		std::map<size_t, Qt3DCore::QEntity*> Points;
+		std::map<size_t, Qt3DCore::QTransform*> Transforms;
 	};
 }

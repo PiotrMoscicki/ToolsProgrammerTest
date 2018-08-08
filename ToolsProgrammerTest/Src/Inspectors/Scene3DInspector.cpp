@@ -15,7 +15,6 @@
 #include <Qt3DRender/qsceneloader.h>
 #include <Qt3DRender/qpointlight.h>
 
-#include <Qt3DCore/qtransform.h>
 #include <Qt3DCore/qaspectengine.h>
 
 #include <Qt3DRender/qrenderaspect.h>
@@ -118,6 +117,7 @@ void Scene3DInspector::PointSpawned(const Point* point)
 	entity->addComponent(transform);
 
 	Points.insert(std::pair<size_t, Qt3DCore::QEntity*>(point->Id, entity));
+	Transforms.insert(std::pair<size_t, Qt3DCore::QTransform*>(point->Id, transform));
 }
 
 // ************************************************************************************************
@@ -125,6 +125,7 @@ void Scene3DInspector::PointDestroyed(const Point* point)
 {
 	delete Points[point->Id];
 	Points.erase(point->Id);
+	Transforms.erase(point->Id);
 }
 
 // ************************************************************************************************
@@ -135,10 +136,12 @@ void Scene3DInspector::PointSelected(const Point* point)
 // ************************************************************************************************
 void Scene3DInspector::PointModified(const Point* point)
 {
-	auto entity = Points[point->Id];
+	auto transform = Transforms[point->Id];
+	auto translation = transform->translation();
 
-	Qt3DCore::QTransform* transform = (Qt3DCore::QTransform*)entity->components()[2];
-	transform->translation().setX(point->PosX);
-	transform->translation().setY(point->PosY);
-	transform->translation().setZ(point->PosZ);
+	translation.setX(point->PosX);
+	translation.setY(point->PosY);
+	translation.setZ(point->PosZ);
+
+	transform->setTranslation(translation);
 }
