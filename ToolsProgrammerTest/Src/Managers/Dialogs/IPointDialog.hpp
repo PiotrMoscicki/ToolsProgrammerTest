@@ -11,7 +11,7 @@ namespace TPT
 	{
 	public:
 		// Spawns new point to given scene and terurns its pointer
-		virtual std::vector<const Point*> SpawnPoints(ISceneManager* scene) = 0;
+		virtual std::vector<Point*> SpawnPoints(ISceneManager* scene) = 0;
 		// Destroys selected pointer from given scene
 		virtual void DestroyPoint(ISceneManager* scene, size_t id) = 0;
 	};

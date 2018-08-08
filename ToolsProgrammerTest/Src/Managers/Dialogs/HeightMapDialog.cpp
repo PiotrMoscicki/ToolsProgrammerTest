@@ -16,7 +16,8 @@ const QPixmap* HeightMapDialog::LoadHeightMap(ISceneManager* scene)
 	if (fileDialog.exec() != QDialog::Accepted)
 		return nullptr;
 
-	auto pixmap = std::make_unique<QPixmap>(fileDialog.selectedFiles()[0]);
+	auto pixmap = std::make_unique<QPixmap>(
+		QPixmap(fileDialog.selectedFiles()[0]).scaled(256, 256, Qt::KeepAspectRatio));
 	auto result = pixmap.get();
 	scene->SetGeightMap(std::move(pixmap));
 

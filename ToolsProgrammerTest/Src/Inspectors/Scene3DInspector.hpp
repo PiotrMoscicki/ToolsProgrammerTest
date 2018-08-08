@@ -24,8 +24,6 @@ namespace TPT
 		void PointSelected(const Point* point);
 		void PointModified(const Point* point);
 
-		void HeightMapLoaded(const QPixmap* heightMap);
-
 	private:
 		IInspectorManager* Manager = nullptr;
 

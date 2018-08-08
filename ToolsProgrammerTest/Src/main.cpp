@@ -23,8 +23,8 @@
 
 int main(int argc, char **argv)
 {
-	//TPT::Application a(argc, argv);
-	//return a.exec();
+	TPT::Application a(argc, argv);
+	return a.exec();
 
 
 	QGuiApplication app(argc, argv);

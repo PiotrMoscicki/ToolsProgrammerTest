@@ -7,7 +7,7 @@ namespace TPT
 	class SceneManager : public ISceneManager
 	{
 	public:
-		void SetGeightMap(std::unique_ptr<QPixmap> heightMap) override { HeightMap = std::move(heightMap); }
+		void SetGeightMap(std::unique_ptr<QPixmap> heightMap) override;
 		QPixmap* GetHeightMap() override { return HeightMap.get(); }
 
 		void SetScene(std::unique_ptr<Scene> scene) override { Scene = std::move(scene); }

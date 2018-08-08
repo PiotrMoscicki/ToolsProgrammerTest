@@ -81,7 +81,7 @@ PointDialog::PointDialog()
 }
 
 // ************************************************************************************************
-std::vector<const Point*> PointDialog::SpawnPoints(ISceneManager* scene)
+std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 {
 	Reset();
 
@@ -90,7 +90,7 @@ std::vector<const Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 	if (CanceledFlag)
 		return {};
 
-	auto result = std::vector<const Point*>();
+	auto result = std::vector<Point*>();
 
 	switch (TabWidget->currentIndex())
 	{

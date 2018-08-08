@@ -99,15 +99,13 @@ void Scene3DInspector::SetManager(IInspectorManager* manager)
 	connect(Manager, &IInspectorManager::PointDestroyedSignal, this, &Scene3DInspector::PointDestroyed);
 	connect(Manager, &IInspectorManager::PointSelectedSignal, this, &Scene3DInspector::PointSelected);
 	connect(Manager, &IInspectorManager::PointModifiedSignal, this, &Scene3DInspector::PointModified);
-
-	connect(Manager, &IInspectorManager::HeightMapLoadedSignal, this, &Scene3DInspector::HeightMapLoaded);
 }
 
 
 
 //		public slots
 // ************************************************************************************************
-void TPT::Scene3DInspector::PointSpawned(const Point* point)
+void Scene3DInspector::PointSpawned(const Point* point)
 {
 	// transform
 	auto transform = new Qt3DCore::QTransform();
@@ -118,11 +116,15 @@ void TPT::Scene3DInspector::PointSpawned(const Point* point)
 	entity->addComponent(CubeMesh);
 	entity->addComponent(CubeMaterial);
 	entity->addComponent(transform);
+
+	Points.insert(std::pair<size_t, Qt3DCore::QEntity*>(point->Id, entity));
 }
 
 // ************************************************************************************************
-void TPT::Scene3DInspector::PointDestroyed(const Point* point)
+void Scene3DInspector::PointDestroyed(const Point* point)
 {
+	delete Points[point->Id];
+	Points.erase(point->Id);
 }
 
 // ************************************************************************************************
@@ -131,11 +133,12 @@ void Scene3DInspector::PointSelected(const Point* point)
 }
 
 // ************************************************************************************************
-void TPT::Scene3DInspector::PointModified(const Point* point)
+void Scene3DInspector::PointModified(const Point* point)
 {
-}
+	auto entity = Points[point->Id];
 
-// ************************************************************************************************
-void TPT::Scene3DInspector::HeightMapLoaded(const QPixmap* heightMap)
-{
+	Qt3DCore::QTransform* transform = (Qt3DCore::QTransform*)entity->components()[2];
+	transform->translation().setX(point->PosX);
+	transform->translation().setY(point->PosY);
+	transform->translation().setZ(point->PosZ);
 }
