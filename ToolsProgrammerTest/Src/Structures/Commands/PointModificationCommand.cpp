@@ -5,7 +5,7 @@ using namespace TPT;
 // ************************************************************************************************
 void PointModificationCommand::Execute()
 {
-	auto point = SceneManager->GetScene()->GetPointById(PointId);
+	auto point = SceneManager->GetPoint(PointId);
 	*point = RedoValue; 
 	Manager->PointModifiedSignal(point);
 }
@@ -13,7 +13,7 @@ void PointModificationCommand::Execute()
 // ************************************************************************************************
 void PointModificationCommand::Undo()
 {
-	auto point = SceneManager->GetScene()->GetPointById(PointId);
+	auto point = SceneManager->GetPoint(PointId);
 	*point = UndoValue;
 	Manager->PointModifiedSignal(point);
 }
@@ -21,7 +21,7 @@ void PointModificationCommand::Undo()
 // ************************************************************************************************
 void PointModificationCommand::Redo()
 {
-	auto point = SceneManager->GetScene()->GetPointById(PointId);
+	auto point = SceneManager->GetPoint(PointId);
 	*point = RedoValue;
 	Manager->PointModifiedSignal(point);
 }

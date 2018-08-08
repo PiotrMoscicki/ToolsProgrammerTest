@@ -95,8 +95,6 @@ Application::Application(int argc, char *argv[])
 	auto inspectorMgr = std::make_unique<InspectorManager>();
 
 	auto sceneMgr = std::make_unique<SceneManager>();
-	auto scene = std::make_unique<Scene>();
-	sceneMgr->SetScene(std::move(scene));
 	inspectorMgr->SetSceneManager(sceneMgr.get());
 	ProjectManager->SetSceneManager(std::move(sceneMgr));
 

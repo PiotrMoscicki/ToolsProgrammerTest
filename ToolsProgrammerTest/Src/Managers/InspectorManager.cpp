@@ -13,7 +13,7 @@ const QPixmap* InspectorManager::GetHeightMap()
 // ************************************************************************************************
 const std::vector<Point*>& InspectorManager::GetPoints()
 {
-	return SceneManager->GetScene()->Points;
+	return SceneManager->GetPoints();
 }
 
 // ************************************************************************************************
@@ -26,7 +26,7 @@ void InspectorManager::SpawnPoint()
 		if (SceneManager->GetHeightMap())
 		{
 			auto heightMap = SceneManager->GetHeightMap()->toImage();
-			float denominator = 1.f / 255 * SceneManager->GetScene()->ResolutionY;
+			float denominator = 1.f / 255 * SceneManager->GetSceneResolutionY();
 
 			for (auto point : points)
 			{
@@ -49,7 +49,7 @@ void InspectorManager::DestroyPoint()
 	if (!SelectedPoint)
 		return;
 
-	emit PointDestroyedSignal(SceneManager->GetScene()->GetPointById(SelectedPoint->Id));
+	emit PointDestroyedSignal(SceneManager->GetPoint(SelectedPoint->Id));
 	SceneManager->DestroyPoint(SelectedPoint->Id);
 
 	DeselectPoint();
@@ -58,7 +58,7 @@ void InspectorManager::DestroyPoint()
 // ************************************************************************************************
 void InspectorManager::SelectPoint(size_t id)
 {
-	auto points = SceneManager->GetScene()->Points;
+	auto points = SceneManager->GetPoints();
 
 	for (auto point : points)
 		if (point->Id == id)
@@ -80,7 +80,7 @@ void InspectorManager::DeselectPoint()
 // ************************************************************************************************
 void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd)
 {
-	auto point = SceneManager->GetScene()->GetPointById(cmd->GetPointId());
+	auto point = SceneManager->GetPoint(cmd->GetPointId());
 
 	cmd->SetSceneManager(SceneManager);
 	cmd->Execute();
@@ -101,7 +101,7 @@ void InspectorManager::LoadHeightMap()
 
 		auto hm = heightMap->toImage();
 
-		for (auto point : SceneManager->GetScene()->Points)
+		for (auto point : SceneManager->GetPoints())
 		{
 			point->PosY = QColor(hm.pixel(point->PosX, point->PosZ)).value();
 

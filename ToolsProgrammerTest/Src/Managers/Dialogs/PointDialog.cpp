@@ -87,8 +87,8 @@ std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 {
 	Reset();
 
-	MapResolutionFields[0]->setText(QString::number(scene->GetScene()->ResolutionX));
-	MapResolutionFields[1]->setText(QString::number(scene->GetScene()->ResolutionZ));
+	MapResolutionFields[0]->setText(QString::number(scene->GetSceneResolutionX()));
+	MapResolutionFields[1]->setText(QString::number(scene->GetSceneResolutionY()));
 
 	exec();
 

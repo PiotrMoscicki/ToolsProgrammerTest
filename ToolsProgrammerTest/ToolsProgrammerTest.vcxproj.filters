@@ -96,9 +96,6 @@
     <ClInclude Include="Src\Dialogs\IDialog.hpp">
       <Filter>Source Files\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Structures\Scene.hpp">
-      <Filter>Source Files\Structures</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Managers\ProjectManager.hpp">
       <Filter>Source Files\Managers</Filter>
     </ClInclude>

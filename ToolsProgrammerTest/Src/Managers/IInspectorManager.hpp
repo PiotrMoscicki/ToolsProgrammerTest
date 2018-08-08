@@ -5,7 +5,6 @@
 #include "Managers/Dialogs/IPointDialog.hpp"
 #include "Managers/Dialogs/IHeightMapDialog.hpp"
 #include "Inspectors/IInspector.hpp"
-#include "Structures/Scene.hpp"
 #include "Structures/Commands/IPointModificationCommand.hpp"
 
 namespace TPT
