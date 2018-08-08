@@ -77,12 +77,12 @@ void SceneInspector::PointDestroyed(const Point* point)
 {
 	SilenceSelectionChanged = true;
 
-	PointToItem[point]->setSelected(false);
-
 	delete PointToItem[point];
 
 	ItemToPoint.erase(PointToItem[point]);
 	PointToItem.erase(point);
+
+	Tree->clearSelection();
 
 	SilenceSelectionChanged = false;
 }
