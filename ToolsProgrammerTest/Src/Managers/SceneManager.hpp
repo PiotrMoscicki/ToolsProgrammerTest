@@ -17,6 +17,10 @@ namespace TPT
 		Point* GetPoint(size_t id) override;
 		std::vector<Point*> GetPoints() override { return Points; }
 
+		size_t SetSceneResolutionX(size_t value) override { return SceneResolutionX = value; }
+		size_t SetSceneResolutionY(size_t value) override { return SceneResolutionY = value; }
+		size_t SetSceneResolutionZ(size_t value) override { return SceneResolutionZ = value; }
+
 		size_t GetSceneResolutionX() override { return SceneResolutionX; }
 		size_t GetSceneResolutionY() override { return SceneResolutionY; }
 		size_t GetSceneResolutionZ() override { return SceneResolutionZ; }
