@@ -8,6 +8,9 @@ namespace TPT
 {
 	struct Scene
 	{
+		size_t ResolutionX = 256;
+		size_t ResolutionY = 256;
+
 		Point* GetPointById(size_t id)
 		{
 			for (auto point : Points)

@@ -51,9 +51,11 @@ PointDialog::PointDialog()
 	multiplePointLayout->addWidget(MapResolutionLabel, 0, 0);
 
 	MapResolutionFields[0] = new QLineEdit(multiplePointWidget);
+	MapResolutionFields[0]->setDisabled(true);
 	multiplePointLayout->addWidget(MapResolutionFields[0], 0, 1);
 
 	MapResolutionFields[1] = new QLineEdit(multiplePointWidget);
+	MapResolutionFields[1]->setDisabled(true);
 	multiplePointLayout->addWidget(MapResolutionFields[1], 0, 2);
 
 	PointsResolutionLabel = new QLabel(multiplePointWidget);
@@ -84,6 +86,9 @@ PointDialog::PointDialog()
 std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 {
 	Reset();
+
+	MapResolutionFields[0]->setText(QString::number(scene->GetScene()->ResolutionX));
+	MapResolutionFields[1]->setText(QString::number(scene->GetScene()->ResolutionY));
 
 	exec();
 
