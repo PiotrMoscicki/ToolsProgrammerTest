@@ -88,6 +88,9 @@
     <QtMoc Include="Src\Application\Application.hpp">
       <Filter>Source Files\Application</Filter>
     </QtMoc>
+    <QtMoc Include="Src\Managers\ISceneManager.hpp">
+      <Filter>Source Files\Managers</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Managers\Dialogs\IPointDialog.hpp">
@@ -97,9 +100,6 @@
       <Filter>Source Files\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="Src\Managers\ProjectManager.hpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Managers\ISceneManager.hpp">
       <Filter>Source Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Src\Managers\SceneManager.hpp">

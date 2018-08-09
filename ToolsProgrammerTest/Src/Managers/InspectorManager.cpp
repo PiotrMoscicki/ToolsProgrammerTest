@@ -112,3 +112,8 @@ void InspectorManager::LoadHeightMap()
 
 	HeightMapDialog->Reset();
 }
+
+// ************************************************************************************************
+void InspectorManager::SceneResolutionChanged()
+{
+}

@@ -36,6 +36,7 @@ void SceneManager::DestroyPoint(size_t id)
 		}
 }
 
+// ************************************************************************************************
 Point* SceneManager::GetPoint(size_t id)
 {
 	for (auto point : Points)

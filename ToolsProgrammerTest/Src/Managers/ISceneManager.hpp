@@ -2,13 +2,16 @@
 
 #include <QtCore/qstring.h>
 #include <QtGui/qpixmap.h>
+#include <QtCore/qobject.h>
 
 #include "Structures/Point.hpp"
 
 namespace TPT
 {
-	class ISceneManager
+	class ISceneManager : public QObject
 	{
+		Q_OBJECT
+
 	public:
 		virtual void SetHeightMap(std::unique_ptr<QPixmap> heightMap) = 0;
 		virtual QPixmap* GetHeightMap() = 0;
@@ -26,5 +29,8 @@ namespace TPT
 		virtual size_t GetSceneResolutionX() = 0;
 		virtual size_t GetSceneResolutionY() = 0;
 		virtual size_t GetSceneResolutionZ() = 0;
+	
+	signals:
+		void SceneResolutionChangedSignal();
 	};
 }

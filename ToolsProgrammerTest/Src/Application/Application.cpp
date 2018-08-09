@@ -52,14 +52,27 @@ Application::Application(int argc, char *argv[])
 	qApp->setStyleSheet("QToolTip { color: #000000; background-color: #e19f04; border: 1px solid black; } \
 						 QDockWidget { font-family: \"Bennet\" } \
 						 QWidget { font-family: \"Consolas\" } \
-						 QComboBox:disabled { color: #c0c0c0; background-color: #242424; } \
-						 QComboBox { color: #c0c0c0; background-color: #323232; } \
 						 QLineEdit:disabled { color: #c0c0c0; background-color: #323232; } \
 						 QLineEdit { color: #c0c0c0; background-color: #404040; }");
 
 	MainWindow->setWindowTitle("ToolsProgrammerTest Editor");
 	MainWindow->setDockNestingEnabled(true);
 	MainWindow->resize(1280, 720);
+
+	// menu bar
+	MenuBar = new QMenuBar(MainWindow.get());
+	MainWindow->setMenuBar(MenuBar);
+
+		// file menu
+		MapMenu = new QMenu(MainWindow.get());
+		MenuBar->addAction(MapMenu->menuAction());
+		MapMenu->setTitle("Map");
+
+			ChangeResolutionAction = new QAction(MainWindow.get());
+			MapMenu->addAction(ChangeResolutionAction);
+			ChangeResolutionAction->setText("Change Resolution");
+			connect(ChangeResolutionAction, &QAction::triggered, this, &Application::ChangeResolution);
+
 	MainWindow->show();
 
 	
@@ -90,7 +103,7 @@ Application::Application(int argc, char *argv[])
 
 
 
-	ProjectManager = new ::ProjectManager();
+	ProjectManager = std::make_unique<::ProjectManager>();
 
 	auto inspectorMgr = std::make_unique<InspectorManager>();
 
@@ -105,4 +118,8 @@ Application::Application(int argc, char *argv[])
 	inspectorMgr->AddInspector(std::move(heightMapInspector));
 	inspectorMgr->AddInspector(std::move(scene3DInspector));
 	ProjectManager->SetInspectorManager(std::move(inspectorMgr));
+}
+
+void Application::ChangeResolution()
+{
 }

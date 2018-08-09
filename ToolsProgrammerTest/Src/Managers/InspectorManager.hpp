@@ -32,6 +32,9 @@ namespace TPT
 
 		void LoadHeightMap() override;
 
+	public slots:
+		void SceneResolutionChanged();
+
 	private:
 		std::unique_ptr<IPointDialog> PointDialog;
 		std::unique_ptr<IHeightMapDialog> HeightMapDialog;
