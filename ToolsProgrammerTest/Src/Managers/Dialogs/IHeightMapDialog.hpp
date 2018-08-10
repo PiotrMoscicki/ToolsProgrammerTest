@@ -2,13 +2,13 @@
 
 #include "Dialogs/IDialog.hpp"
 #include "Managers/ISceneManager.hpp"
-#include "Structures/Commands/ChangeHeightMapCommand.hpp"
+#include "Structures/Commands/IDialogCommand.hpp"
 
 namespace TPT
 {
 	class IHeightMapDialog : public IDialog
 	{
 	public:
-		virtual std::unique_ptr<ChangeHeightMapCommand> LoadHeightMap(ISceneManager* scene) = 0;
+		virtual std::unique_ptr<IDialogCommand> LoadHeightMap(ISceneManager* scene) = 0;
 	};
 }

@@ -2,12 +2,14 @@
 
 using namespace TPT;
 
+// ************************************************************************************************
 void ChangeHeightMapCommand::Execute()
 {
 	auto val = std::make_unique<QPixmap>(*RedoValue);
 	SceneManager->SetHeightMap(std::move(val));
 }
 
+// ************************************************************************************************
 void ChangeHeightMapCommand::Undo()
 {
 	if (!UndoValue)
@@ -17,6 +19,7 @@ void ChangeHeightMapCommand::Undo()
 	SceneManager->SetHeightMap(std::move(val));
 }
 
+// ************************************************************************************************
 void ChangeHeightMapCommand::Redo()
 {
 	auto val = std::make_unique<QPixmap>(*RedoValue);

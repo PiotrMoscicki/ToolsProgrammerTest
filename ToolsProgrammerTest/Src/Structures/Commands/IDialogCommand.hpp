@@ -6,7 +6,7 @@ namespace TPT
 {
 	class IInspectorManager;
 
-	class IChangeHeightMapCommand : public ICommand
+	class IDialogCommand : public ICommand
 	{
 	public:
 		virtual void SetInspectorManager(IInspectorManager* inspectorManager) = 0;

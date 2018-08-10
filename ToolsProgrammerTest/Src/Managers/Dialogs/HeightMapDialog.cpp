@@ -7,7 +7,7 @@
 using namespace TPT;
 
 // ************************************************************************************************
-std::unique_ptr<ChangeHeightMapCommand> HeightMapDialog::LoadHeightMap(ISceneManager* scene)
+std::unique_ptr<IDialogCommand> HeightMapDialog::LoadHeightMap(ISceneManager* scene)
 {
 	Reset();
 

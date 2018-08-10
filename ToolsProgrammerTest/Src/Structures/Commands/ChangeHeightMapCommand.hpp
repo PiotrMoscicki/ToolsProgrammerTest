@@ -2,12 +2,12 @@
 
 #include <QtGui/qpixmap.h>
 
-#include "Structures/Commands/IChangeHeightMapCommand.hpp"
+#include "Structures/Commands/IDialogCommand.hpp"
 #include "Managers/ISceneManager.hpp"
 
 namespace TPT
 {
-	class ChangeHeightMapCommand : public IChangeHeightMapCommand
+	class ChangeHeightMapCommand : public IDialogCommand
 	{
 	public:
 		ChangeHeightMapCommand(std::unique_ptr<QPixmap> undoValue, std::unique_ptr<QPixmap> redoValue, ISceneManager* sceneManager)

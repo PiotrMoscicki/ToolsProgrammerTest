@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Structures/Commands/IChangeSceneResolutionCommand.hpp"
+#include "Structures/Commands/IDialogCommand.hpp"
 #include "Managers/IInspectorManager.hpp"
 
 namespace TPT
 {
-	class ChangeSceneResolutionCommand : public IChangeSceneResolutionCommand
+	class ChangeSceneResolutionCommand : public IDialogCommand
 	{
 	public:
 		ChangeSceneResolutionCommand(SceneResolution undoValue, SceneResolution redoValue, ISceneManager* sceneManager)

@@ -40,7 +40,7 @@ SceneResolutionDialog::SceneResolutionDialog()
 }
 
 // ************************************************************************************************
-std::unique_ptr<IChangeSceneResolutionCommand> SceneResolutionDialog::SetSceneResolution(ISceneManager* scene)
+std::unique_ptr<IDialogCommand> SceneResolutionDialog::SetSceneResolution(ISceneManager* scene)
 {
 	Reset();
 
