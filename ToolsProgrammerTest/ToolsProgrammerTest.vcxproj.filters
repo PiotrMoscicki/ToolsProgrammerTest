@@ -89,6 +89,9 @@
     <ClCompile Include="Src\Structures\Commands\DestroyPointCommand.cpp">
       <Filter>Source Files\Structures\Commands</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Structures\Commands\SpawnPointsCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Src\Managers\IInspectorManager.hpp">
@@ -175,6 +178,9 @@
       <Filter>Source Files\Structures\Commands</Filter>
     </ClInclude>
     <ClInclude Include="Src\Structures\Commands\DestroyPointCommand.hpp">
+      <Filter>Source Files\Structures\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Commands\SpawnPointsCommand.hpp">
       <Filter>Source Files\Structures\Commands</Filter>
     </ClInclude>
   </ItemGroup>

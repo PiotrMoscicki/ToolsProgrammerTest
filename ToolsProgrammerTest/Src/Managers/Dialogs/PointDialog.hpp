@@ -16,7 +16,7 @@ namespace TPT
 	public:
 		PointDialog();
 
-		std::vector<Point*> SpawnPoints(ISceneManager* scene) override;
+		std::unique_ptr<SpawnPointsCommand> SpawnPoints(ISceneManager* scene) override;
 		std::unique_ptr<DestroyPointCommand> DestroyPoint(ISceneManager* scene, size_t id) override;
 
 		void Reset() override;

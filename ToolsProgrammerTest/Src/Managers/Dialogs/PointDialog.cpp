@@ -85,7 +85,7 @@ PointDialog::PointDialog()
 }
 
 // ************************************************************************************************
-std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
+std::unique_ptr<SpawnPointsCommand> PointDialog::SpawnPoints(ISceneManager* scene)
 {
 	Reset();
 
@@ -95,53 +95,43 @@ std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 	exec();
 
 	if (CanceledFlag)
-		return {};
+		return nullptr;
 
-	auto result = std::vector<Point*>();
+	std::unique_ptr<SpawnPointsCommand> result;
 
 	switch (TabWidget->currentIndex())
 	{
 	case 0:
 	{
-		auto point = scene->SpawnPoint();
-		point->Name = NameField->text();
-		point->PosX = PositionFields[0]->text().toInt();
-		point->PosZ = PositionFields[1]->text().toInt();
-		result.push_back(point);
-	}
+		auto dupa = NameField->text();
+		result = std::make_unique<SpawnPointsCommand>(dupa
+			, PositionFields[0]->text().toInt(), PositionFields[1]->text().toInt(), scene);
 		break;
+	}
 
 	case 1:
 	{
 		size_t pointsResolutionX = PointsResolutionFields[0]->text().toInt();
-		size_t pointsResolutionY = PointsResolutionFields[1]->text().toInt();
+		size_t pointsResolutionZ = PointsResolutionFields[1]->text().toInt();
 
-		if (pointsResolutionX == 0 || pointsResolutionY == 0)
+		if (pointsResolutionX == 0 || pointsResolutionZ == 0)
 			break;
 
-		if (pointsResolutionX * pointsResolutionY > 4096)
+		if (pointsResolutionX * pointsResolutionZ > 4096)
 		{
 			auto box = new QMessageBox();
 			box->setText("You don't want to do that...");
 			box->exec();
 			delete box;
+			CanceledFlag = true;
 			break;
 		}
 
 		size_t mapResolutionX = MapResolutionFields[0]->text().toInt();
-		size_t mapResolutionY = MapResolutionFields[1]->text().toInt();
+		size_t mapResolutionZ = MapResolutionFields[1]->text().toInt();
 
-		float deltaX = (float)mapResolutionX / pointsResolutionX;
-		float deltaY = (float)mapResolutionY / pointsResolutionY;
-
-		for (float x = 0; x <= mapResolutionX; x += deltaX)
-			for (float y = 0; y <= mapResolutionY; y += deltaY)
-			{
-				auto point = scene->SpawnPoint();
-				point->PosX = x;
-				point->PosZ = y;
-				result.push_back(point);
-			}
+		result = std::make_unique<SpawnPointsCommand>(pointsResolutionX, pointsResolutionZ
+			, mapResolutionX, mapResolutionZ, scene);
 	}
 		break;
 
@@ -149,7 +139,7 @@ std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 		throw new std::exception();
 	}
 
-	return result;
+	return std::move(result);
 }
 
 // ************************************************************************************************

@@ -23,29 +23,17 @@ const std::vector<Point*>& InspectorManager::GetPoints()
 	return SceneManager->GetPoints();
 }
 
+
+
+//		modification functions
 // ************************************************************************************************
 void InspectorManager::SpawnPoint()
 {
-	auto points = PointDialog->SpawnPoints(SceneManager);
+	auto cmd = PointDialog->SpawnPoints(SceneManager);
 
-	if (!PointDialog->Canceled())
-	{
-		if (SceneManager->GetHeightMap())
-		{
-			auto heightMap = SceneManager->GetHeightMap()->toImage();
-			float denominator = 1.f / 255 * SceneManager->GetSceneResolution().Y;
-
-			for (auto point : points)
-			{
-				point->PosY = QColor(heightMap.pixel(point->PosX, point->PosZ)).value() * denominator;
-
-				emit PointSpawnedSignal(point);
-			}
-		}
-		else
-			for (auto point : points)
-				emit PointSpawnedSignal(point);
-	}
+	cmd->SetInspectorManager(this);
+	cmd->Execute();
+	cmd.release();
 
 	PointDialog->Reset();
 }

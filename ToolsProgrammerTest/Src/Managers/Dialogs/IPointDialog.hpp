@@ -4,6 +4,7 @@
 
 #include "Dialogs/IDialog.hpp"
 #include "Structures/Commands/DestroyPointCommand.hpp"
+#include "Structures/Commands/SpawnPointsCommand.hpp"
 
 namespace TPT
 {
@@ -13,7 +14,7 @@ namespace TPT
 	class IPointDialog : public IDialog
 	{
 	public:
-		virtual std::vector<Point*> SpawnPoints(ISceneManager* scene) = 0;
+		virtual std::unique_ptr<SpawnPointsCommand> SpawnPoints(ISceneManager* scene) = 0;
 		virtual std::unique_ptr<DestroyPointCommand> DestroyPoint(ISceneManager* scene, size_t id) = 0;
 	};
 }
