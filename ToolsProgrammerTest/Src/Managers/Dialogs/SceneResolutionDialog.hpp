@@ -14,7 +14,7 @@ namespace TPT
 	public:
 		SceneResolutionDialog();
 
-		SceneResolution SetSceneResolution(ISceneManager* scene) override;
+		std::unique_ptr<IChangeSceneResolutionCommand> SetSceneResolution(ISceneManager* scene) override;
 
 		void Reset() override;
 		bool Canceled() override { return CanceledFlag; }

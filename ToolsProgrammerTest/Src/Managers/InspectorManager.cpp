@@ -112,10 +112,14 @@ void InspectorManager::LoadHeightMap()
 void InspectorManager::ChangeSceneResolution()
 {
 	auto oldResolution = SceneManager->GetSceneResolution();
-	auto resolution = SceneResolutionDialog->SetSceneResolution(SceneManager);
+	auto cmd = SceneResolutionDialog->SetSceneResolution(SceneManager);
+
+	cmd->SetInspectorManager(this);
+	cmd->Execute();
+	cmd.release();
 
 	if (!SceneResolutionDialog->Canceled())
-		emit SceneResolutionChangedSignal(resolution, oldResolution);
+		emit SceneResolutionChangedSignal(SceneManager->GetSceneResolution(), oldResolution);
 
 	SceneResolutionDialog->Reset();
 }

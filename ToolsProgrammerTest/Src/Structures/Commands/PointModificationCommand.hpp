@@ -17,7 +17,7 @@ namespace TPT
 		void Redo() override;
 
 		size_t GetPointId() override { return PointId; }
-		virtual void SetSceneManager(ISceneManager* sceneManager) override { SceneManager = sceneManager; }
+		void SetSceneManager(ISceneManager* sceneManager) override { SceneManager = sceneManager; }
 
 	private:
 		Point UndoValue;

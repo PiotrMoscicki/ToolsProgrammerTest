@@ -2,6 +2,8 @@
 
 #include <QtWidgets/qgridlayout.h>
 
+#include "Structures/Commands/ChangeSceneResolutionCommand.hpp"
+
 using namespace TPT;
 
 // ************************************************************************************************
@@ -38,7 +40,7 @@ SceneResolutionDialog::SceneResolutionDialog()
 }
 
 // ************************************************************************************************
-SceneResolution SceneResolutionDialog::SetSceneResolution(ISceneManager* scene)
+std::unique_ptr<IChangeSceneResolutionCommand> SceneResolutionDialog::SetSceneResolution(ISceneManager* scene)
 {
 	Reset();
 
@@ -51,16 +53,14 @@ SceneResolution SceneResolutionDialog::SetSceneResolution(ISceneManager* scene)
 	exec();
 
 	if (CanceledFlag)
-		return scene->GetSceneResolution();
+		return nullptr;
 
 	auto resolution = SceneResolution();
 	resolution.X = ResolutionFields[0]->text().toInt();
 	resolution.Y = ResolutionFields[1]->text().toInt();
 	resolution.Z = ResolutionFields[2]->text().toInt();
 
-	scene->SetSceneResolution(resolution);
-
-	return resolution;
+	return std::make_unique<ChangeSceneResolutionCommand>(CurrentResolution, resolution, scene);
 }
 
 // ************************************************************************************************
