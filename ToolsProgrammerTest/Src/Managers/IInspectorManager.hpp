@@ -4,6 +4,7 @@
 
 #include "Managers/Dialogs/IPointDialog.hpp"
 #include "Managers/Dialogs/IHeightMapDialog.hpp"
+#include "Managers/Dialogs/ISceneResolutionDialog.hpp"
 #include "Inspectors/IInspector.hpp"
 #include "Structures/Commands/IPointModificationCommand.hpp"
 
@@ -19,6 +20,7 @@ namespace TPT
 		virtual void SetSceneManager(ISceneManager* sceneManager) = 0;
 		virtual void SetPointDialog(std::unique_ptr<IPointDialog> pointDialog) = 0;
 		virtual void SetHeightMapDialog(std::unique_ptr<IHeightMapDialog> heightMapDialog) = 0;
+		virtual void SetSceneResolutionDialog(std::unique_ptr<ISceneResolutionDialog> sceneResolutionDialog) = 0;
 
 		virtual void AddInspector(std::unique_ptr<IInspector> inspector) = 0;
 
@@ -28,19 +30,14 @@ namespace TPT
 		virtual const Point* GetSelectedPoint() = 0;
 
 
-		// Displays PointDialog in creation mode.
 		virtual void SpawnPoint() = 0;
-		// Displays PointDialog in destruction mode.
 		virtual void DestroyPoint() = 0;
-		// Sets currently selected point to given.
 		virtual void SelectPoint(size_t id) = 0;
-		// Deselects currently selected point.
 		virtual void DeselectPoint() = 0;
-		// modifies point and adds cmd to undo/redo stack.
 		virtual void ModifyPoint(std::unique_ptr<IPointModificationCommand> cmd) = 0;
 
-		// Displays HeightMapDialog and replaces old height map in scene object.
 		virtual void LoadHeightMap() = 0;
+		virtual void ChangeSceneResolution() = 0;
 
 	signals:
 		void PointSpawnedSignal(const Point* point);
@@ -49,5 +46,6 @@ namespace TPT
 		void PointModifiedSignal(const Point* point);
 
 		void HeightMapLoadedSignal(const QPixmap* heightMap);
+		void SceneResolutionChangedSignal(SceneResolution resolution, SceneResolution oldResolution);
 	};
 }

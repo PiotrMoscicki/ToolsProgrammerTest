@@ -87,8 +87,8 @@ std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 {
 	Reset();
 
-	MapResolutionFields[0]->setText(QString::number(scene->GetSceneResolutionX()));
-	MapResolutionFields[1]->setText(QString::number(scene->GetSceneResolutionY()));
+	MapResolutionFields[0]->setText(QString::number(scene->GetSceneResolution().X));
+	MapResolutionFields[1]->setText(QString::number(scene->GetSceneResolution().Z));
 
 	exec();
 
@@ -164,17 +164,12 @@ void PointDialog::DestroyPoint(ISceneManager* scene, size_t id)
 void PointDialog::Reset()
 {
 	CanceledFlag = true;
+
 	NameField->setText("");
 	PositionFields[0]->setText("");
 	PositionFields[1]->setText("");
 	PointsResolutionFields[0]->setText("");
 	PointsResolutionFields[1]->setText("");
-}
-
-// ************************************************************************************************
-bool PointDialog::Canceled()
-{
-	return CanceledFlag;
 }
 
 // ************************************************************************************************

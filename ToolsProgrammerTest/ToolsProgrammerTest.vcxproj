@@ -19,6 +19,7 @@
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\Managers\Dialogs\HeightMapDialog.cpp" />
     <ClCompile Include="Src\Managers\Dialogs\PointDialog.cpp" />
+    <ClCompile Include="Src\Managers\Dialogs\SceneResolutionDialog.cpp" />
     <ClCompile Include="Src\Managers\InspectorManager.cpp" />
     <ClCompile Include="Src\Managers\ProjectManager.cpp" />
     <ClCompile Include="Src\Managers\SceneManager.cpp" />
@@ -26,6 +27,8 @@
     <ClCompile Include="Src\Structures\Point.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Managers\Dialogs\SceneResolutionDialog.hpp" />
+    <ClInclude Include="Src\Structures\SceneResolution.hpp" />
     <QtMoc Include="Src\Application\Application.hpp">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Documents\Programming\11bit\ToolsProgrammerTest\ToolsProgrammerTest\Src;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Documents\Programming\11bit\ToolsProgrammerTest\ToolsProgrammerTest\Src;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\Qt3DCore;$(QTDIR)\include\Qt3DAnimation;$(QTDIR)\include\Qt3DExtras;$(QTDIR)\include\Qt3DInput;$(QTDIR)\include\Qt3DLogic;$(QTDIR)\include\Qt3DRender;$(QTDIR)\include\Qt3DQuick;$(QTDIR)\include\Qt3DQuickAnimation;$(QTDIR)\include\Qt3DQuickExtras;$(QTDIR)\include\Qt3DQuickInput;$(QTDIR)\include\Qt3DQuickRender;$(QTDIR)\include\Qt3DQuickScene2D;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtWidgets</IncludePath>
@@ -39,6 +42,7 @@
     <ClInclude Include="Src\Managers\Dialogs\HeightMapDialog.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\IHeightMapDialog.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\IPointDialog.hpp" />
+    <ClInclude Include="Src\Managers\Dialogs\ISceneResolutionDialog.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\PointDialog.hpp" />
     <ClInclude Include="Src\Managers\InspectorManager.hpp" />
     <QtMoc Include="Src\Managers\ISceneManager.hpp">

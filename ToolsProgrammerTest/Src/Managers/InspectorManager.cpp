@@ -5,6 +5,13 @@
 using namespace TPT;
 
 // ************************************************************************************************
+InspectorManager::InspectorManager()
+{
+	connect(this, &InspectorManager::HeightMapLoadedSignal, this, &InspectorManager::HeightMapLoaded);
+	connect(this, &InspectorManager::SceneResolutionChangedSignal, this, &InspectorManager::SceneResolutionChanged);
+}
+
+// ************************************************************************************************
 const QPixmap* InspectorManager::GetHeightMap()
 {
 	return SceneManager->GetHeightMap();
@@ -26,7 +33,7 @@ void InspectorManager::SpawnPoint()
 		if (SceneManager->GetHeightMap())
 		{
 			auto heightMap = SceneManager->GetHeightMap()->toImage();
-			float denominator = 1.f / 255 * SceneManager->GetSceneResolutionY();
+			float denominator = 1.f / 255 * SceneManager->GetSceneResolution().Y;
 
 			for (auto point : points)
 			{
@@ -97,23 +104,52 @@ void InspectorManager::LoadHeightMap()
 {
 	auto heightMap = HeightMapDialog->LoadHeightMap(SceneManager);
 	if (!HeightMapDialog->Canceled())
-	{
 		emit HeightMapLoadedSignal(heightMap);
-
-		auto hm = heightMap->toImage();
-
-		for (auto point : SceneManager->GetPoints())
-		{
-			point->PosY = QColor(hm.pixel(point->PosX, point->PosZ)).value();
-
-			emit PointModifiedSignal(point);
-		}
-	}
 
 	HeightMapDialog->Reset();
 }
 
-// ************************************************************************************************
-void InspectorManager::SceneResolutionChanged()
+void InspectorManager::ChangeSceneResolution()
 {
+	auto oldResolution = SceneManager->GetSceneResolution();
+	auto resolution = SceneResolutionDialog->SetSceneResolution(SceneManager);
+
+	if (!SceneResolutionDialog->Canceled())
+		emit SceneResolutionChangedSignal(resolution, oldResolution);
+
+	SceneResolutionDialog->Reset();
+}
+
+
+
+
+//		private slots
+// ************************************************************************************************
+void InspectorManager::HeightMapLoaded(const QPixmap* heightMap)
+{
+	auto hm = heightMap->toImage();
+
+	for (auto point : SceneManager->GetPoints())
+	{
+		point->PosY = QColor(hm.pixel(point->PosX, point->PosZ)).value();
+
+		emit PointModifiedSignal(point);
+	}
+}
+
+// ************************************************************************************************
+void InspectorManager::SceneResolutionChanged(SceneResolution resolution, SceneResolution oldResolution)
+{
+	auto x = (float)resolution.X / oldResolution.X;
+	auto y = (float)resolution.Y / oldResolution.Y;
+	auto Z = (float)resolution.Z / oldResolution.Z;
+
+	for (auto point : SceneManager->GetPoints())
+	{
+		point->PosX *= x;
+		point->PosY *= y;
+		point->PosZ *= Z;
+
+		emit PointModifiedSignal(point);
+	}
 }

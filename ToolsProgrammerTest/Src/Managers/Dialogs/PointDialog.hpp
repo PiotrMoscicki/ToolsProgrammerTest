@@ -20,7 +20,7 @@ namespace TPT
 		void DestroyPoint(ISceneManager* scene, size_t id) override;
 
 		void Reset() override;
-		bool Canceled() override;
+		bool Canceled() override { return CanceledFlag; }
 
 	private:
 		QTabWidget* TabWidget;
