@@ -25,6 +25,7 @@
     <ClCompile Include="Src\Managers\SceneManager.cpp" />
     <ClCompile Include="Src\Structures\Commands\ChangeHeightMapCommand.cpp" />
     <ClCompile Include="Src\Structures\Commands\ChangeSceneResolutionCommand.cpp" />
+    <ClCompile Include="Src\Structures\Commands\DestroyPointCommand.cpp" />
     <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp" />
     <ClCompile Include="Src\Structures\Point.cpp" />
   </ItemGroup>
@@ -32,6 +33,7 @@
     <ClInclude Include="Src\Managers\Dialogs\SceneResolutionDialog.hpp" />
     <ClInclude Include="Src\Structures\Commands\ChangeHeightMapCommand.hpp" />
     <ClInclude Include="Src\Structures\Commands\ChangeSceneResolutionCommand.hpp" />
+    <ClInclude Include="Src\Structures\Commands\DestroyPointCommand.hpp" />
     <ClInclude Include="Src\Structures\Commands\IDialogCommand.hpp" />
     <ClInclude Include="Src\Structures\SceneResolution.hpp" />
     <QtMoc Include="Src\Application\Application.hpp">

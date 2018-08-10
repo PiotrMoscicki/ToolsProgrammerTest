@@ -56,8 +56,11 @@ void InspectorManager::DestroyPoint()
 	if (!SelectedPoint)
 		return;
 
-	emit PointDestroyedSignal(SceneManager->GetPoint(SelectedPoint->Id));
-	SceneManager->DestroyPoint(SelectedPoint->Id);
+	auto cmd = PointDialog->DestroyPoint(SceneManager, SelectedPoint->Id);
+
+	cmd->SetInspectorManager(this);
+	cmd->Execute();
+	cmd.release();
 
 	DeselectPoint();
 }
@@ -65,15 +68,7 @@ void InspectorManager::DestroyPoint()
 // ************************************************************************************************
 void InspectorManager::SelectPoint(size_t id)
 {
-	auto points = SceneManager->GetPoints();
-
-	for (auto point : points)
-		if (point->Id == id)
-		{
-			SelectedPoint = point;
-			break;
-		}
-
+	SelectedPoint = SceneManager->GetPoint(id);
 	emit PointSelectedSignal(SelectedPoint);
 }
 
@@ -92,11 +87,6 @@ void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cm
 	cmd->SetSceneManager(SceneManager);
 	cmd->Execute();
 	cmd.release();
-
-	if (SceneManager->GetHeightMap())
-		point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
-
-	emit PointModifiedSignal(point);
 }
 
 // ************************************************************************************************
@@ -104,27 +94,28 @@ void InspectorManager::LoadHeightMap()
 {
 	auto cmd = HeightMapDialog->LoadHeightMap(SceneManager);
 
+	if (HeightMapDialog->Canceled())
+		return;
+
 	cmd->SetInspectorManager(this);
 	cmd->Execute();
 	cmd.release();
 
-	if (!HeightMapDialog->Canceled())
-		emit HeightMapLoadedSignal(SceneManager->GetHeightMap());
-
 	HeightMapDialog->Reset();
 }
 
+// ************************************************************************************************
 void InspectorManager::ChangeSceneResolution()
 {
 	auto oldResolution = SceneManager->GetSceneResolution();
 	auto cmd = SceneResolutionDialog->SetSceneResolution(SceneManager);
 
+	if (SceneResolutionDialog->Canceled())
+		return;
+
 	cmd->SetInspectorManager(this);
 	cmd->Execute();
 	cmd.release();
-
-	if (!SceneResolutionDialog->Canceled())
-		emit SceneResolutionChangedSignal(SceneManager->GetSceneResolution(), oldResolution);
 
 	SceneResolutionDialog->Reset();
 }

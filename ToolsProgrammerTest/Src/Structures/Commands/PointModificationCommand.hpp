@@ -2,10 +2,11 @@
 
 #include "Structures/Commands/IPointModificationCommand.hpp"
 #include "Structures/Point.hpp"
-#include "Managers/IInspectorManager.hpp"
 
 namespace TPT
 {
+	class IInspectorManager;
+
 	class PointModificationCommand : public IPointModificationCommand
 	{
 	public:

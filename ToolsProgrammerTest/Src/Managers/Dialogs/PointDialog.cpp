@@ -3,6 +3,8 @@
 #include <QtWidgets/qmessagebox.h>
 #include <QtWidgets/qgridlayout.h>
 
+#include "Managers/ISceneManager.hpp"
+
 using namespace TPT;
 
 // ************************************************************************************************
@@ -151,13 +153,15 @@ std::vector<Point*> PointDialog::SpawnPoints(ISceneManager* scene)
 }
 
 // ************************************************************************************************
-void PointDialog::DestroyPoint(ISceneManager* scene, size_t id)
+std::unique_ptr<DestroyPointCommand> PointDialog::DestroyPoint(ISceneManager* scene, size_t id)
 {
 	Reset();
 
-	scene->DestroyPoint(id);
+	auto cmd = std::make_unique<DestroyPointCommand>(id, scene);
 
 	CanceledFlag = false;
+
+	return std::move(cmd);
 }
 
 // ************************************************************************************************
