@@ -2,10 +2,12 @@
 
 #include <QtWidgets/qfiledialog.h>
 
+#include "Structures/Commands/ChangeHeightMapCommand.hpp"
+
 using namespace TPT;
 
 // ************************************************************************************************
-const QPixmap* HeightMapDialog::LoadHeightMap(ISceneManager* scene)
+std::unique_ptr<ChangeHeightMapCommand> HeightMapDialog::LoadHeightMap(ISceneManager* scene)
 {
 	Reset();
 
@@ -18,12 +20,14 @@ const QPixmap* HeightMapDialog::LoadHeightMap(ISceneManager* scene)
 
 	auto pixmap = std::make_unique<QPixmap>(
 		QPixmap(fileDialog.selectedFiles()[0]).scaled(256, 256, Qt::KeepAspectRatio));
-	auto result = pixmap.get();
-	scene->SetHeightMap(std::move(pixmap));
+
+	auto cmd = std::make_unique<ChangeHeightMapCommand>(
+		scene->GetHeightMap() ? std::move(std::make_unique<QPixmap>(*scene->GetHeightMap())) : nullptr
+		, std::move(pixmap), scene);
 
 	CanceledFlag = false;
 
-	return result;
+	return cmd;
 }
 
 // ************************************************************************************************

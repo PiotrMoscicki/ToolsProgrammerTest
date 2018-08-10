@@ -83,6 +83,9 @@
     <ClCompile Include="Src\Structures\Commands\ChangeSceneResolutionCommand.cpp">
       <Filter>Source Files\Structures\Commands</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Structures\Commands\ChangeHeightMapCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Src\Managers\IInspectorManager.hpp">
@@ -163,6 +166,12 @@
       <Filter>Source Files\Structures\Commands</Filter>
     </ClInclude>
     <ClInclude Include="Src\Structures\Commands\ChangeSceneResolutionCommand.hpp">
+      <Filter>Source Files\Structures\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Commands\IChangeHeightMapCommand.hpp">
+      <Filter>Source Files\Structures\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Commands\ChangeHeightMapCommand.hpp">
       <Filter>Source Files\Structures\Commands</Filter>
     </ClInclude>
   </ItemGroup>

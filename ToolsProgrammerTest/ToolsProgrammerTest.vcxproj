@@ -23,13 +23,16 @@
     <ClCompile Include="Src\Managers\InspectorManager.cpp" />
     <ClCompile Include="Src\Managers\ProjectManager.cpp" />
     <ClCompile Include="Src\Managers\SceneManager.cpp" />
+    <ClCompile Include="Src\Structures\Commands\ChangeHeightMapCommand.cpp" />
     <ClCompile Include="Src\Structures\Commands\ChangeSceneResolutionCommand.cpp" />
     <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp" />
     <ClCompile Include="Src\Structures\Point.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Managers\Dialogs\SceneResolutionDialog.hpp" />
+    <ClInclude Include="Src\Structures\Commands\ChangeHeightMapCommand.hpp" />
     <ClInclude Include="Src\Structures\Commands\ChangeSceneResolutionCommand.hpp" />
+    <ClInclude Include="Src\Structures\Commands\IChangeHeightMapCommand.hpp" />
     <ClInclude Include="Src\Structures\Commands\IChangeSceneResolutionCommand.hpp" />
     <ClInclude Include="Src\Structures\SceneResolution.hpp" />
     <QtMoc Include="Src\Application\Application.hpp">

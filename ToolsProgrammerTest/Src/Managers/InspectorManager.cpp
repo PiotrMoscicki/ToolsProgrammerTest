@@ -102,9 +102,14 @@ void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cm
 // ************************************************************************************************
 void InspectorManager::LoadHeightMap()
 {
-	auto heightMap = HeightMapDialog->LoadHeightMap(SceneManager);
+	auto cmd = HeightMapDialog->LoadHeightMap(SceneManager);
+
+	cmd->SetInspectorManager(this);
+	cmd->Execute();
+	cmd.release();
+
 	if (!HeightMapDialog->Canceled())
-		emit HeightMapLoadedSignal(heightMap);
+		emit HeightMapLoadedSignal(SceneManager->GetHeightMap());
 
 	HeightMapDialog->Reset();
 }
