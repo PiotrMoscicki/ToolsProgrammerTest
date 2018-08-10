@@ -31,6 +31,7 @@ void SceneManager::DestroyPoint(size_t id)
 	for (auto i = 0; i < Points.size(); ++i)
 		if (Points[i]->Id == id)
 		{
+			delete Points[i];
 			Points.erase(Points.begin() + i);
 			break;
 		}

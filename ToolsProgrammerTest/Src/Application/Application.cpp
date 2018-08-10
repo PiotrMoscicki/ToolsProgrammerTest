@@ -19,11 +19,13 @@
 
 using namespace TPT;
 
+// ************************************************************************************************
 namespace TPT
 {
 	Application* gApp = nullptr;
 }
 
+// ************************************************************************************************
 Application::Application(int argc, char *argv[])
 	: QApplication(argc, argv), MainWindow(std::move(std::make_unique<QMainWindow>()))
 {
@@ -64,6 +66,21 @@ Application::Application(int argc, char *argv[])
 	// menu bar
 	MenuBar = new QMenuBar(MainWindow.get());
 	MainWindow->setMenuBar(MenuBar);
+
+		// edit menu
+		EditMenu = new QMenu(MainWindow.get());
+		MenuBar->addAction(EditMenu->menuAction());
+		EditMenu->setTitle("Edit");
+
+			UndoAction = new QAction(MainWindow.get());
+			EditMenu->addAction(UndoAction);
+			UndoAction->setText("Undo");
+			connect(UndoAction, &QAction::triggered, this, &Application::Undo);
+
+			RedoAction = new QAction(MainWindow.get());
+			EditMenu->addAction(RedoAction);
+			RedoAction->setText("Redo");
+			connect(RedoAction, &QAction::triggered, this, &Application::Redo);
 
 		// file menu
 		MapMenu = new QMenu(MainWindow.get());
@@ -113,8 +130,9 @@ Application::Application(int argc, char *argv[])
 	inspectorMgr->SetSceneManager(sceneMgr.get());
 	ProjectManager->SetSceneManager(std::move(sceneMgr));
 
-	auto commandsMgr = std::make_unique<CommandsManager>();
+	auto commandsMgr = std::make_unique<::CommandsManager>();
 	inspectorMgr->SetCommandsManager(commandsMgr.get());
+	CommandsManager = commandsMgr.get();
 	ProjectManager->SetCommandsManager(std::move(commandsMgr));
 
 	inspectorMgr->SetPointDialog(std::move(std::make_unique<PointDialog>()));
@@ -128,7 +146,20 @@ Application::Application(int argc, char *argv[])
 	ProjectManager->SetInspectorManager(std::move(inspectorMgr));
 }
 
+// ************************************************************************************************
 void Application::ChangeResolution()
 {
 	InspectorManager->ChangeSceneResolution();
+}
+
+// ************************************************************************************************
+void Application::Undo()
+{
+	CommandsManager->Undo();
+}
+
+// ************************************************************************************************
+void Application::Redo()
+{
+	CommandsManager->Redo();
 }

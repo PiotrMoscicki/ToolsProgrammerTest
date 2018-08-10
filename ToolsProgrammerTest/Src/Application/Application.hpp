@@ -9,6 +9,7 @@
 
 #include "Managers/IProjectManager.hpp"
 #include "Managers/IInspectorManager.hpp"
+#include "Managers/ICommandsManager.hpp"
 
 namespace TPT
 {
@@ -21,15 +22,21 @@ namespace TPT
 
 	private:
 		QMenuBar* MenuBar;
+			QMenu* EditMenu;
+				QAction* UndoAction;
+				QAction* RedoAction;
 			QMenu* MapMenu;
 				QAction* ChangeResolutionAction;
 
 		std::unique_ptr<QMainWindow> MainWindow;
 		IProjectManager* ProjectManager;
 		IInspectorManager* InspectorManager;
+		ICommandsManager* CommandsManager;
 
 	private slots:
 		void ChangeResolution();
+		void Undo();
+		void Redo();
 	};
 
 	extern Application* gApp;

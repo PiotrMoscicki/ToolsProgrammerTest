@@ -7,6 +7,7 @@ using namespace TPT;
 size_t IdGenerator = 0;
 std::vector<size_t> IdList;
 
+// ************************************************************************************************
 Point::Point() 
 	: Id(IdGenerator) 
 { 
@@ -14,16 +15,18 @@ Point::Point()
 	++IdGenerator;
 }
 
+// ************************************************************************************************
 Point::Point(size_t id)
 	: Id(id) 
 {
 	if (std::find(IdList.begin(), IdList.end(), Id) != IdList.end()) 
 		throw new std::exception();
 
-	IdList.push_back(IdGenerator);
+	IdList.push_back(Id);
 }
 
-TPT::Point::~Point()
+// ************************************************************************************************
+Point::~Point()
 {
-	IdList.erase(std::remove(IdList.begin(), IdList.end(), Id), IdList.end());
+	IdList.erase(std::find(IdList.begin(), IdList.end(), Id));
 }

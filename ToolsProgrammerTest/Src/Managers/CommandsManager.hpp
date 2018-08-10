@@ -7,10 +7,17 @@
 
 namespace TPT
 {
+	enum class eCommandType
+	{
+		EXECUTE,
+		UNDO,
+		REDO
+	};
+
 	class CommandsManager : public ICommandsManager
 	{
 	public:
-		CommandsManager() { Commands.push_back(std::move(std::make_unique<BlankCommand>())); }
+		CommandsManager();
 
 		void AddCommand(std::unique_ptr<ICommand> cmd) override;
 
@@ -19,7 +26,9 @@ namespace TPT
 
 	private:
 		bool InitialCommand = true;
+		eCommandType LastCommandType = eCommandType::EXECUTE;
 		size_t CommandIdx = 0;
+		
 		std::vector<std::unique_ptr<ICommand>> Commands;
 	};
 }
