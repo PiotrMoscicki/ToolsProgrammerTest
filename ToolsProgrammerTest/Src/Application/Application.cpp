@@ -6,6 +6,7 @@
 #include "Managers/InspectorManager.hpp"
 #include "Managers/ProjectManager.hpp"
 #include "Managers/SceneManager.hpp"
+#include "Managers/CommandsManager.hpp"
 
 #include "Inspectors/SceneInspector.hpp"
 #include "Inspectors/PointInspector.hpp"
@@ -111,6 +112,10 @@ Application::Application(int argc, char *argv[])
 	auto sceneMgr = std::make_unique<SceneManager>();
 	inspectorMgr->SetSceneManager(sceneMgr.get());
 	ProjectManager->SetSceneManager(std::move(sceneMgr));
+
+	auto commandsMgr = std::make_unique<CommandsManager>();
+	inspectorMgr->SetCommandsManager(commandsMgr.get());
+	ProjectManager->SetCommandsManager(std::move(commandsMgr));
 
 	inspectorMgr->SetPointDialog(std::move(std::make_unique<PointDialog>()));
 	inspectorMgr->SetHeightMapDialog(std::move(std::make_unique<HeightMapDialog>()));

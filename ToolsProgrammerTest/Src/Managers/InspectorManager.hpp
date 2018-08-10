@@ -12,6 +12,7 @@ namespace TPT
 		InspectorManager();
 
 		void SetSceneManager(ISceneManager* sceneManager) override { SceneManager = sceneManager; }
+		void SetCommandsManager(ICommandsManager* commandsManager) override { CommandsManager = commandsManager; }
 		void SetPointDialog(std::unique_ptr<IPointDialog> pointDialog) override 
 			{ PointDialog = std::move(pointDialog); }
 		void SetHeightMapDialog(std::unique_ptr<IHeightMapDialog> heightMapDialog) override
@@ -44,6 +45,7 @@ namespace TPT
 		std::vector<std::unique_ptr<IInspector>> Inspectors;
 
 		ISceneManager* SceneManager = nullptr;
+		ICommandsManager* CommandsManager = nullptr;
 
 		Point* SelectedPoint = nullptr;
 	

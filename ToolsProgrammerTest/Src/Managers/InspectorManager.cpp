@@ -1,6 +1,7 @@
 #include "InspectorManager.hpp"
 
 #include "Managers/IProjectManager.hpp"
+#include "Managers/ICommandsManager.hpp"
 
 using namespace TPT;
 
@@ -32,8 +33,7 @@ void InspectorManager::SpawnPoint()
 	auto cmd = PointDialog->SpawnPoints(SceneManager);
 
 	cmd->SetInspectorManager(this);
-	cmd->Execute();
-	cmd.release();
+	CommandsManager->AddCommand(std::move(cmd));
 
 	PointDialog->Reset();
 }
@@ -47,8 +47,7 @@ void InspectorManager::DestroyPoint()
 	auto cmd = PointDialog->DestroyPoint(SceneManager, SelectedPoint->Id);
 
 	cmd->SetInspectorManager(this);
-	cmd->Execute();
-	cmd.release();
+	CommandsManager->AddCommand(std::move(cmd));
 
 	DeselectPoint();
 }
@@ -73,8 +72,7 @@ void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cm
 	auto point = SceneManager->GetPoint(cmd->GetPointId());
 
 	cmd->SetSceneManager(SceneManager);
-	cmd->Execute();
-	cmd.release();
+	CommandsManager->AddCommand(std::move(cmd));
 }
 
 // ************************************************************************************************
@@ -86,8 +84,7 @@ void InspectorManager::LoadHeightMap()
 		return;
 
 	cmd->SetInspectorManager(this);
-	cmd->Execute();
-	cmd.release();
+	CommandsManager->AddCommand(std::move(cmd));
 
 	HeightMapDialog->Reset();
 }
@@ -102,8 +99,7 @@ void InspectorManager::ChangeSceneResolution()
 		return;
 
 	cmd->SetInspectorManager(this);
-	cmd->Execute();
-	cmd.release();
+	CommandsManager->AddCommand(std::move(cmd));
 
 	SceneResolutionDialog->Reset();
 }

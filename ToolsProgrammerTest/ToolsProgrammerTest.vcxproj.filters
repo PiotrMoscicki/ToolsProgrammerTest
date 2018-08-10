@@ -92,6 +92,9 @@
     <ClCompile Include="Src\Structures\Commands\SpawnPointsCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Managers\CommandsManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Src\Managers\IInspectorManager.hpp">
@@ -181,6 +184,15 @@
       <Filter>Source Files\Structures\Commands</Filter>
     </ClInclude>
     <ClInclude Include="Src\Structures\Commands\SpawnPointsCommand.hpp">
+      <Filter>Source Files\Structures\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Managers\ICommandsManager.hpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Managers\CommandsManager.hpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Structures\Commands\BlankCommand.hpp">
       <Filter>Source Files\Structures\Commands</Filter>
     </ClInclude>
   </ItemGroup>

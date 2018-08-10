@@ -11,6 +11,7 @@
 namespace TPT
 {
 	class IProjectManager;
+	class ICommandsManager;
 
 	class IInspectorManager : public QObject
 	{
@@ -18,6 +19,7 @@ namespace TPT
 
 	public:
 		virtual void SetSceneManager(ISceneManager* sceneManager) = 0;
+		virtual void SetCommandsManager(ICommandsManager* commandsManager) = 0;
 		virtual void SetPointDialog(std::unique_ptr<IPointDialog> pointDialog) = 0;
 		virtual void SetHeightMapDialog(std::unique_ptr<IHeightMapDialog> heightMapDialog) = 0;
 		virtual void SetSceneResolutionDialog(std::unique_ptr<ISceneResolutionDialog> sceneResolutionDialog) = 0;

@@ -17,6 +17,7 @@
     <ClCompile Include="Src\Inspectors\SceneInspector.cpp" />
     <ClCompile Include="Src\Inspectors\HeightMapInspector.cpp" />
     <ClCompile Include="Src\main.cpp" />
+    <ClCompile Include="Src\Managers\CommandsManager.cpp" />
     <ClCompile Include="Src\Managers\Dialogs\HeightMapDialog.cpp" />
     <ClCompile Include="Src\Managers\Dialogs\PointDialog.cpp" />
     <ClCompile Include="Src\Managers\Dialogs\SceneResolutionDialog.cpp" />
@@ -31,7 +32,10 @@
     <ClCompile Include="Src\Structures\Point.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Managers\CommandsManager.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\SceneResolutionDialog.hpp" />
+    <ClInclude Include="Src\Managers\ICommandsManager.hpp" />
+    <ClInclude Include="Src\Structures\Commands\BlankCommand.hpp" />
     <ClInclude Include="Src\Structures\Commands\ChangeHeightMapCommand.hpp" />
     <ClInclude Include="Src\Structures\Commands\ChangeSceneResolutionCommand.hpp" />
     <ClInclude Include="Src\Structures\Commands\DestroyPointCommand.hpp" />
