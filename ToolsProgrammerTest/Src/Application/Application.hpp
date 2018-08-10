@@ -8,6 +8,7 @@
 #include <QtWidgets/qmenubar.h>
 
 #include "Managers/IProjectManager.hpp"
+#include "Managers/IInspectorManager.hpp"
 
 namespace TPT
 {
@@ -24,7 +25,8 @@ namespace TPT
 				QAction* ChangeResolutionAction;
 
 		std::unique_ptr<QMainWindow> MainWindow;
-		std::unique_ptr<IProjectManager> ProjectManager;
+		IProjectManager* ProjectManager;
+		IInspectorManager* InspectorManager;
 
 	private slots:
 		void ChangeResolution();

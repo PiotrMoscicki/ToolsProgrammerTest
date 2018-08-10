@@ -14,6 +14,7 @@
 
 #include "Managers/Dialogs/PointDialog.hpp"
 #include "Managers/Dialogs/HeightMapDialog.hpp"
+#include "Managers/Dialogs/SceneResolutionDialog.hpp"
 
 using namespace TPT;
 
@@ -103,9 +104,9 @@ Application::Application(int argc, char *argv[])
 
 
 
-	ProjectManager = std::make_unique<::ProjectManager>();
+	ProjectManager = new ::ProjectManager();
 
-	auto inspectorMgr = std::make_unique<InspectorManager>();
+	auto inspectorMgr = std::make_unique<::InspectorManager>();
 
 	auto sceneMgr = std::make_unique<SceneManager>();
 	inspectorMgr->SetSceneManager(sceneMgr.get());
@@ -113,13 +114,16 @@ Application::Application(int argc, char *argv[])
 
 	inspectorMgr->SetPointDialog(std::move(std::make_unique<PointDialog>()));
 	inspectorMgr->SetHeightMapDialog(std::move(std::make_unique<HeightMapDialog>()));
+	inspectorMgr->SetSceneResolutionDialog(std::move(std::make_unique<SceneResolutionDialog>()));
 	inspectorMgr->AddInspector(std::move(pointInspector));
 	inspectorMgr->AddInspector(std::move(sceneInspector));
 	inspectorMgr->AddInspector(std::move(heightMapInspector));
 	inspectorMgr->AddInspector(std::move(scene3DInspector));
+	InspectorManager = inspectorMgr.get();
 	ProjectManager->SetInspectorManager(std::move(inspectorMgr));
 }
 
 void Application::ChangeResolution()
 {
+	InspectorManager->ChangeSceneResolution();
 }

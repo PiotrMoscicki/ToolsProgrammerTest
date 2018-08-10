@@ -99,7 +99,7 @@ void SceneInspector::PointSelected(const Point* point)
 // ************************************************************************************************
 void SceneInspector::PointModified(const Point* point)
 {
-	SilenceSelectionChanged = true;
+	SilenceItemChanged = true;
 
 	auto item = PointToItem[point];
 
@@ -107,7 +107,7 @@ void SceneInspector::PointModified(const Point* point)
 	item->setText(1, QString::number(point->PosX));
 	item->setText(2, QString::number(point->PosZ));
 
-	SilenceSelectionChanged = false;
+	SilenceItemChanged = false;
 }
 
 

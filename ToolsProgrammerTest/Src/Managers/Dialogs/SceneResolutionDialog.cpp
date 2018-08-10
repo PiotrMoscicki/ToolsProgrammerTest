@@ -20,7 +20,7 @@ SceneResolutionDialog::SceneResolutionDialog()
 	for (int i = 0; i < 3; ++i)
 	{
 		ResolutionFields[i] = new QLineEdit(this);
-		gridLayout->addWidget(ResolutionFields[0], 0, i + 1);
+		gridLayout->addWidget(ResolutionFields[i], 0, i + 1);
 	}
 
 	connect(ResolutionFields[0], &QLineEdit::editingFinished, this, &SceneResolutionDialog::XChanged);
