@@ -29,7 +29,7 @@ SceneResolutionDialog::SceneResolutionDialog()
 	OkButton = new QPushButton(this);
 	OkButton->setText("Ok");
 	connect(OkButton, &QPushButton::clicked, this, &SceneResolutionDialog::Ok);
-	gridLayout->addWidget(OkButton, 1, 2);
+	gridLayout->addWidget(OkButton, 1, 3);
 
 	CancelButton = new QPushButton(this);
 	CancelButton->setText("Cancel");
