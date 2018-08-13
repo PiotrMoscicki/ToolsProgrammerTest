@@ -16,6 +16,7 @@
 #include <Qt3DRender/qpointlight.h>
 
 #include <Qt3DCore/qaspectengine.h>
+#include <Qt3DRender/qobjectpicker.h>
 
 #include <Qt3DRender/qrenderaspect.h>
 #include <Qt3DExtras/qforwardrenderer.h>
@@ -160,15 +161,22 @@ void Scene3DInspector::PointSpawned(const Point* point)
 	auto transform = new Qt3DCore::QTransform();
 	transform->setTranslation(QVector3D(point->PosX, point->PosY, point->PosZ));
 
-	// Cuboid
+	// object picker
+	auto picker = new Qt3DRender::QObjectPicker();
+	auto helper = std::make_unique<PickHelper>(this, point->Id);
+	connect(picker, &Qt3DRender::QObjectPicker::clicked, helper.get(), &Scene3DInspector::PickHelper::PickEvent);
+
+	// entity
 	auto entity = new Qt3DCore::QEntity(Root);
 	entity->addComponent(cubeMesh);
 	entity->addComponent(cubeMaterial);
 	entity->addComponent(transform);
+	entity->addComponent(picker);
 
 	Points.insert(std::pair<size_t, Qt3DCore::QEntity*>(point->Id, entity));
 	Materials.insert(std::pair<size_t, Qt3DExtras::QPhongMaterial*>(point->Id, cubeMaterial));
 	Transforms.insert(std::pair<size_t, Qt3DCore::QTransform*>(point->Id, transform));
+	PickHelpers.insert(std::pair<size_t, std::unique_ptr<PickHelper>>(point->Id, std::move(helper)));
 }
 
 // ************************************************************************************************
