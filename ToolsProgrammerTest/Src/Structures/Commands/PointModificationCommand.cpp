@@ -11,7 +11,8 @@ void PointModificationCommand::Execute()
 	*point = RedoValue;
 
 	if (SceneManager->GetHeightMap())
-		point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+		point->PosY = (float)SceneManager->GetSceneResolution().Y / 255
+			* QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 
 	Manager->PointModifiedSignal(point);
 }
@@ -23,7 +24,8 @@ void PointModificationCommand::Undo()
 	*point = UndoValue;
 
 	if (SceneManager->GetHeightMap())
-		point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+		point->PosY = (float)SceneManager->GetSceneResolution().Y / 255
+			* QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 
 	Manager->PointModifiedSignal(point);
 }
@@ -35,7 +37,8 @@ void PointModificationCommand::Redo()
 	*point = RedoValue;
 
 	if (SceneManager->GetHeightMap())
-		point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+		point->PosY = (float)SceneManager->GetSceneResolution().Y / 255
+			* QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 
 	Manager->PointModifiedSignal(point);
 }

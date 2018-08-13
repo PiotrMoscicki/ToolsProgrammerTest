@@ -29,8 +29,7 @@ void CommandsManager::Undo()
 
 	Commands[CommandIdx]->Undo();
 
-	if (LastCommandType == eCommandType::UNDO)
-		--CommandIdx;
+	--CommandIdx;
 	LastCommandType = eCommandType::UNDO;
 }
 

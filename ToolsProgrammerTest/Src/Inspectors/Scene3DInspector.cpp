@@ -70,6 +70,7 @@ Scene3DInspector::Scene3DInspector(QWidget* parent)
 	lightEntity->addComponent(light);
 	Qt3DCore::QTransform *lightTransform = new Qt3DCore::QTransform(lightEntity);
 	lightTransform->setTranslation(cameraEntity->position());
+	lightTransform->setRotationZ(45);
 	lightEntity->addComponent(lightTransform);
 
 	// For camera controls
@@ -78,6 +79,55 @@ Scene3DInspector::Scene3DInspector(QWidget* parent)
 
 	// Set root object of the scene
 	view->setRootEntity(Root);
+
+
+
+	// mesh
+	auto mesh = new Qt3DExtras::QCuboidMesh();
+	// material
+	auto material = new Qt3DExtras::QPhongMaterial();
+	material->setDiffuse(QColor(QRgb(0xff0000)));
+	// transform
+	auto transform = new Qt3DCore::QTransform();
+	transform->setTranslation(QVector3D(25, -1, -1));
+	transform->setScale3D(QVector3D(50, 1, 1));
+	// Cuboid
+	auto axis = new Qt3DCore::QEntity(Root);
+	axis->addComponent(mesh);
+	axis->addComponent(material);
+	axis->addComponent(transform);
+
+	// mesh
+	mesh = new Qt3DExtras::QCuboidMesh();
+	// material
+	material = new Qt3DExtras::QPhongMaterial();
+	material->setDiffuse(QColor(QRgb(0x00ff00)));
+	// transform
+	transform = new Qt3DCore::QTransform();
+	transform->setTranslation(QVector3D(-1, 25, -1));
+	transform->setScale3D(QVector3D(1, 50, 1));
+	// Cuboid
+	axis = new Qt3DCore::QEntity(Root);
+	axis->addComponent(mesh);
+	axis->addComponent(material);
+	axis->addComponent(transform);
+
+	// mesh
+	mesh = new Qt3DExtras::QCuboidMesh();
+	// material
+	material = new Qt3DExtras::QPhongMaterial();
+	material->setDiffuse(QColor(QRgb(0x0000ff)));
+	// transform
+	transform = new Qt3DCore::QTransform();
+	transform->setTranslation(QVector3D(-1, -1, 25));
+	transform->setScale3D(QVector3D(1, 1, 50));
+	// Cuboid
+	axis = new Qt3DCore::QEntity(Root);
+	axis->addComponent(mesh);
+	axis->addComponent(material);
+	axis->addComponent(transform);
+
+
 
 	layout()->addWidget(container);
 }

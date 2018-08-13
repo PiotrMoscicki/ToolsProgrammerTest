@@ -2,6 +2,7 @@
 
 using namespace TPT;
 
+// ************************************************************************************************
 void SceneManager::SetHeightMap(std::unique_ptr<QPixmap> heightMap)
 {
 	HeightMap = std::move(heightMap);
@@ -10,7 +11,7 @@ void SceneManager::SetHeightMap(std::unique_ptr<QPixmap> heightMap)
 // ************************************************************************************************
 Point* SceneManager::SpawnPoint()
 {
-	auto newPoint = new Point();
+	auto newPoint = new Point(++IdGenerator);
 	Points.push_back(newPoint);
 
 	return newPoint;

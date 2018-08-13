@@ -26,5 +26,7 @@ namespace TPT
 		std::vector<Point*> Points;
 
 		SceneResolution Resolution;
+
+		size_t IdGenerator = 0;
 	};
 }

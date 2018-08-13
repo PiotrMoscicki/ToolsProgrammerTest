@@ -13,7 +13,8 @@ void SpawnPointsCommand::Execute()
 		point->PosX = PositionX;
 		point->PosZ = PositionZ;
 		if (SceneManager->GetHeightMap())
-			point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+			point->PosY = (float)SceneManager->GetSceneResolution().Y / 255 
+				* QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 
 		PointsIds.push_back(point->Id);
 
@@ -23,6 +24,7 @@ void SpawnPointsCommand::Execute()
 	{
 		float deltaX = (float)SceneResolutionX / PointsResolutionX;
 		float deltaZ = (float)SceneResolutionZ / PointsResolutionZ;
+		auto y = (float)SceneManager->GetSceneResolution().Y / 255;
 
 		for (float x = 0; x <= SceneResolutionX; x += deltaX)
 			for (float z = 0; z <= SceneResolutionZ; z += deltaZ)
@@ -31,7 +33,7 @@ void SpawnPointsCommand::Execute()
 				point->PosX = x;
 				point->PosZ = z;
 				if (SceneManager->GetHeightMap())
-					point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+					point->PosY = y * QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 				PointsIds.push_back(point->Id);
 
 				InspectorManager->PointSpawnedSignal(point);
@@ -65,7 +67,8 @@ void SpawnPointsCommand::Redo()
 		point->PosX = PositionX;
 		point->PosZ = PositionZ;
 		if (SceneManager->GetHeightMap())
-			point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+			point->PosY = (float)SceneManager->GetSceneResolution().Y / 255
+			* QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 
 		InspectorManager->PointSpawnedSignal(point);
 	}
@@ -73,6 +76,7 @@ void SpawnPointsCommand::Redo()
 	{
 		float deltaX = (float)SceneResolutionX / PointsResolutionX;
 		float deltaZ = (float)SceneResolutionZ / PointsResolutionZ;
+		auto y = (float)SceneManager->GetSceneResolution().Y / 255;
 
 		auto ctr = 0;
 
@@ -83,7 +87,7 @@ void SpawnPointsCommand::Redo()
 				point->PosX = x;
 				point->PosZ = z;
 				if (SceneManager->GetHeightMap())
-					point->PosY = QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
+					point->PosY = y * QColor(SceneManager->GetHeightMap()->toImage().pixel(point->PosX, point->PosZ)).value();
 
 				InspectorManager->PointSpawnedSignal(point);
 			}

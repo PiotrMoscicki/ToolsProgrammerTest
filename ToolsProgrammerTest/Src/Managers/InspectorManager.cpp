@@ -32,6 +32,9 @@ void InspectorManager::SpawnPoint()
 {
 	auto cmd = PointDialog->SpawnPoints(SceneManager);
 
+	if (PointDialog->Canceled())
+		return;
+
 	cmd->SetInspectorManager(this);
 	CommandsManager->AddCommand(std::move(cmd));
 
@@ -45,6 +48,9 @@ void InspectorManager::DestroyPoint()
 		return;
 
 	auto cmd = PointDialog->DestroyPoint(SceneManager, SelectedPoint->Id);
+
+	if (PointDialog->Canceled())
+		return;
 
 	cmd->SetInspectorManager(this);
 	CommandsManager->AddCommand(std::move(cmd));

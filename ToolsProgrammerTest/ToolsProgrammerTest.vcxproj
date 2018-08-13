@@ -29,7 +29,6 @@
     <ClCompile Include="Src\Structures\Commands\DestroyPointCommand.cpp" />
     <ClCompile Include="Src\Structures\Commands\PointModificationCommand.cpp" />
     <ClCompile Include="Src\Structures\Commands\SpawnPointsCommand.cpp" />
-    <ClCompile Include="Src\Structures\Point.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Managers\CommandsManager.hpp" />

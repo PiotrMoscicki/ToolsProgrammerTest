@@ -8,9 +8,8 @@ namespace TPT
 	class Point
 	{
 	public:
-		Point();
-		Point(size_t id);
-		~Point();
+		Point() : Id(0) {}
+		Point(size_t id) : Id(id) {}
 
 		Point operator=(const Point& p)
 		{
