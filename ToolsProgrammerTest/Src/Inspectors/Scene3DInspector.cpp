@@ -29,7 +29,6 @@
 #include <Qt3DExtras/QCuboidMesh>
 #include <Qt3DExtras/QPlaneMesh>
 #include <Qt3DExtras/QSphereMesh>
-#include <Qt3DExtras/QPhongMaterial>
 
 #include <QtCore/QDebug>
 
@@ -155,7 +154,7 @@ void Scene3DInspector::PointSpawned(const Point* point)
 
 	// material
 	auto cubeMaterial = new Qt3DExtras::QPhongMaterial();
-	cubeMaterial->setDiffuse(QColor(QRgb(0x665423)));
+	cubeMaterial->setDiffuse(QColor(QRgb(0x99aa22)));
 
 	// transform
 	auto transform = new Qt3DCore::QTransform();
@@ -168,6 +167,7 @@ void Scene3DInspector::PointSpawned(const Point* point)
 	entity->addComponent(transform);
 
 	Points.insert(std::pair<size_t, Qt3DCore::QEntity*>(point->Id, entity));
+	Materials.insert(std::pair<size_t, Qt3DExtras::QPhongMaterial*>(point->Id, cubeMaterial));
 	Transforms.insert(std::pair<size_t, Qt3DCore::QTransform*>(point->Id, transform));
 }
 
@@ -182,6 +182,22 @@ void Scene3DInspector::PointDestroyed(const Point* point)
 // ************************************************************************************************
 void Scene3DInspector::PointSelected(const Point* point)
 {
+	if (!point)
+	{
+		if (AnySelected)
+			Materials[SelectedPioint]->setDiffuse(QColor(QRgb(0x99aa22)));
+
+		AnySelected = false;
+	}
+	else
+	{
+		if (AnySelected)
+			Materials[SelectedPioint]->setDiffuse(QColor(QRgb(0x99aa22)));
+
+		AnySelected = true;
+		SelectedPioint = point->Id;
+		Materials[point->Id]->setDiffuse(QColor(QRgb(0xaa0000)));
+	}
 }
 
 // ************************************************************************************************
