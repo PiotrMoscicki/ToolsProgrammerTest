@@ -177,6 +177,8 @@ void Scene3DInspector::PointDestroyed(const Point* point)
 	delete Points[point->Id];
 	Points.erase(point->Id);
 	Transforms.erase(point->Id);
+
+	AnySelected = false;
 }
 
 // ************************************************************************************************
