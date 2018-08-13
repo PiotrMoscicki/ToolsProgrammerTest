@@ -91,7 +91,7 @@ Scene3DInspector::Scene3DInspector(QWidget* parent)
 	// transform
 	auto transform = new Qt3DCore::QTransform();
 	transform->setTranslation(QVector3D(25, -1, -1));
-	transform->setScale3D(QVector3D(50, 1, 1));
+	transform->setScale3D(QVector3D(50, 0.5f, 0.5f));
 	// Cuboid
 	auto axis = new Qt3DCore::QEntity(Root);
 	axis->addComponent(mesh);
@@ -106,7 +106,7 @@ Scene3DInspector::Scene3DInspector(QWidget* parent)
 	// transform
 	transform = new Qt3DCore::QTransform();
 	transform->setTranslation(QVector3D(-1, 25, -1));
-	transform->setScale3D(QVector3D(1, 50, 1));
+	transform->setScale3D(QVector3D(0.5f, 50, 0.5f));
 	// Cuboid
 	axis = new Qt3DCore::QEntity(Root);
 	axis->addComponent(mesh);
@@ -121,7 +121,7 @@ Scene3DInspector::Scene3DInspector(QWidget* parent)
 	// transform
 	transform = new Qt3DCore::QTransform();
 	transform->setTranslation(QVector3D(-1, -1, 25));
-	transform->setScale3D(QVector3D(1, 1, 50));
+	transform->setScale3D(QVector3D(0.5f, 0.5f, 50));
 	// Cuboid
 	axis = new Qt3DCore::QEntity(Root);
 	axis->addComponent(mesh);
@@ -155,7 +155,11 @@ void Scene3DInspector::PointSpawned(const Point* point)
 
 	// material
 	auto cubeMaterial = new Qt3DExtras::QPhongMaterial();
-	cubeMaterial->setDiffuse(QColor(QRgb(0x99aa22)));
+	auto denominator = (float)point->PosY / Manager->GetSceneResolution().Y;
+	auto r = denominator * 0xff0000;
+	auto g = (-denominator + 1) * 0x00ff00;
+	auto b = 0x000000;
+	cubeMaterial->setDiffuse(QColor(QRgb(r + g + b)));
 
 	// transform
 	auto transform = new Qt3DCore::QTransform();
@@ -195,18 +199,19 @@ void Scene3DInspector::PointSelected(const Point* point)
 	if (!point)
 	{
 		if (AnySelected)
-			Materials[SelectedPioint]->setDiffuse(QColor(QRgb(0x99aa22)));
+			Materials[SelectedPioint]->setDiffuse(LastSelectedColor);
 
 		AnySelected = false;
 	}
 	else
 	{
 		if (AnySelected)
-			Materials[SelectedPioint]->setDiffuse(QColor(QRgb(0x99aa22)));
+			Materials[SelectedPioint]->setDiffuse(LastSelectedColor);
 
 		AnySelected = true;
 		SelectedPioint = point->Id;
-		Materials[point->Id]->setDiffuse(QColor(QRgb(0xaa0000)));
+		LastSelectedColor = Materials[point->Id]->diffuse();
+		Materials[point->Id]->setDiffuse(QColor(QRgb(0x3333ff)));
 	}
 }
 
@@ -221,4 +226,12 @@ void Scene3DInspector::PointModified(const Point* point)
 	translation.setZ(point->PosZ);
 
 	transform->setTranslation(translation);
+
+
+	auto material = Materials[point->Id];
+	auto denominator = (float)point->PosY / Manager->GetSceneResolution().Y;
+	auto r = int(0xff * denominator) * 0x010000;
+	auto g = int(0xff * (1 - denominator)) * 0x000100;
+	auto b = 0x000000;
+	material->setDiffuse(QColor(QRgb(r + g + b)));
 }

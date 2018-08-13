@@ -115,7 +115,10 @@ std::unique_ptr<SpawnPointsCommand> PointDialog::SpawnPoints(ISceneManager* scen
 		size_t pointsResolutionZ = PointsResolutionFields[1]->text().toInt();
 
 		if (pointsResolutionX == 0 || pointsResolutionZ == 0)
+		{
+			CanceledFlag = true;
 			break;
+		}
 
 		if (pointsResolutionX * pointsResolutionZ > 4096)
 		{

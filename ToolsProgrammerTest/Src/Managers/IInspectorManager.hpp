@@ -27,6 +27,7 @@ namespace TPT
 		virtual void AddInspector(std::unique_ptr<IInspector> inspector) = 0;
 
 
+		virtual SceneResolution GetSceneResolution() = 0;
 		virtual const QPixmap* GetHeightMap() = 0;
 		virtual const std::vector<Point*>& GetPoints() = 0;
 		virtual const Point* GetSelectedPoint() = 0;

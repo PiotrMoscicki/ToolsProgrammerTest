@@ -24,9 +24,10 @@ namespace TPT
 			{ inspector->SetManager(this); Inspectors.push_back(std::move(inspector)); }
 
 
-		virtual const QPixmap* GetHeightMap() override;
-		virtual const std::vector<Point*>& GetPoints() override;
-		virtual const Point* GetSelectedPoint() override { return SelectedPoint; }
+		SceneResolution GetSceneResolution() override { return SceneManager->GetSceneResolution(); }
+		const QPixmap* GetHeightMap() override;
+		const std::vector<Point*>& GetPoints() override;
+		const Point* GetSelectedPoint() override { return SelectedPoint; }
 
 
 		void SpawnPoint() override;

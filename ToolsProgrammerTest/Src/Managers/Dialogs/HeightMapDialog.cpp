@@ -19,7 +19,7 @@ std::unique_ptr<IDialogCommand> HeightMapDialog::LoadHeightMap(ISceneManager* sc
 		return nullptr;
 
 	auto pixmap = std::make_unique<QPixmap>(
-		QPixmap(fileDialog.selectedFiles()[0]).scaled(256, 256, Qt::KeepAspectRatio));
+		QPixmap(fileDialog.selectedFiles()[0]));
 
 	auto cmd = std::make_unique<ChangeHeightMapCommand>(
 		scene->GetHeightMap() ? std::move(std::make_unique<QPixmap>(*scene->GetHeightMap())) : nullptr

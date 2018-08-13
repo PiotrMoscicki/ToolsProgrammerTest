@@ -51,5 +51,6 @@ namespace TPT
 
 		bool AnySelected = false;
 		size_t SelectedPioint;
+		QColor LastSelectedColor;
 	};
 }

@@ -117,12 +117,14 @@ void InspectorManager::ChangeSceneResolution()
 // ************************************************************************************************
 void InspectorManager::HeightMapLoaded(const QPixmap* heightMap)
 {
-	auto hm = heightMap->toImage();
+	auto map = SceneManager->GetHeightMap()->toImage().scaled(
+		SceneManager->GetSceneResolution().X + 1, SceneManager->GetSceneResolution().Z + 1);
 	auto y = (float)SceneManager->GetSceneResolution().Y / 255;
 
 	for (auto point : SceneManager->GetPoints())
 	{
-		point->PosY = y * QColor(hm.pixel(point->PosX, point->PosZ)).value();
+		point->PosY = (float)SceneManager->GetSceneResolution().Y / 255
+			* QColor(map.pixel(point->PosX, point->PosZ)).value();
 
 		emit PointModifiedSignal(point);
 	}
