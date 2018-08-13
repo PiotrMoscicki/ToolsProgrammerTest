@@ -90,10 +90,15 @@ void SceneInspector::PointDestroyed(const Point* point)
 // ************************************************************************************************
 void SceneInspector::PointSelected(const Point* point)
 {
+	SilenceSelectionChanged = true;
+
 	if (!point)
 		return;
 
+	Tree->clearSelection();
 	PointToItem[point]->setSelected(true);
+
+	SilenceSelectionChanged = false;
 }
 
 // ************************************************************************************************
