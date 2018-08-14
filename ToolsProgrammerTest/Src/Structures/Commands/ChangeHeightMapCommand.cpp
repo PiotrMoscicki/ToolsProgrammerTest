@@ -20,12 +20,16 @@ void ChangeHeightMapCommand::Undo()
 		return;
 
 	auto val = std::make_unique<QPixmap>(*UndoValue);
+	auto ptr = val.get();
 	SceneManager->SetHeightMap(std::move(val));
+	InspectorManager->HeightMapLoadedSignal(ptr);
 }
 
 // ************************************************************************************************
 void ChangeHeightMapCommand::Redo()
 {
 	auto val = std::make_unique<QPixmap>(*RedoValue);
+	auto ptr = val.get();
 	SceneManager->SetHeightMap(std::move(val));
+	InspectorManager->HeightMapLoadedSignal(ptr);
 }

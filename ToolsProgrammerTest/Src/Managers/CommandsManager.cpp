@@ -26,15 +26,19 @@ void CommandsManager::Undo()
 {
 	Commands[CommandIdx]->Undo();
 
-	if (CommandIdx != 0)
-		--CommandIdx;
+	if (CommandIdx == 0)
+		return;
+
+	--CommandIdx;
 }
 
 // ************************************************************************************************
 void CommandsManager::Redo()
 {
-	if (CommandIdx != Commands.size() - 1)
-		++CommandIdx;
+	if (CommandIdx == Commands.size() - 1)
+		return;
+
+	++CommandIdx;
 
 	Commands[CommandIdx]->Redo();
 }
