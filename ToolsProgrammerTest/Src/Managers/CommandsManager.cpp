@@ -33,8 +33,8 @@ void CommandsManager::Undo()
 // ************************************************************************************************
 void CommandsManager::Redo()
 {
-	Commands[CommandIdx]->Redo();
-
 	if (CommandIdx != Commands.size() - 1)
 		++CommandIdx;
+
+	Commands[CommandIdx]->Redo();
 }
