@@ -13,7 +13,7 @@ std::unique_ptr<IDialogCommand> HeightMapDialog::LoadHeightMap(ISceneManager* sc
 
 	QFileDialog fileDialog;
 	fileDialog.setAcceptMode(QFileDialog::AcceptOpen);
-	fileDialog.setNameFilter("*.png");
+	fileDialog.setNameFilters(QList<QString>{ "*.png", "*.jpg" });
 
 	if (fileDialog.exec() != QDialog::Accepted)
 		return nullptr;
