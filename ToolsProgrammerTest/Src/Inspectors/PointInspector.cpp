@@ -18,9 +18,6 @@ PointInspector::PointInspector(QWidget* parent)
 	gridLayout->setColumnStretch(2, 1);
 	gridLayout->setColumnStretch(3, 1);
 
-	for (size_t i = 0; i < 100; ++i)
-		gridLayout->setRowStretch((int)i, 1);
-
 	setLayout(gridLayout);
 
 	//		content
@@ -56,6 +53,8 @@ PointInspector::PointInspector(QWidget* parent)
 		connect(PositionFields[i], &QLineEdit::editingFinished, this, &PointInspector::FieldModified);
 	}
 
+	auto w = new QWidget(this);
+	gridLayout->addWidget(w, 3, 0);;
 }
 
 // ************************************************************************************************
