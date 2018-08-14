@@ -235,5 +235,9 @@ void Scene3DInspector::PointModified(const Point* point)
 	auto r = int(0xff * denominator) * 0x010000;
 	auto g = int(0xff * (1 - denominator)) * 0x000100;
 	auto b = 0x000000;
-	material->setDiffuse(QColor(QRgb(r + g + b)));
+
+	if (AnySelected)
+		LastSelectedColor = QColor(QRgb(r + g + b));
+	else
+		material->setDiffuse(QColor(QRgb(r + g + b)));
 }
