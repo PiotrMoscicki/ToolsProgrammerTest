@@ -25,8 +25,6 @@ namespace TPT
 		void Redo() override;
 
 	private:
-		bool InitialCommand = true;
-		eCommandType LastCommandType = eCommandType::EXECUTE;
 		size_t CommandIdx = 0;
 		
 		std::vector<std::unique_ptr<ICommand>> Commands;

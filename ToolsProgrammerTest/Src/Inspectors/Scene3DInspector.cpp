@@ -156,8 +156,8 @@ void Scene3DInspector::PointSpawned(const Point* point)
 	// material
 	auto cubeMaterial = new Qt3DExtras::QPhongMaterial();
 	auto denominator = (float)point->PosY / Manager->GetSceneResolution().Y;
-	auto r = denominator * 0xff0000;
-	auto g = (-denominator + 1) * 0x00ff00;
+	auto r = int(0xff * denominator) * 0x010000;
+	auto g = int(0xff * (1 - denominator)) * 0x000100;
 	auto b = 0x000000;
 	cubeMaterial->setDiffuse(QColor(QRgb(r + g + b)));
 

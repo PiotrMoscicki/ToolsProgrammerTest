@@ -14,34 +14,27 @@ CommandsManager::CommandsManager()
 void CommandsManager::AddCommand(std::unique_ptr<ICommand> cmd)
 {
 	cmd->Execute();
-	Commands.resize(CommandIdx + 1);
+
+	++CommandIdx;
+	Commands.resize(CommandIdx);
 	Commands.push_back(std::move(cmd));
 	
-	LastCommandType = eCommandType::EXECUTE;
-	++CommandIdx;
 }
 
 // ************************************************************************************************
 void CommandsManager::Undo()
 {
-	if (CommandIdx == 0 && LastCommandType == eCommandType::UNDO)
-		++CommandIdx;
-
 	Commands[CommandIdx]->Undo();
 
-	--CommandIdx;
-	LastCommandType = eCommandType::UNDO;
+	if (CommandIdx != 0)
+		--CommandIdx;
 }
 
 // ************************************************************************************************
 void CommandsManager::Redo()
 {
-	if (CommandIdx == Commands.size() - 1 && LastCommandType == eCommandType::REDO)
-		return;
-
 	Commands[CommandIdx]->Redo();
 
-	if (LastCommandType == eCommandType::REDO)
+	if (CommandIdx != Commands.size() - 1)
 		++CommandIdx;
-	LastCommandType = eCommandType::REDO;
 }

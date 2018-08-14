@@ -86,11 +86,11 @@
     <ClCompile Include="Src\Structures\Commands\DestroyPointCommand.cpp">
       <Filter>Source Files\Structures\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Managers\CommandsManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Structures\Commands\SpawnPointsCommand.cpp">
       <Filter>Source Files\Structures\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Managers\CommandsManager.cpp">
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
