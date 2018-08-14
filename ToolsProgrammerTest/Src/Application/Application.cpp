@@ -2,6 +2,8 @@
 
 #include <QtWidgets/QStyleFactory>
 #include <QtWidgets/qdockwidget.h>
+#include <QtCore/qcoreevent.h>
+#include <Qt3DInput/qkeyevent.h>
 
 #include "Managers/InspectorManager.hpp"
 #include "Managers/ProjectManager.hpp"
@@ -120,6 +122,7 @@ Application::Application(int argc, char *argv[])
 	MainWindow->addDockWidget(Qt::RightDockWidgetArea, widget);
 	widget->setMinimumSize(300, 300);
 
+	installEventFilter(this);
 
 
 	ProjectManager = new ::ProjectManager();
@@ -150,6 +153,70 @@ Application::Application(int argc, char *argv[])
 void Application::ChangeResolution()
 {
 	InspectorManager->ChangeSceneResolution();
+}
+
+// ************************************************************************************************
+bool Application::eventFilter(QObject* watched, QEvent* event)
+{
+	if (event->type() == QEvent::Type::KeyPress)
+	{
+		if (((QKeyEvent*)event)->isAutoRepeat())
+			((QKeyEvent*)event)->ignore();
+		else
+		{
+			switch (((QKeyEvent*)event)->key())
+			{
+			case Qt::Key::Key_Control:
+				CtrlPressed = true;
+				break;
+
+			case Qt::Key::Key_Shift:
+				ShiftPressed = true;
+				break;
+
+			case Qt::Key::Key_Z:
+				ZPressed = true;
+				break;
+			}
+		}
+		if (CtrlPressed && ShiftPressed && ZPressed && !DuringEvent)
+		{
+			DuringEvent = true;
+			gApp->Redo();
+		}
+		else if (CtrlPressed && ZPressed && !DuringEvent)
+		{
+			DuringEvent = true;
+			gApp->Undo();
+		}
+	}
+	else if (event->type() == QEvent::Type::KeyRelease)
+	{
+		if (((QKeyEvent*)event)->isAutoRepeat())
+			((QKeyEvent*)event)->ignore();
+		else
+		{
+			switch (((QKeyEvent*)event)->key())
+			{
+			case Qt::Key::Key_Control:
+				CtrlPressed = false;
+				DuringEvent = false;
+				break;
+
+			case Qt::Key::Key_Shift:
+				ShiftPressed = false;
+				DuringEvent = false;
+				break;
+
+			case Qt::Key::Key_Z:
+				ZPressed = false;
+				DuringEvent = false;
+				break;
+			}
+		}
+	}
+
+	return false;
 }
 
 // ************************************************************************************************

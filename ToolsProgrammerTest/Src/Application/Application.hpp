@@ -20,6 +20,8 @@ namespace TPT
 	public:
 		Application(int argc, char *argv[]);
 
+		bool eventFilter(QObject* watched, QEvent* event) override;
+
 	private:
 		QMenuBar* MenuBar;
 			QMenu* EditMenu;
@@ -32,6 +34,11 @@ namespace TPT
 		IProjectManager* ProjectManager;
 		IInspectorManager* InspectorManager;
 		ICommandsManager* CommandsManager;
+
+		bool CtrlPressed = false;
+		bool ShiftPressed = false;
+		bool ZPressed = false;
+		bool DuringEvent = false;
 
 	private slots:
 		void ChangeResolution();
