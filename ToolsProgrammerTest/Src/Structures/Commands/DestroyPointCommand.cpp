@@ -6,6 +6,7 @@ using namespace TPT;
 
 void DestroyPointCommand::Execute()
 {
+	InspectorManager->DeselectPoint();
 	InspectorManager->PointDestroyedSignal(SceneManager->GetPoint(PointId));
 	SceneManager->DestroyPoint(PointId);
 }
@@ -18,6 +19,7 @@ void DestroyPointCommand::Undo()
 
 void DestroyPointCommand::Redo()
 {
+	InspectorManager->DeselectPoint();
 	InspectorManager->PointDestroyedSignal(SceneManager->GetPoint(PointId));
 	SceneManager->DestroyPoint(PointId);
 }

@@ -57,6 +57,9 @@ void SpawnPointsCommand::Undo()
 {
 	if (SinglePoint)
 	{
+		if (InspectorManager->GetSelectedPoint()->Id == PointsIds[0])
+			InspectorManager->DeselectPoint();
+
 		InspectorManager->PointDestroyedSignal(SceneManager->GetPoint(PointsIds[0]));
 		SceneManager->DestroyPoint(PointsIds[0]);
 	}
@@ -64,6 +67,9 @@ void SpawnPointsCommand::Undo()
 	{
 		for (auto pointId : PointsIds)
 		{
+			if (InspectorManager->GetSelectedPoint()->Id == pointId)
+				InspectorManager->DeselectPoint();
+
 			InspectorManager->PointDestroyedSignal(SceneManager->GetPoint(pointId));
 			SceneManager->DestroyPoint(pointId);
 		}
