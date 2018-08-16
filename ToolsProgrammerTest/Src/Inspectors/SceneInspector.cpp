@@ -1,7 +1,11 @@
 #include "SceneInspector.hpp"
 
 #include <QtWidgets/qgridlayout.h>
+#include <QtWidgets/qmenu.h>
+#include <QtWidgets/qaction.h>
+#include <QtWidgets/qtreewidget.h>
 
+#include "Managers/IInspectorManager.hpp"
 #include "Structures/Commands/PointModificationCommand.hpp"
 
 using namespace TPT;

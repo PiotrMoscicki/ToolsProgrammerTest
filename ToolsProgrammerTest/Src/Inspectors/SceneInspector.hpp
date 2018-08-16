@@ -1,15 +1,19 @@
 #pragma once
 
-#include <QtWidgets/qmenu.h>
-#include <QtWidgets/qaction.h>
 #include <QtWidgets/qwidget.h>
-#include <QtWidgets/qtreewidget.h>
 
 #include "Inspectors/IInspector.hpp"
-#include "Managers/IInspectorManager.hpp"
+
+class QMenu;
+class QAction;
+class QTreeWidget;
+class QTreeWidgetItem;
 
 namespace TPT
 {
+	class IInspectorManager;
+	class Point;
+
 	class SceneInspector : public IInspector, public QWidget
 	{
 	public:
