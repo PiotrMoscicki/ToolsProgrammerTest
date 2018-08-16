@@ -1,11 +1,14 @@
 #pragma once
 
+#include <memory>
+
 #include "Dialogs/IDialog.hpp"
-#include "Managers/ISceneManager.hpp"
 #include "Structures/Commands/IDialogCommand.hpp"
 
 namespace TPT
 {
+	class ISceneManager;
+
 	class IHeightMapDialog : public IDialog
 	{
 	public:
