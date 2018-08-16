@@ -1,8 +1,5 @@
 #include "Pch.hpp"
 
-
-#include "Scene3DInspector.hpp"
-
 #include <Qt3DRender/qcamera.h>
 #include <Qt3DCore/qentity.h>
 #include <Qt3DRender/qcameralens.h>
@@ -37,10 +34,6 @@
 #include <QtCore/QDebug>
 
 #include <QtWidgets/qgridlayout.h>
-
-
-
-#include "Managers/IInspectorManager.hpp"
 
 using namespace TPT;
 

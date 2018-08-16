@@ -1,11 +1,5 @@
 #include "Pch.hpp"
 
-
-#include "InspectorManager.hpp"
-
-#include "Managers/IProjectManager.hpp"
-#include "Managers/ICommandsManager.hpp"
-
 using namespace TPT;
 
 // ************************************************************************************************

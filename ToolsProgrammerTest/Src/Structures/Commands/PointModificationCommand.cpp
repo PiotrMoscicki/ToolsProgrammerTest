@@ -1,10 +1,5 @@
 #include "Pch.hpp"
 
-
-#include "PointModificationCommand.hpp"
-
-#include "Managers/IInspectorManager.hpp"
-
 using namespace TPT;
 
 // ************************************************************************************************

@@ -22,6 +22,10 @@
 #include "Managers/IProjectManager.hpp"
 #include "Managers/IInspectorManager.hpp"
 #include "Managers/ISceneManager.hpp"
+#include "Managers/CommandsManager.hpp"
+#include "Managers/InspectorManager.hpp"
+#include "Managers/ProjectManager.hpp"
+#include "Managers/SceneManager.hpp"
 
 #include "Structures/Point.hpp"
 #include "Structures/SceneResolution.hpp"

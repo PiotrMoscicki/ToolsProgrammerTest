@@ -1,16 +1,10 @@
 #include "Pch.hpp"
 
-
-#include "SceneResolutionDialog.hpp"
-
 #include <QtWidgets/qgridlayout.h>
 
 #include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qlabel.h>
 #include <QtWidgets/qlineedit.h>
-
-#include "Structures/Commands/ChangeSceneResolutionCommand.hpp"
-#include "Managers/ISceneManager.hpp"
 
 using namespace TPT;
 

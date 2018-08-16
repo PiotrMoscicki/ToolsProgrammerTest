@@ -1,12 +1,6 @@
 #include "Pch.hpp"
 
-
-#include "HeightMapDialog.hpp"
-
 #include <QtWidgets/qfiledialog.h>
-
-#include "Managers/ISceneManager.hpp"
-#include "Structures/Commands/ChangeHeightMapCommand.hpp"
 
 using namespace TPT;
 

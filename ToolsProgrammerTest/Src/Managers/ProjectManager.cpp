@@ -1,9 +1,6 @@
 #include "Pch.hpp"
 
-
-#include "ProjectManager.hpp"
-
-#include "QtGui/qpixmap.h"
+#include <QtGui/qpixmap.h>
 
 using namespace TPT;
 

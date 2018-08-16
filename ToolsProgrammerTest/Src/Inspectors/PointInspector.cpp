@@ -1,15 +1,9 @@
 #include "Pch.hpp"
 
-
-#include "PointInspector.hpp"
-
 #include <QtWidgets/qgridlayout.h>
 #include <QtWidgets/qlabel.h>
 #include <QtWidgets/qlineedit.h>
 #include <QtGui/qpixmap.h>
-
-#include "Managers/IInspectorManager.hpp"
-#include "Structures/Commands/PointModificationCommand.hpp"
 
 using namespace TPT;
 

@@ -1,15 +1,10 @@
 #include "Pch.hpp"
 
-
-#include "HeightMapInspector.hpp"
-
 #include <QtWidgets/qgridlayout.h>
 #include <QtWidgets/qmenu.h>
 #include <QtWidgets/qaction.h>
 #include <QtWidgets/qlabel.h>
 #include <QtGui/qpixmap.h>
-
-#include "Managers/IInspectorManager.hpp"
 
 using namespace TPT;
 

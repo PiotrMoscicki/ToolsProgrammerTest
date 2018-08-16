@@ -5,20 +5,6 @@
 #include <QtCore/qcoreevent.h>
 #include <Qt3DInput/qkeyevent.h>
 
-#include "Managers/InspectorManager.hpp"
-#include "Managers/ProjectManager.hpp"
-#include "Managers/SceneManager.hpp"
-#include "Managers/CommandsManager.hpp"
-
-#include "Inspectors/SceneInspector.hpp"
-#include "Inspectors/PointInspector.hpp"
-#include "Inspectors/HeightMapInspector.hpp"
-#include "Inspectors/Scene3DInspector.hpp"
-
-#include "Managers/Dialogs/PointDialog.hpp"
-#include "Managers/Dialogs/HeightMapDialog.hpp"
-#include "Managers/Dialogs/SceneResolutionDialog.hpp"
-
 using namespace TPT;
 
 // ************************************************************************************************

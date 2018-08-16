@@ -1,10 +1,5 @@
 #include "Pch.hpp"
 
-
-#include "DestroyPointCommand.hpp"
-
-#include "Managers/IInspectorManager.hpp"
-
 using namespace TPT;
 
 void DestroyPointCommand::Execute()
