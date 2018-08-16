@@ -3,17 +3,9 @@
 #include <vector>
 
 #include "Managers/ICommandsManager.hpp"
-#include "Structures/Commands/BlankCommand.hpp"
 
 namespace TPT
 {
-	enum class eCommandType
-	{
-		EXECUTE,
-		UNDO,
-		REDO
-	};
-
 	class CommandsManager : public ICommandsManager
 	{
 	public:

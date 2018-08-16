@@ -1,5 +1,7 @@
 #include "CommandsManager.hpp"
 
+#include "Structures/Commands/BlankCommand.hpp"
+
 using namespace TPT;
 
 // ************************************************************************************************
