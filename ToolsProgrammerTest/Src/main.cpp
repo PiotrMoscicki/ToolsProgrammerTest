@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "Application/Application.hpp"
 
 #include <QGuiApplication>

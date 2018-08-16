@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "InspectorManager.hpp"
 
 #include "Managers/IProjectManager.hpp"

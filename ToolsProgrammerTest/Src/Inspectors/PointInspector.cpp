@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "PointInspector.hpp"
 
 #include <QtWidgets/qgridlayout.h>

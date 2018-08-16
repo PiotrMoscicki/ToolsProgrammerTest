@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "SceneManager.hpp"
 
 using namespace TPT;

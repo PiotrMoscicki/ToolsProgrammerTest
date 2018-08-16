@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "HeightMapInspector.hpp"
 
 #include <QtWidgets/qgridlayout.h>

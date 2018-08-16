@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "ProjectManager.hpp"
 
 #include "QtGui/qpixmap.h"

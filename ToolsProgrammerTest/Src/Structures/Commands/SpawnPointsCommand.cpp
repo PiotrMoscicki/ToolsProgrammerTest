@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "SpawnPointsCommand.hpp"
 
 #include "Managers/IInspectorManager.hpp"

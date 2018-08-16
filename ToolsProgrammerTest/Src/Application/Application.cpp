@@ -1,4 +1,4 @@
-#include "Application.hpp"
+#include "Pch.hpp"
 
 #include <QtWidgets/QStyleFactory>
 #include <QtWidgets/qdockwidget.h>

@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "Scene3DInspector.hpp"
 
 #include <Qt3DRender/qcamera.h>

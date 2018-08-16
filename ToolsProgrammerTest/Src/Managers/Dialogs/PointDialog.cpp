@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "PointDialog.hpp"
 
 #include <QtWidgets/qmessagebox.h>

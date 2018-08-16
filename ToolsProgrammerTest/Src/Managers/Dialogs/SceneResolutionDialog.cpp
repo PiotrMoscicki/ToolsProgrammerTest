@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "SceneResolutionDialog.hpp"
 
 #include <QtWidgets/qgridlayout.h>

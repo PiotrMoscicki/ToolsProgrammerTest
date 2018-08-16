@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "ChangeSceneResolutionCommand.hpp"
 
 #include "Managers/IInspectorManager.hpp"

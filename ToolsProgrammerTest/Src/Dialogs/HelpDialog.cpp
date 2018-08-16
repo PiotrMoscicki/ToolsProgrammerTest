@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "HelpDialog.hpp"
 
 #include <QtWidgets/qgridlayout.h>

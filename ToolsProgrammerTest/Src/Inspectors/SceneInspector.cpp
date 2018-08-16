@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "SceneInspector.hpp"
 
 #include <QtWidgets/qgridlayout.h>

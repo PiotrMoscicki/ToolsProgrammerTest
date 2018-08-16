@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "ChangeHeightMapCommand.hpp"
 
 #include "Managers/IInspectorManager.hpp"

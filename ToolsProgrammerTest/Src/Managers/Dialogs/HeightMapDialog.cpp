@@ -1,3 +1,6 @@
+#include "Pch.hpp"
+
+
 #include "HeightMapDialog.hpp"
 
 #include <QtWidgets/qfiledialog.h>

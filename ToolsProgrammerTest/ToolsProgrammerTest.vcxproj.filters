@@ -198,5 +198,8 @@
     <ClInclude Include="Src\Dialogs\HelpDialog.hpp">
       <Filter>Source Files\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Pch.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
