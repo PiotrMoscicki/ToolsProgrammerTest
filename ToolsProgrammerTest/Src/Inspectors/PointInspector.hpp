@@ -1,15 +1,17 @@
 #pragma once
 
 #include <QtWidgets/qwidget.h>
-#include <QtWidgets/qlabel.h>
-#include <QtWidgets/qlineedit.h>
-#include <QtGui/qpixmap.h>
 
 #include "Inspectors/IInspector.hpp"
-#include "Managers/IInspectorManager.hpp"
+
+class QLabel;
+class QLineEdit;
 
 namespace TPT
 {
+	class Point;
+	class IInspectorManager;
+
 	class PointInspector : public IInspector, public QWidget
 	{
 	public:
