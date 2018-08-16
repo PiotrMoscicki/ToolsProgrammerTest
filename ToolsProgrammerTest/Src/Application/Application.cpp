@@ -4,6 +4,9 @@
 #include <QtWidgets/qdockwidget.h>
 #include <QtCore/qcoreevent.h>
 #include <Qt3DInput/qkeyevent.h>
+#include <QtWidgets/qaction.h>
+#include <QtWidgets/qmenu.h>
+#include <QtWidgets/qmenubar.h>
 
 using namespace TPT;
 

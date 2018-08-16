@@ -6,6 +6,7 @@
 namespace TPT
 {
 	class IInspectorManager;
+	class ISceneManager;
 
 	class PointModificationCommand : public IPointModificationCommand
 	{

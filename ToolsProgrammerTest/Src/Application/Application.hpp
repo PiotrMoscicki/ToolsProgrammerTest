@@ -1,20 +1,22 @@
 #pragma once
 
 #include <QtWidgets/qapplication.h>
-#include <QtCore/qtimer.h>
 #include <QtWidgets/qmainwindow.h>
-#include <QtWidgets/qaction.h>
-#include <QtWidgets/qmenu.h>
-#include <QtWidgets/qmenubar.h>
 
 #include "Dialogs/HelpDialog.hpp"
 
-#include "Managers/IProjectManager.hpp"
-#include "Managers/IInspectorManager.hpp"
-#include "Managers/ICommandsManager.hpp"
+class QMenuBar;
+class QMenu;
+class QAction;
+class QObject;
+class QEvent;
 
 namespace TPT
 {
+	class IProjectManager;
+	class IInspectorManager;
+	class ICommandsManager;
+
 	class Application : public QApplication
 	{
 		Q_OBJECT

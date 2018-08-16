@@ -2,7 +2,6 @@
 
 #include "Structures/Commands/ICommand.hpp"
 #include "Structures/Point.hpp"
-#include "Managers/ISceneManager.hpp"
 
 namespace TPT
 {
