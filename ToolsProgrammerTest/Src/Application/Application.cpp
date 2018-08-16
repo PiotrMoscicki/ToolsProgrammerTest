@@ -33,7 +33,7 @@ Application::Application(int argc, char *argv[])
 {
 	gApp = this;
 
-	setStyle(QStyleFactory::create("s"));
+	setStyle(QStyleFactory::create("Fusion"));
 
 	QPalette darkPalette;
 	darkPalette.setColor(QPalette::Window, QColor(45, 45, 45));
