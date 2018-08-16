@@ -2,6 +2,8 @@
 
 #include <QtWidgets/qwidget.h>
 
+#include "Inspectors/IInspector.hpp"
+
 #include <Qt3DExtras/QPhongMaterial>
 #include <Qt3DExtras/QCuboidMesh>
 #include <Qt3DCore/qentity.h>
@@ -9,11 +11,10 @@
 #include <Qt3DExtras/QPhongMaterial>
 #include <Qt3DRender/qpickevent.h>
 
-#include "Inspectors/IInspector.hpp"
-#include "Managers/IInspectorManager.hpp"
-
 namespace TPT
 {
+	class IInspectorManager;
+	class Point;
 
 	class Scene3DInspector : public IInspector, public QWidget
 	{
@@ -34,7 +35,7 @@ namespace TPT
 		public:
 			PickHelper(Scene3DInspector* owner, size_t pointId) : Owner(owner), PointId(pointId) {}
 
-			void PickEvent(Qt3DRender::QPickEvent* pick) { Owner->Manager->SelectPoint(PointId); }
+			void PickEvent(Qt3DRender::QPickEvent* pick);
 
 		private:
 			Scene3DInspector* Owner;

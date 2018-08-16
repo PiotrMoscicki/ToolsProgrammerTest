@@ -35,6 +35,10 @@
 
 #include <QtWidgets/qgridlayout.h>
 
+
+
+#include "Managers/IInspectorManager.hpp"
+
 using namespace TPT;
 
 // ************************************************************************************************
@@ -240,4 +244,10 @@ void Scene3DInspector::PointModified(const Point* point)
 		LastSelectedColor = QColor(QRgb(r + g + b));
 	else
 		material->setDiffuse(QColor(QRgb(r + g + b)));
+}
+
+// ************************************************************************************************
+void Scene3DInspector::PickHelper::PickEvent(Qt3DRender::QPickEvent* pick)
+{
+	Owner->Manager->SelectPoint(PointId);
 }
