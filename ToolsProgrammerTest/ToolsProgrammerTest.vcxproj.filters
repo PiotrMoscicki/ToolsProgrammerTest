@@ -92,6 +92,9 @@
     <ClCompile Include="Src\Managers\CommandsManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Dialogs\HelpDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Src\Managers\IInspectorManager.hpp">
@@ -191,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="Src\Structures\Commands\BlankCommand.hpp">
       <Filter>Source Files\Structures\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Dialogs\HelpDialog.hpp">
+      <Filter>Source Files\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

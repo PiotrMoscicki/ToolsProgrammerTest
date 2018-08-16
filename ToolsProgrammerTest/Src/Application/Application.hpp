@@ -7,6 +7,8 @@
 #include <QtWidgets/qmenu.h>
 #include <QtWidgets/qmenubar.h>
 
+#include "Dialogs/HelpDialog.hpp"
+
 #include "Managers/IProjectManager.hpp"
 #include "Managers/IInspectorManager.hpp"
 #include "Managers/ICommandsManager.hpp"
@@ -29,10 +31,11 @@ namespace TPT
 				QAction* RedoAction;
 			QMenu* MapMenu;
 				QAction* ChangeResolutionAction;
+			QAction* HelpAction;
 
 		std::unique_ptr<QMainWindow> MainWindow;
+		std::unique_ptr<HelpDialog> HelpDialog;
 		IProjectManager* ProjectManager;
-		IInspectorManager* InspectorManager;
 		ICommandsManager* CommandsManager;
 
 		bool CtrlPressed = false;
@@ -44,6 +47,7 @@ namespace TPT
 		void ChangeResolution();
 		void Undo();
 		void Redo();
+		void Help();
 	};
 
 	extern Application* gApp;

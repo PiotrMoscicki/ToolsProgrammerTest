@@ -94,6 +94,11 @@ Application::Application(int argc, char *argv[])
 			ChangeResolutionAction->setText("Change Resolution");
 			connect(ChangeResolutionAction, &QAction::triggered, this, &Application::ChangeResolution);
 
+		HelpAction = new QAction(MainWindow.get());
+		MenuBar->addAction(HelpAction);
+		HelpAction->setText("Help");
+		connect(HelpAction, &QAction::triggered, this, &Application::Help);
+
 	MainWindow->show();
 
 	
@@ -147,6 +152,8 @@ Application::Application(int argc, char *argv[])
 	inspectorMgr->AddInspector(std::move(scene3DInspector));
 	InspectorManager = inspectorMgr.get();
 	ProjectManager->SetInspectorManager(std::move(inspectorMgr));
+
+	HelpDialog = std::make_unique<::HelpDialog>(this);
 }
 
 // ************************************************************************************************
@@ -229,4 +236,10 @@ void Application::Undo()
 void Application::Redo()
 {
 	CommandsManager->Redo();
+}
+
+// ************************************************************************************************
+void Application::Help()
+{
+	HelpDialog->Show();
 }

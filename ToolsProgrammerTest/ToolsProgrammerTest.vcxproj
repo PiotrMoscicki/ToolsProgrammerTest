@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Application\Application.cpp" />
+    <ClCompile Include="Src\Dialogs\HelpDialog.cpp" />
     <ClCompile Include="Src\Inspectors\PointInspector.cpp" />
     <ClCompile Include="Src\Inspectors\Scene3DInspector.cpp" />
     <ClCompile Include="Src\Inspectors\SceneInspector.cpp" />
@@ -31,6 +32,7 @@
     <ClCompile Include="Src\Structures\Commands\SpawnPointsCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Dialogs\HelpDialog.hpp" />
     <ClInclude Include="Src\Managers\CommandsManager.hpp" />
     <ClInclude Include="Src\Managers\Dialogs\SceneResolutionDialog.hpp" />
     <ClInclude Include="Src\Managers\ICommandsManager.hpp" />
