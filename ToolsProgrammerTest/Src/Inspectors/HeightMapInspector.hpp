@@ -1,15 +1,20 @@
 #pragma once
 
-#include <QtWidgets/qmenu.h>
-#include <QtWidgets/qaction.h>
 #include <QtWidgets/qwidget.h>
-#include <QtWidgets/qlabel.h>
 
 #include "Inspectors/IInspector.hpp"
-#include "Managers/IInspectorManager.hpp"
+#include "Structures/Point.hpp"
+
+class QMenu;
+class QAction;
+class QResizeEvent;
+class QPixmap;
+class QLabel;
 
 namespace TPT
 {
+	class IInspectorManager;
+
 	class HeightMapInspector : public IInspector, public QWidget
 	{
 	public:

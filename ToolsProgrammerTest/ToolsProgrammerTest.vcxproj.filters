@@ -93,7 +93,7 @@
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Src\Dialogs\HelpDialog.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

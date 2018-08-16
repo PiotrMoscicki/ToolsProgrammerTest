@@ -1,10 +1,12 @@
 #pragma once
 
-#include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qdialog.h>
-#include <QtWidgets/qlabel.h>
 
 #include "Dialogs/IDialog.hpp"
+
+class QLabel;
+class QPushButton;
+class QObject;
 
 namespace TPT
 {

@@ -1,6 +1,8 @@
 #include "HelpDialog.hpp"
 
 #include <QtWidgets/qgridlayout.h>
+#include <QtWidgets/qpushbutton.h>
+#include <QtWidgets/qlabel.h>
 
 using namespace TPT;
 
