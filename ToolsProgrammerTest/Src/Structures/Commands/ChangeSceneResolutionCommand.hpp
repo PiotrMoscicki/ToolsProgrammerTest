@@ -1,10 +1,13 @@
 #pragma once
 
 #include "Structures/Commands/IDialogCommand.hpp"
-#include "Managers/IInspectorManager.hpp"
+#include "Structures/SceneResolution.hpp"
 
 namespace TPT
 {
+	class IInspectorManager;
+	class ISceneManager;
+
 	class ChangeSceneResolutionCommand : public IDialogCommand
 	{
 	public:
