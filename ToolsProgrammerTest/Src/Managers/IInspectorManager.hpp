@@ -7,7 +7,6 @@
 #include "Managers/Dialogs/ISceneResolutionDialog.hpp"
 #include "Inspectors/IInspector.hpp"
 #include "Structures/Commands/IPointModificationCommand.hpp"
-#include "Managers/ISceneManager.hpp"
 
 namespace TPT
 {
