@@ -107,19 +107,19 @@ Application::Application(int argc, char *argv[])
 	widget->setWidget(sceneInspector.get());
 	MainWindow->addDockWidget(Qt::LeftDockWidgetArea, widget);
 	widget->setMinimumSize(300, 300);
+	
+	widget = new QDockWidget("Point Inspector", MainWindow.get());
+	auto pointInspector = std::make_unique<PointInspector>(nullptr);
+	widget->setWidget(pointInspector.get());
+	MainWindow->addDockWidget(Qt::LeftDockWidgetArea, widget);
+	widget->setMinimumSize(300, 0);
 
 	widget = new QDockWidget("Height Map Inspector", MainWindow.get());
 	auto heightMapInspector = std::make_unique<HeightMapInspector>(nullptr);
 	widget->setWidget(heightMapInspector.get());
 	MainWindow->addDockWidget(Qt::LeftDockWidgetArea, widget);
 	widget->setMinimumSize(300, 300);
-	
-	widget = new QDockWidget("Point Inspector", MainWindow.get());
-	auto pointInspector = std::make_unique<PointInspector>(nullptr);
-	widget->setWidget(pointInspector.get());
-	MainWindow->addDockWidget(Qt::RightDockWidgetArea, widget);
-	widget->setMinimumSize(300, 300);
-	widget->hide();
+	widget->setMaximumWidth(400);
 
 	widget = new QDockWidget("3D Inspector", MainWindow.get());
 	auto scene3DInspector = std::make_unique<Scene3DInspector>(nullptr);

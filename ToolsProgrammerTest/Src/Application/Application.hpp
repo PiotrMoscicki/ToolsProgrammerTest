@@ -36,6 +36,7 @@ namespace TPT
 		std::unique_ptr<QMainWindow> MainWindow;
 		std::unique_ptr<HelpDialog> HelpDialog;
 		IProjectManager* ProjectManager;
+		IInspectorManager* InspectorManager;
 		ICommandsManager* CommandsManager;
 
 		bool CtrlPressed = false;
