@@ -1,13 +1,13 @@
 #pragma once
 
-#include <QtWidgets/qtreewidget.h>
-#include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qdialog.h>
-#include <QtWidgets/qlabel.h>
-#include <QtWidgets/qlineedit.h>
-#include <QtWidgets/qtabwidget.h>
 
 #include "Managers/Dialogs/IPointDialog.hpp"
+
+class QTabWidget;
+class QLabel;
+class QLineEdit;
+class QPushButton;
 
 namespace TPT
 {

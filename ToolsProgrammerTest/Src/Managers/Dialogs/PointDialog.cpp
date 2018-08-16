@@ -3,6 +3,11 @@
 #include <QtWidgets/qmessagebox.h>
 #include <QtWidgets/qgridlayout.h>
 
+#include <QtWidgets/qpushbutton.h>
+#include <QtWidgets/qlabel.h>
+#include <QtWidgets/qlineedit.h>
+#include <QtWidgets/qtabwidget.h>
+
 #include "Managers/ISceneManager.hpp"
 
 using namespace TPT;
