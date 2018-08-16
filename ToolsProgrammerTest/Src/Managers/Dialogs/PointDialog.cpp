@@ -105,8 +105,7 @@ std::unique_ptr<SpawnPointsCommand> PointDialog::SpawnPoints(ISceneManager* scen
 	{
 	case 0:
 	{
-		auto dupa = NameField->text();
-		result = std::make_unique<SpawnPointsCommand>(dupa
+		result = std::make_unique<SpawnPointsCommand>(NameField->text()
 			, PositionFields[0]->text().toInt(), PositionFields[1]->text().toInt(), scene);
 		break;
 	}
@@ -125,11 +124,9 @@ std::unique_ptr<SpawnPointsCommand> PointDialog::SpawnPoints(ISceneManager* scen
 		if (pointsResolutionX * pointsResolutionZ > 4096)
 		{
 			auto box = new QMessageBox();
-			box->setText("You don't want to do that...");
+			box->setText("Spawning (and destroying) large amount of points may take a while.");
 			box->exec();
 			delete box;
-			CanceledFlag = true;
-			break;
 		}
 
 		size_t mapResolutionX = MapResolutionFields[0]->text().toInt();
