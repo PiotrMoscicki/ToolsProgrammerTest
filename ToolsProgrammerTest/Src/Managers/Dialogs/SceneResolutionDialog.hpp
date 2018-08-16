@@ -1,11 +1,13 @@
 #pragma once
 
-#include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qdialog.h>
-#include <QtWidgets/qlabel.h>
-#include <QtWidgets/qlineedit.h>
 
 #include "Managers/Dialogs/ISceneResolutionDialog.hpp"
+#include "Structures/SceneResolution.hpp"
+
+class QLabel;
+class QLineEdit;
+class QPushButton;
 
 namespace TPT
 {

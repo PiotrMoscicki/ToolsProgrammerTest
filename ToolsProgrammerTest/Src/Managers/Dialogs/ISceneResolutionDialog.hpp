@@ -1,11 +1,12 @@
 #pragma once
 
 #include "Dialogs/IDialog.hpp"
-#include "Managers/ISceneManager.hpp"
 #include "Structures/Commands/IDialogCommand.hpp"
 
 namespace TPT
 {
+	class ISceneManager;
+
 	class ISceneResolutionDialog : public IDialog
 	{
 	public:
