@@ -3,10 +3,11 @@
 #include <QtGui/qpixmap.h>
 
 #include "Structures/Commands/IDialogCommand.hpp"
-#include "Managers/ISceneManager.hpp"
 
 namespace TPT
 {
+	class ISceneManager;
+
 	class ChangeHeightMapCommand : public IDialogCommand
 	{
 	public:
