@@ -19,7 +19,7 @@ namespace TPT
 	public:
 		CommandsManager();
 
-		void AddCommand(std::unique_ptr<ICommand> cmd) override;
+		void Execute(std::unique_ptr<ICommand> cmd) override;
 
 		void Undo() override;
 		void Redo() override;

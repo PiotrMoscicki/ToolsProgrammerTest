@@ -36,7 +36,7 @@ void InspectorManager::SpawnPoint()
 		return;
 
 	cmd->SetInspectorManager(this);
-	CommandsManager->AddCommand(std::move(cmd));
+	CommandsManager->Execute(std::move(cmd));
 
 	PointDialog->Reset();
 }
@@ -53,7 +53,7 @@ void InspectorManager::DestroyPoint()
 		return;
 
 	cmd->SetInspectorManager(this);
-	CommandsManager->AddCommand(std::move(cmd));
+	CommandsManager->Execute(std::move(cmd));
 
 	DeselectPoint();
 }
@@ -78,7 +78,7 @@ void InspectorManager::ModifyPoint(std::unique_ptr<IPointModificationCommand> cm
 	auto point = SceneManager->GetPoint(cmd->GetPointId());
 
 	cmd->SetSceneManager(SceneManager);
-	CommandsManager->AddCommand(std::move(cmd));
+	CommandsManager->Execute(std::move(cmd));
 }
 
 // ************************************************************************************************
@@ -90,7 +90,7 @@ void InspectorManager::LoadHeightMap()
 		return;
 
 	cmd->SetInspectorManager(this);
-	CommandsManager->AddCommand(std::move(cmd));
+	CommandsManager->Execute(std::move(cmd));
 
 	HeightMapDialog->Reset();
 }
@@ -105,7 +105,7 @@ void InspectorManager::ChangeSceneResolution()
 		return;
 
 	cmd->SetInspectorManager(this);
-	CommandsManager->AddCommand(std::move(cmd));
+	CommandsManager->Execute(std::move(cmd));
 
 	SceneResolutionDialog->Reset();
 }

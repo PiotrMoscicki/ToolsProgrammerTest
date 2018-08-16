@@ -11,7 +11,7 @@ CommandsManager::CommandsManager()
 }
 
 // ************************************************************************************************
-void CommandsManager::AddCommand(std::unique_ptr<ICommand> cmd)
+void CommandsManager::Execute(std::unique_ptr<ICommand> cmd)
 {
 	cmd->Execute();
 
