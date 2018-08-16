@@ -1,14 +1,14 @@
 #pragma once
 
-#include <QtCore/qstring.h>
-#include <QtGui/qpixmap.h>
 #include <QtCore/qobject.h>
+#include <QtGui/qpixmap.h>
 
-#include "Structures/Point.hpp"
 #include "Structures/SceneResolution.hpp"
 
 namespace TPT
 {
+	class Point;
+
 	class ISceneManager : public QObject
 	{
 		Q_OBJECT

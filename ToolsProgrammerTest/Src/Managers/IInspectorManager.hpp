@@ -11,7 +11,9 @@
 namespace TPT
 {
 	class IProjectManager;
+	class ISceneManager;
 	class ICommandsManager;
+	class Point;
 
 	class IInspectorManager : public QObject
 	{
